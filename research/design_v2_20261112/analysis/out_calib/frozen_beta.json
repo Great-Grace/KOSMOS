@@ -1,0 +1,43 @@
+{
+ "frozen_at": "2026-11-12T13:03:37",
+ "counts_sha256": "112a8ec5b50f9240713c31a991916d4306e80109d84326fbd9ff9a7c5b423086",
+ "primary_alpha": "laplace",
+ "alphas": {
+  "laplace": 1.0,
+  "jeffreys": 0.5
+ },
+ "beta_grid": [
+  0.05,
+  1.5,
+  0.005
+ ],
+ "criterion": "train mean TVD",
+ "beta": {
+  "laplace|deepseek|c0": 0.315,
+  "laplace|deepseek|L0": 0.315,
+  "laplace|deepseek|L1agg": 0.34,
+  "laplace|deepseek|L1cell": 0.31,
+  "laplace|haiku|c0": 0.24,
+  "laplace|haiku|L0": 0.245,
+  "laplace|haiku|L1agg": 0.29,
+  "laplace|haiku|L1cell": 0.25,
+  "jeffreys|deepseek|c0": 0.29,
+  "jeffreys|deepseek|L0": 0.285,
+  "jeffreys|deepseek|L1agg": 0.31,
+  "jeffreys|deepseek|L1cell": 0.28,
+  "jeffreys|haiku|c0": 0.21,
+  "jeffreys|haiku|L0": 0.215,
+  "jeffreys|haiku|L1agg": 0.25,
+  "jeffreys|haiku|L1cell": 0.22
+ },
+ "lam": {
+  "deepseek|c0": 0.59,
+  "deepseek|L0": 0.58,
+  "deepseek|L1agg": 0.54,
+  "deepseek|L1cell": 0.6,
+  "haiku|c0": 0.7,
+  "haiku|L0": 0.68,
+  "haiku|L1agg": 0.62,
+  "haiku|L1cell": 0.66
+ }
+}

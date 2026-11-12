@@ -1,0 +1,247 @@
+﻿var,label,k,codes,scale_type,content_domain,battery,split_60_20_20,cv_fold,group_cv_fold,topic,topic_confidence,topic_decider,sensitivity_level,sensitivity_level_decider,desirable_end,desirable_end_decider,review_flags
+ACPTCULT,이민자의 고유문화 고수와 한국문화 수용에 대한 의견,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,ACPTCULT,validation,3,3,migration_identity,0.9986,migration_identity,1.73,1.33,middle,middle,
+ACQFRN1,외국 거주 친척/친구/지인 존재 여부,2,"[1, 2]",binary,factual_status_behavior,ACQFRN,calibration,0,2,personal_fact,0.8621,personal_fact,0.05,0.37,none,none,
+ANGER1W,지난 한 주간 분노를 조절할 수 없었던 경험,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,ANGER1W,calibration,0,1,health_wellbeing,0.9137,health_wellbeing,2.06,1.3,first,first,
+AUTHORT4,우리나라에 필요한 것은 인권보장이 아니라 법질서,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,AUTHORT,calibration,0,3,politics_gov,0.9934,politics_gov,1.77,1.32,first,first,
+AUTHORT7,우리나라에 필요한 것은 질서정연한 국민,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,AUTHORT,calibration,0,3,politics_gov,0.9709,politics_gov,1.84,1.21,first,last,desirable_disagree
+BEFAIR,사람들의 공정성에 대한 평가,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,BEFAIR,test,4,2,social_trust_participation,0.9965,religion_values,1.93,1.34,last,last,topic_disagree
+BELIKEKR,국가자긍심3: 다른 나라 사람이 한국 사람만 같다면 세계는 더 좋아질 수 있을 것이다,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,BELIKEKR,calibration,2,0,migration_identity,0.981,migration_identity,1.82,1.09,first,middle,desirable_disagree
+BURDNEVR,매일매일 해야 하는 일들이 버겁다,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,BURDNEVR,calibration,0,2,health_wellbeing,0.7239,health_wellbeing,1.87,0.71,first,first,
+CANTRUST,사람들에 대한 신뢰,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,CANTRUST,calibration,0,0,social_trust_participation,0.9992,social_trust_participation,1.42,1.13,first,middle,desirable_disagree
+CESD1,지난 한 주간 감정 경험1: 우울감,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,CESD,calibration,2,4,health_wellbeing,0.9946,health_wellbeing,2.89,1.55,first,first,
+CESD10,지난 한 주간 감정 경험10: 불안감,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,CESD,calibration,0,4,health_wellbeing,0.9933,health_wellbeing,2.39,1.02,first,first,
+CESD11,지난 한 주간 감정 경험11: 평온함,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,CESD,calibration,2,4,health_wellbeing,0.9957,health_wellbeing,1.0,0.59,last,last,
+CESD2,지난 한 주간 감정 경험2: 허무감,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,CESD,calibration,0,4,health_wellbeing,0.9939,health_wellbeing,2.2,1.11,first,first,
+CESD3,지난 한 주간 감정 경험3: 불면증,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,CESD,calibration,0,4,health_wellbeing,0.9947,health_wellbeing,1.85,1.0,first,first,
+CESD4,지난 한 주간 감정 경험4: 행복감,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,CESD,calibration,1,4,health_wellbeing,0.9961,health_wellbeing,1.65,0.71,last,last,
+CESD5,지난 한 주간 감정 경험5: 외로움,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,CESD,calibration,2,4,health_wellbeing,0.9931,health_wellbeing,2.07,0.92,first,first,
+CESD6,지난 한 주간 감정 경험6: 즐거움,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,CESD,calibration,2,4,health_wellbeing,0.9968,health_wellbeing,1.73,0.57,last,last,
+CESD7,지난 한 주간 감정 경험7: 슬픔,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,CESD,validation,3,4,health_wellbeing,0.9937,health_wellbeing,2.41,1.13,first,first,
+CESD8,지난 한 주간 감정 경험8: 무력감,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,CESD,calibration,1,4,health_wellbeing,0.9915,health_wellbeing,2.66,1.15,first,first,
+CESD9,지난 한 주간 감정 경험9: 활력감,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,CESD,validation,3,4,health_wellbeing,0.9954,health_wellbeing,1.76,0.54,last,middle,desirable_disagree
+CHDOROLD,어린이 정책 또는 노인 정책 중 우선순위,3,"[1, 2, 3]",nominal_unordered,attitude_value_perception,CHDOROLD,calibration,0,1,economy_work_welfare,0.7443,economy_work_welfare,1.26,1.08,none,first,desirable_disagree
+CHRONIC,만성질환 또는 오래된 건강문제가 있는지 여부,2,"[1, 2]",binary,factual_status_behavior,CHRONIC,calibration,0,2,health_wellbeing,0.9882,health_wellbeing,1.94,0.93,last,last,
+CITZKR,한국 국적 소유 여부,2,"[1, 2]",binary,factual_status_behavior,CITZKR,calibration,2,1,personal_fact,0.9852,personal_fact,1.8,0.81,first,first,
+CNTPOSI,자주 접촉하는 가족/친척 이외의 사람들과 응답자 사이의 사회적 특성,3,"[1, 2, 3]",ordinal_monotone,factual_status_behavior,CNTPOSI,test,4,4,social_trust_participation,0.9935,social_trust_participation,1.77,1.11,middle,middle,
+CONARMY,기관 지도층에 대한 신뢰13: 군대,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONARMY,test,4,0,politics_gov,0.9473,politics_gov,1.81,1.27,first,middle,desirable_disagree
+CONBLUHO,기관 지도층에 대한 신뢰15: 대통령실,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONBLUHO,calibration,1,0,politics_gov,0.9951,politics_gov,1.79,1.38,first,middle,desirable_disagree
+CONBUS,기관 지도층에 대한 신뢰1: 대기업,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONBUS,calibration,2,0,politics_gov,0.2258,politics_gov,1.67,1.21,first,middle,desirable_disagree;topic_low_conf
+CONCLERG,기관 지도층에 대한 신뢰2: 종교계,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONCLERG,calibration,1,0,religion_values,0.8517,religion_values,1.7,1.18,first,first,
+CONCSO,기관 지도층에 대한 신뢰16: 시민운동단체,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONCSO,calibration,2,0,social_trust_participation,0.9482,social_trust_participation,1.07,1.06,first,middle,desirable_disagree
+CONEDUC,기관 지도층에 대한 신뢰3: 교육계,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONEDUC,test,4,0,politics_gov,0.7315,politics_gov,1.82,1.05,first,first,
+CONELEC,기관 지도층에 대한 신뢰20: 중앙선거관리위원회,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONELEC,validation,3,0,politics_gov,0.9953,politics_gov,1.72,1.2,first,first,
+CONFINAN,기관 지도층에 대한 신뢰14: 금융기관,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONFINAN,calibration,0,0,politics_gov,0.3162,social_trust_participation,1.31,1.16,first,first,topic_disagree;topic_low_conf
+CONFULIV,유교적인 삶 여부,2,"[1, 2]",binary,attitude_value_perception,CONFULIV,test,4,0,religion_values,0.9875,religion_values,1.63,1.14,first,first,
+CONGOVT,기관 지도층에 대한 신뢰8: 중앙 정부 부처,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONGOVT,calibration,1,0,politics_gov,0.9969,politics_gov,1.51,1.33,first,middle,desirable_disagree
+CONJUDGE,기관 지도층에 대한 신뢰11: 대법원,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONJUDGE,calibration,1,0,politics_gov,0.9879,politics_gov,1.83,1.21,first,first,
+CONLABOR,기관 지도층에 대한 신뢰4: 노동조합,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONLABOR,calibration,1,0,economy_work_welfare,0.8657,social_trust_participation,1.46,1.08,none,middle,topic_disagree;desirable_disagree
+CONLEGIS,기관 지도층에 대한 신뢰10: 국회,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONLEGIS,validation,3,0,politics_gov,0.995,politics_gov,1.36,1.31,first,middle,desirable_disagree
+CONLGOVT,기관 지도층에 대한 신뢰9: 지방 자치 정부,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONLGOVT,test,4,0,politics_gov,0.9958,politics_gov,1.21,1.16,first,middle,desirable_disagree
+CONMEDIC,기관 지도층에 대한 신뢰7: 의료계,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONMEDIC,calibration,2,0,social_trust_participation,0.5148,social_trust_participation,1.73,1.02,first,first,topic_low_conf
+CONPRESS,기관 지도층에 대한 신뢰5: 신문사,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONPRESS,validation,3,0,politics_gov,0.4684,politics_gov,1.36,1.07,first,first,topic_low_conf
+CONPROS,기관 지도층에 대한 신뢰18: 검찰청,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONPROS,calibration,2,0,politics_gov,0.9934,politics_gov,1.82,1.23,first,middle,desirable_disagree
+CONRCH,기관 지도층에 대한 신뢰17: 여론조사기관,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONRCH,test,4,0,politics_gov,0.8461,politics_gov,1.37,1.06,first,middle,desirable_disagree
+CONSCI,기관 지도층에 대한 신뢰12: 학계,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONSCI,calibration,2,0,social_trust_participation,0.6706,social_trust_participation,1.32,1.03,first,first,topic_low_conf
+CONSTAT,기관 지도층에 대한 신뢰19: 통계청,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONSTAT,validation,3,0,politics_gov,0.9788,politics_gov,1.7,1.06,first,first,
+CONTV,기관 지도층에 대한 신뢰6: TV 방송국,3,"[1, 2, 3]",ordinal_monotone,attitude_value_perception,CONTV,calibration,1,0,social_trust_participation,0.6288,politics_gov,1.24,1.07,first,middle,topic_disagree;desirable_disagree;topic_low_conf
+CORRUPTN,행정기관의 부패에 대한 평가,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,CORRUPTN,validation,3,3,politics_gov,0.9955,politics_gov,1.87,1.47,first,first,
+CURGOV,현 정권의 국정운영 전반에 대한 평가,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,CURGOV,calibration,0,4,politics_gov,0.9967,politics_gov,1.82,1.31,none,middle,desirable_disagree
+DIGDAILY,디지털 어려움1: 디지털 기기 이용,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,DIGDAILY,calibration,1,3,media_information,0.9891,media_information,1.49,0.59,first,first,
+DIGINFOR,디지털 어려움4: 필요한 정보 습득,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,DIGINFOR,validation,3,3,media_information,0.9889,media_information,1.66,0.71,first,first,
+DIGINTER,디지털 어려움2: 온라인 생활서비스 이용,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,DIGINTER,calibration,0,3,media_information,0.9791,media_information,1.79,0.76,first,first,
+DIGONLIN,디지털 어려움3: 온라인 민원 의견 피력,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,DIGONLIN,validation,3,3,social_trust_participation,0.9309,social_trust_participation,0.92,0.71,first,first,
+ELECNOAT,선출된 사람들의 말과 행동,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,ELECNOAT,test,4,2,politics_gov,0.9858,politics_gov,1.32,1.23,last,last,
+EMPLY,응답자 취업 여부,2,"[1, 2]",binary,factual_status_behavior,EMPLY,validation,3,4,economy_work_welfare,0.6271,personal_fact,1.76,0.7,first,first,topic_disagree;topic_low_conf
+EPOLLENJY,선거여론조사 즐거움1: 인터넷을 통한 설문 응답의 즐거움,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,EPOLLENJY,calibration,1,1,social_trust_participation,0.8031,politics_gov,0.15,0.63,last,last,topic_disagree
+EPOLLIMPO,선거여론조사 즐거움3: 조사 자체의 흥미로움,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,EPOLLIMPO,validation,3,1,social_trust_participation,0.5192,politics_gov,0.06,0.6,last,last,topic_disagree;topic_low_conf
+EPOLLINTE,선거여론조사 즐거움2: 면접원에게 질문 받는 것의 즐거움,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,EPOLLINTE,calibration,0,1,social_trust_participation,0.9786,politics_gov,0.18,0.79,none,middle,topic_disagree;desirable_disagree
+EPOLLPRIV,선거여론조사 부담2: 사생활 침해,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,EPOLLPRIV,validation,3,1,politics_gov,0.8654,politics_gov,0.81,1.24,first,first,
+EPOLLREQU,선거여론조사 부담1: 너무 많은 조사 참여 요청,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,EPOLLREQU,validation,3,1,social_trust_participation,0.5491,politics_gov,0.15,1.02,first,middle,topic_disagree;desirable_disagree;topic_low_conf
+EPOLLSOCI,선거여론조사 가치1: 사회에 중요,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,EPOLLSOCI,calibration,0,1,politics_gov,0.7574,politics_gov,1.07,0.95,last,last,
+EPOLLTIME,선거여론조사 가치3: 시간 낭비,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,EPOLLTIME,validation,3,1,politics_gov,0.946,politics_gov,0.63,0.93,first,first,
+EPOLLTIRD,선거여론조사 부담3: 너무 많은 질문에 대한 대답,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,EPOLLTIRD,calibration,2,1,social_trust_participation,0.4651,politics_gov,0.16,0.79,first,middle,topic_disagree;desirable_disagree;topic_low_conf
+EPOLLUSEF,선거여론조사 가치2: 유용한 정보 제공,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,EPOLLUSEF,calibration,1,1,politics_gov,0.8656,politics_gov,0.47,0.87,last,last,
+ESURAGIN,선거여론조사 참여 의향,2,"[1, 2]",binary,attitude_value_perception,ESURAGIN,validation,3,1,social_trust_participation,0.9796,social_trust_participation,0.43,0.66,first,first,
+ESURVEYN,선거여론조사 참여 요청 경험,2,"[1, 2]",binary,factual_status_behavior,ESURVEYN,calibration,2,1,social_trust_participation,0.6298,personal_fact,0.11,0.54,none,none,topic_disagree;topic_low_conf
+FINPROS,가계 경제 상태 전망(10년 이내),5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,FINPROS,calibration,1,0,economy_work_welfare,0.9965,economy_work_welfare,1.57,0.86,first,first,
+FINREL05,주관적 가구소득 수준 평가(2005년도),5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,FINREL,calibration,1,0,economy_work_welfare,0.9811,economy_work_welfare,1.95,1.06,first,middle,desirable_disagree
+FORLAND,국제관계에 대한 의견4: 외국인의 토지 매입 불허,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,FORLAND,calibration,2,1,migration_identity,0.5188,migration_identity,1.54,1.2,last,first,desirable_disagree;topic_low_conf
+GOHOSP1M,지난 한 달간 내원 횟수,5,"[1, 2, 3, 4, 5]",ordinal_monotone,factual_status_behavior,GOHOSP1M,calibration,2,1,personal_fact,0.7244,health_wellbeing,0.87,0.65,first,middle,topic_disagree;desirable_disagree
+GOODDEED,인생은 선한 일을 하면 복을 받고 악한 일을 하면 벌을 받는다,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,GOODDEED,validation,3,0,religion_values,0.9927,religion_values,1.87,1.13,first,first,
+GOVEQINC23,정부의 빈부간 소득격차 축소 책임에 대한 의견,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,GOVEQINC,test,4,0,economy_work_welfare,0.9666,economy_work_welfare,1.74,1.18,first,first,
+GOVSPD1,정부지출의 증감1: 환경,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,GOVSPD,calibration,2,0,politics_gov,0.9838,politics_gov,0.89,1.01,first,middle,desirable_disagree
+GOVSPD2,정부지출의 증감2: 보건,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,GOVSPD,test,4,0,politics_gov,0.911,economy_work_welfare,1.02,0.97,first,middle,topic_disagree;desirable_disagree
+GOVSPD3,정부지출의 증감3: 치안,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,GOVSPD,test,4,0,politics_gov,0.9942,politics_gov,1.14,0.97,first,middle,desirable_disagree
+GOVSPD4,정부지출의 증감4: 교육,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,GOVSPD,calibration,1,0,politics_gov,0.9539,politics_gov,1.12,0.96,first,middle,desirable_disagree
+GOVSPD5,정부지출의 증감5: 국방,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,GOVSPD,test,4,0,politics_gov,0.9898,politics_gov,1.3,1.1,none,middle,desirable_disagree
+GOVSPD6,정부지출의 증감6: 노인연금,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,GOVSPD,test,4,0,economy_work_welfare,0.8293,economy_work_welfare,1.75,1.16,first,middle,desirable_disagree
+GOVSPD7,정부지출의 증감7: 실업수당,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,GOVSPD,test,4,0,economy_work_welfare,0.9704,economy_work_welfare,1.5,1.05,first,middle,desirable_disagree
+GOVSPD8,정부지출의 증감8: 문화예술,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,GOVSPD,calibration,2,0,politics_gov,0.9508,politics_gov,0.72,0.83,first,middle,desirable_disagree
+GRADUATE,응답자 학력: 최종학교 졸업여부,3,"[1, 2, 3]",nominal_unordered,factual_status_behavior,GRADUATE,calibration,2,1,personal_fact,0.9978,personal_fact,1.83,0.85,first,first,nominal_with_direction
+HAPPINSS,행복감,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,HAPPINSS,test,4,3,health_wellbeing,0.9961,health_wellbeing,1.78,1.08,first,first,
+HARDSOC1,건강으로 인한 사회활동 제약,5,"[1, 2, 3, 4, 5]",ordinal_monotone,factual_status_behavior,HARDSOC,calibration,0,3,health_wellbeing,0.9886,health_wellbeing,2.1,0.99,last,last,
+HAVCNTRY,모든 민족에 국가가 필요한지에 대한 의견,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,HAVCNTRY,test,4,4,migration_identity,0.967,migration_identity,1.59,1.01,first,first,
+HEALTH23,주관적 건강 상태,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,HEALTH,calibration,0,4,health_wellbeing,0.9974,health_wellbeing,1.75,1.28,first,first,
+HELPFUL,이타주의와 이기주의에 대한 평가,3,"[1, 2, 3]",nominal_unordered,attitude_value_perception,HELPFUL,validation,3,2,social_trust_participation,0.9898,religion_values,1.96,1.2,first,first,topic_disagree;nominal_with_direction
+HELPKR,시민 덕목 중요성에 대한 인식8: 국내 빈곤층 원조,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,HELPKR,calibration,2,2,economy_work_welfare,0.8701,economy_work_welfare,1.79,1.05,last,last,
+HOUSOWNS,주택 형태,5,"[1, 2, 3, 4, 5]",nominal_unordered,factual_status_behavior,HOUSOWNS,validation,3,0,personal_fact,0.997,personal_fact,1.73,0.64,first,first,nominal_with_direction
+HOUSTYPE,주택 종류,4,"[1, 2, 3, 4]",nominal_unordered,factual_status_behavior,HOUSTYPE,test,4,0,personal_fact,0.9964,personal_fact,0.84,0.47,first,none,desirable_disagree;nominal_with_direction
+IFWRONG,국가자긍심5: 국민은 자기 나라가 잘못 되더라도 자기 나라를 지지해야 한다,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,IFWRONG,calibration,0,2,migration_identity,0.4342,politics_gov,1.84,1.56,last,first,topic_disagree;desirable_disagree;topic_low_conf
+IMMCRIME,외국인 이민자에 대한 의견1: 범죄율 상승,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,IMMCRIME,test,4,1,migration_identity,0.996,migration_identity,2.51,1.82,last,last,
+IMMECON,외국인 이민자에 대한 의견2: 한국 경제 도움,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,IMMECON,calibration,0,1,migration_identity,0.9897,migration_identity,1.67,1.27,first,first,
+IMMIDEAS,외국인 이민자에 대한 의견4: 문화적 기여,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,IMMIDEAS,calibration,1,1,migration_identity,0.9982,migration_identity,1.88,1.12,first,first,
+IMMJOBS,외국인 이민자에 대한 의견3: 내국인 직업 박탈,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,IMMJOBS,calibration,1,1,migration_identity,0.8659,migration_identity,2.03,1.58,last,last,
+IMPORTS,국제관계에 대한 의견1: 국가경제를 보호하기 위해 외국상품 수입 제한,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,IMPORTS,calibration,2,1,economy_work_welfare,0.765,economy_work_welfare,0.91,0.96,last,middle,desirable_disagree
+INCMR,응답자 취업 여부,2,"[1, 2]",binary,factual_status_behavior,INCMR,calibration,1,1,personal_fact,0.9391,economy_work_welfare,1.86,0.67,first,first,topic_disagree
+INTLINCS,국제개방에 대한 의견1: 외국회사는 한국 경제에 해로운 영향,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,INTLINCS,calibration,1,4,economy_work_welfare,0.9948,economy_work_welfare,1.48,1.12,last,middle,desirable_disagree
+ISOL4WKS,지난 한 달간 감정 경험2: 고립감,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,ISOL4WKS,calibration,0,0,health_wellbeing,0.8211,health_wellbeing,2.01,0.88,first,first,
+KIDSOL06,자녀세대 생활수준 변화 예상(2006년도),5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,KIDSOL,calibration,2,3,economy_work_welfare,0.9489,economy_work_welfare,1.86,1.07,first,first,
+KORORFOR,외국인 이민자에 대한 의견5: 사회권 부여 우선권,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,KORORFOR,calibration,1,3,migration_identity,0.9458,migration_identity,2.03,1.51,last,middle,desirable_disagree
+KRANCSTR,한국인 자격요건8: 한국인 조상을 가지고 있는것,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,KRANCSTR,test,4,3,migration_identity,0.9967,migration_identity,1.91,1.09,first,first,
+KRBETTER,"국가자긍심4: 일반적으로 말해서, 한국은 대부분의 다른 나라보다 더 좋은 나라이다",5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,KRBETTER,calibration,1,3,migration_identity,0.918,religion_values,1.82,1.49,first,middle,topic_disagree;desirable_disagree
+KRBORNIN,한국인 자격요건1: 한국에서 태어나는 것,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,KRBORNIN,calibration,2,3,migration_identity,0.998,migration_identity,1.62,1.08,first,first,
+KRCIT,한국인 자격요건2: 한국국적을 갖는것,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,KRCIT,test,4,2,migration_identity,0.9905,migration_identity,1.82,0.99,first,first,
+KRCITIZN,국가자긍심1: 나는 어떤 다른 나라 사람이기보다도 한국인이고 싶다,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,KRCITIZN,calibration,2,2,migration_identity,0.9985,migration_identity,1.78,1.21,first,first,
+KRCONFUC,한국인 자격요건5: 유교의 가르침을 따르는 것,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,KRCONFUC,calibration,0,2,religion_values,0.5635,religion_values,1.89,1.13,first,first,topic_low_conf
+KRFEEL,한국인 자격요건7: 한국인임을 느끼는 것,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,KRFEEL,validation,3,2,migration_identity,0.9979,migration_identity,1.9,0.95,first,first,
+KRGOVT,한국인 자격요건6: 한국의 정치제도와 법을 존중하는 것,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,KRGOVT,validation,3,0,politics_gov,0.9721,politics_gov,1.94,1.34,first,first,
+KROWNWAY,국제관계에 대한 의견3: 다른 나라와 갈등이 일어나더라도 국익 추구,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,KROWNWAY,calibration,2,4,politics_gov,0.9872,politics_gov,1.11,1.12,first,middle,desirable_disagree
+KRPROUD,국가자긍심,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,KRPROUD,test,4,3,migration_identity,0.9911,migration_identity,1.95,1.29,first,first,
+KRSHAMED,국가자긍심2: 오늘날 한국에는 내가 한국을 부끄럽게 여기도록 만드는 것이 있다,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,KRSHAMED,validation,3,3,migration_identity,0.7231,migration_identity,1.83,1.36,last,middle,desirable_disagree
+KRTV,국제관계에 대한 의견5: TV 방송은 한국 영화와 프로그램을 우선적으로 배려,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,KRTV,calibration,1,4,media_information,0.9663,media_information,0.96,0.88,last,middle,desirable_disagree
+LEFT4WKS,지난 한 달간 감정 경험3: 소외감,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,LEFT4WKS,calibration,2,0,social_trust_participation,0.7996,health_wellbeing,1.88,0.86,first,first,topic_disagree
+LETIN1,외국인 이민자 수 억제에 대한 의견,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,LETIN,test,4,3,migration_identity,0.9974,migration_identity,2.0,1.47,none,middle,desirable_disagree
+LIFESAT,생활만족도,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,LIFESAT,calibration,0,0,health_wellbeing,0.9958,health_wellbeing,1.67,0.96,first,first,
+LONE4WKS,지난 한 달간 감정 경험1: 교제 부족,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,LONE4WKS,calibration,1,4,social_trust_participation,0.9399,social_trust_participation,1.69,0.83,first,first,
+LOTR323,미래에 대한 낙관적 태도 여부,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,LOTR,validation,3,0,health_wellbeing,0.9468,health_wellbeing,1.86,0.82,first,first,
+LTIME1YR,여가생활 어려움,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,LTIME1YR,calibration,0,3,health_wellbeing,0.994,health_wellbeing,0.76,0.65,first,first,
+LUCKEFFO,인생은 노력보다 운이 더 중요하다,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,LUCKEFFO,test,4,2,religion_values,0.9383,religion_values,1.72,0.94,last,middle,desirable_disagree
+MEDIABIA,언론 보도 편향에 대한 인식,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,MEDIABIA,calibration,2,3,media_information,0.8596,media_information,1.29,1.12,none,middle,desirable_disagree
+MEMB1,조직/모임 가입 및 참여정도1: 정치모임,3,"[1, 2, 3]",ordinal_monotone,factual_status_behavior,MEMB,calibration,0,2,social_trust_participation,0.9789,social_trust_participation,1.91,0.93,none,first,desirable_disagree
+MEMB2,"조직/모임 가입 및 참여정도2: 주민협회, 반상회",3,"[1, 2, 3]",ordinal_monotone,factual_status_behavior,MEMB,calibration,0,2,social_trust_participation,0.998,social_trust_participation,1.0,0.89,first,first,
+MEMB3,조직/모임 가입 및 참여정도3: 사회봉사 클럽,3,"[1, 2, 3]",ordinal_monotone,factual_status_behavior,MEMB,calibration,2,2,social_trust_participation,0.9967,social_trust_participation,1.59,0.72,first,first,
+MEMB4,"조직/모임 가입 및 참여정도4: 시민사회단체, 소비자협동조합",3,"[1, 2, 3]",ordinal_monotone,factual_status_behavior,MEMB,calibration,0,2,social_trust_participation,0.9965,social_trust_participation,0.83,0.83,first,first,
+MEMB5,조직/모임 가입 및 참여정도5: 종교집단,3,"[1, 2, 3]",ordinal_monotone,factual_status_behavior,MEMB,calibration,2,2,religion_values,0.8516,religion_values,1.57,1.0,none,first,desirable_disagree
+MEMB6,조직/모임 가입 및 참여정도6: 동창회,3,"[1, 2, 3]",ordinal_monotone,factual_status_behavior,MEMB,validation,3,2,social_trust_participation,0.988,social_trust_participation,0.19,0.71,first,first,
+MEMB7,조직/모임 가입 및 참여정도7: 여가모임,3,"[1, 2, 3]",ordinal_monotone,factual_status_behavior,MEMB,calibration,0,2,social_trust_participation,0.9506,health_wellbeing,0.26,0.56,first,first,topic_disagree
+MEMB8,조직/모임 가입 및 참여정도8: 노동조합,3,"[1, 2, 3]",ordinal_monotone,factual_status_behavior,MEMB,calibration,1,2,economy_work_welfare,0.5091,economy_work_welfare,1.86,0.96,none,first,desirable_disagree;topic_low_conf
+MEMB9,"조직/모임 가입 및 참여정도9: 직업/직능단체, 상거래단체",3,"[1, 2, 3]",ordinal_monotone,factual_status_behavior,MEMB,validation,3,2,social_trust_participation,0.9721,personal_fact,0.62,0.8,first,first,topic_disagree
+MILSERVE,시민 덕목 중요성에 대한 인식10: 병역의무 이행,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,MILSERVE,calibration,2,1,social_trust_participation,0.8362,politics_gov,1.85,1.07,last,last,topic_disagree
+MYTH218,미신에 대한 의견2: 점쟁이는 미래 예측 가능,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,MYTH,calibration,1,4,religion_values,0.8749,religion_values,0.79,1.07,last,last,
+MYTH518,미신에 대한 의견5: 사주가 인생에 영향,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,MYTH,validation,3,4,religion_values,0.9754,religion_values,1.37,1.16,last,middle,desirable_disagree
+NGHASK,필요할 때 부탁을 할 수 있는 이웃의 수,5,"[1, 2, 3, 4, 5]",ordinal_monotone,factual_status_behavior,NGHASK,calibration,0,0,social_trust_participation,0.9986,social_trust_participation,0.97,0.89,last,middle,desirable_disagree
+NGHGRT,서로 인사하고 지내는 이웃의 수,5,"[1, 2, 3, 4, 5]",ordinal_monotone,factual_status_behavior,NGHGRT,validation,3,0,social_trust_participation,0.9982,social_trust_participation,1.31,0.72,last,middle,desirable_disagree
+NOCAPPRO,나는 인생에서 부딪히는 거의 모든 문제들을 다룰 능력이 없는 것 같다,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,NOCAPPRO,calibration,1,1,health_wellbeing,0.9266,health_wellbeing,2.3,0.95,first,first,
+NOFUTURE,그저 하루하루를 살아가고 있을 뿐 장래에 대해서는 생각하지 않는다,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,NOFUTURE,validation,3,3,health_wellbeing,0.5881,religion_values,1.9,0.87,first,first,topic_disagree;topic_low_conf
+NOIMMIGR,모든 민족이 자신의 국가에 거주하는 것에 대한 의견,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,NOIMMIGR,validation,3,2,migration_identity,0.9951,migration_identity,2.36,1.44,last,first,desirable_disagree
+NORTHWHO,북한에 대한 인식,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,NORTHWHO,calibration,1,2,migration_identity,0.9969,migration_identity,1.8,1.47,first,middle,desirable_disagree
+NOTIME1M,지난 한 달간 삶에 여유가 없었던 경험,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,NOTIME1M,test,4,2,health_wellbeing,0.992,health_wellbeing,1.23,0.68,first,first,
+OBEYLAWS,시민 덕목 중요성에 대한 인식3: 법과 규칙 준수,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,OBEYLAWS,test,4,4,social_trust_participation,0.9295,politics_gov,1.83,1.05,last,last,topic_disagree
+OPPSEGOV,시민 권리 중요성에 대한 인식6: 대정부 불복종운동 참가,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,OPPSEGOV,test,4,2,politics_gov,0.9899,politics_gov,1.77,1.16,last,last,
+OTHERS1,나보다 불행한 사람을 보면 동정심이 생기고 걱정이 된다,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,OTHERS,validation,3,4,religion_values,0.4273,religion_values,1.86,0.66,last,last,topic_low_conf
+OTHERS2,이용당하는 사람을 보면 보호하고 싶은 생각이 든다,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,OTHERS,calibration,0,4,social_trust_participation,0.9537,social_trust_participation,1.55,0.68,last,middle,desirable_disagree
+PEOPLDEC,중요 정책 결정 주체에 대한 인식,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,PEOPLDEC,calibration,2,2,politics_gov,0.9916,politics_gov,1.54,1.14,last,last,
+PERTRT1,대인 신뢰1: 친척,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,test,4,1,social_trust_participation,0.9856,social_trust_participation,1.89,0.95,first,first,
+PERTRT10,대인 신뢰10: 비정부조직 / 비영리조직의 장,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,calibration,0,1,social_trust_participation,0.999,social_trust_participation,1.13,1.11,first,first,
+PERTRT11,대인 신뢰11: 학교교사,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,test,4,1,social_trust_participation,0.9992,social_trust_participation,1.94,1.01,first,first,
+PERTRT12,대인 신뢰12: 지방정부 공무원,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,validation,3,1,social_trust_participation,0.475,social_trust_participation,1.8,1.28,first,first,topic_low_conf
+PERTRT13,대인 신뢰13: 중앙정부 공무원,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,test,4,1,politics_gov,0.8754,social_trust_participation,1.83,1.33,first,first,topic_disagree
+PERTRT14,대인 신뢰14: 경찰관,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,test,4,1,social_trust_participation,0.9933,social_trust_participation,1.9,1.18,first,first,
+PERTRT15,대인 신뢰15: 군 장교,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,calibration,0,1,social_trust_participation,0.9987,social_trust_participation,1.84,1.19,first,first,
+PERTRT16,대인 신뢰16: 판사,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,calibration,2,1,social_trust_participation,0.9906,social_trust_participation,1.85,1.12,first,first,
+PERTRT17,대인 신뢰17: 검사,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,calibration,1,1,social_trust_participation,0.9994,social_trust_participation,1.77,1.17,first,first,
+PERTRT2,대인 신뢰2: 친구,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,validation,3,1,social_trust_participation,0.9993,social_trust_participation,1.81,0.96,first,first,
+PERTRT3,대인 신뢰3: 이웃,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,validation,3,1,social_trust_participation,0.9993,social_trust_participation,1.59,0.96,first,first,
+PERTRT5,대인 신뢰5: 낯선 사람,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,test,4,1,social_trust_participation,0.9994,social_trust_participation,1.7,1.13,last,last,
+PERTRT6,대인 신뢰6: 의사,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,calibration,0,1,social_trust_participation,0.9984,social_trust_participation,1.86,1.02,first,first,
+PERTRT7,대인 신뢰7: 은행원,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,calibration,2,1,social_trust_participation,0.999,social_trust_participation,1.48,1.04,first,first,
+PERTRT8,대인 신뢰8: 회사 임원,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,calibration,0,1,social_trust_participation,0.9991,social_trust_participation,1.94,1.32,first,first,
+PERTRT9,대인 신뢰9: 언론인,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PERTRT,calibration,0,1,social_trust_participation,0.9768,social_trust_participation,1.14,0.98,first,first,
+POLEFF11,정치적 효능감1: 정부 일에 대한 나의 영향력,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,POLEFF,validation,3,2,politics_gov,0.9939,politics_gov,1.63,0.95,last,last,
+POLEFF18,정치적 효능감2: 내 의견에 대한 정부의 관심,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,POLEFF,validation,3,2,politics_gov,0.9947,politics_gov,1.58,1.24,last,last,
+POLLATT4,여론조사에 대한 의견4: 투표할 때 여론조사결과 참조 정도,4,"[1, 2, 3, 4]",ordinal_monotone,factual_status_behavior,POLLATT,calibration,0,2,social_trust_participation,0.6341,politics_gov,0.35,1.0,middle,last,topic_disagree;desirable_disagree;topic_low_conf
+POLLNEUT,선거여론조사 기관의 정치적 중립성에 대한 인식,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,POLLNEUT,calibration,2,2,politics_gov,0.9754,politics_gov,1.19,1.17,first,first,
+POLLRELI,선거여론조사 결과에 대한 신뢰,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,POLLRELI,validation,3,2,politics_gov,0.5362,politics_gov,0.66,1.05,first,middle,desirable_disagree;topic_low_conf
+POLLWRRY,선거여론조사의 개인정보 보안에 대한 우려,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,POLLWRRY,calibration,1,2,social_trust_participation,0.8522,politics_gov,0.2,0.98,last,middle,topic_disagree;desirable_disagree
+POLOPTS,시민 권리 중요성에 대한 인식5: 공공정책 결정 시 국민 참여,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,POLOPTS,calibration,1,2,social_trust_participation,0.9215,politics_gov,1.11,0.99,last,last,topic_disagree
+POLPAR01,참여활동에 대한 의견1: 정부에 내 의견 표명하기 어려움 정도,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,POLPAR,test,4,2,politics_gov,0.7314,politics_gov,1.63,1.11,last,middle,desirable_disagree
+POLPAR02,참여활동에 대한 의견2: 정치와 국정운영에 대한 이해 어려움 정도,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,POLPAR,test,4,2,politics_gov,0.9946,politics_gov,1.06,1.0,last,middle,desirable_disagree
+POLPAR03,참여활동에 대한 의견3: 정치에 대한 관심도,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,POLPAR,test,4,2,politics_gov,0.9919,politics_gov,0.95,0.84,first,first,
+POLPAR04,참여활동에 대한 의견4: 사회에 기여하고 싶은 의향,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,POLPAR,calibration,1,2,social_trust_participation,0.9977,social_trust_participation,1.82,0.93,first,first,
+POLPAR05,참여활동에 대한 의견5: 이웃사람들 사이의 관심 정도,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,POLPAR,validation,3,2,social_trust_participation,0.9984,social_trust_participation,1.33,0.74,first,first,
+POLPAR06,참여활동에 대한 의견6: 이웃사람들의 나에 대한 도움,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,POLPAR,calibration,2,2,social_trust_participation,0.9987,social_trust_participation,1.3,0.8,first,first,
+POSGEN1,직종별 친척/친구/지인 존재 여부1: 대학 교수,2,"[1, 2]",binary,factual_status_behavior,POSGEN,calibration,2,3,social_trust_participation,0.9673,personal_fact,0.46,0.59,none,none,topic_disagree
+POSGEN10,직종별 친척/친구/지인 존재 여부10: 경찰관,2,"[1, 2]",binary,factual_status_behavior,POSGEN,validation,3,3,social_trust_participation,0.965,personal_fact,0.71,0.54,none,none,topic_disagree
+POSGEN2,직종별 친척/친구/지인 존재 여부2: 변호사,2,"[1, 2]",binary,factual_status_behavior,POSGEN,calibration,1,3,social_trust_participation,0.9529,personal_fact,0.42,0.53,none,none,topic_disagree
+POSGEN3,직종별 친척/친구/지인 존재 여부3: 간호사,2,"[1, 2]",binary,factual_status_behavior,POSGEN,test,4,3,social_trust_participation,0.9489,personal_fact,0.07,0.46,none,none,topic_disagree
+POSGEN4,직종별 친척/친구/지인 존재 여부4: 컴퓨터 프로그래머,2,"[1, 2]",binary,factual_status_behavior,POSGEN,calibration,2,3,social_trust_participation,0.956,personal_fact,0.07,0.46,none,none,topic_disagree
+POSGEN5,직종별 친척/친구/지인 존재 여부5: 중학교 교사,2,"[1, 2]",binary,factual_status_behavior,POSGEN,calibration,1,3,social_trust_participation,0.9714,personal_fact,0.07,0.54,none,none,topic_disagree
+POSGEN6,직종별 친척/친구/지인 존재 여부6: 인사 담당자,2,"[1, 2]",binary,factual_status_behavior,POSGEN,calibration,0,3,social_trust_participation,0.9174,personal_fact,1.67,0.76,none,none,topic_disagree
+POSGEN7,직종별 친척/친구/지인 존재 여부7: 농부,2,"[1, 2]",binary,factual_status_behavior,POSGEN,calibration,0,3,social_trust_participation,0.9115,personal_fact,0.06,0.45,none,none,topic_disagree
+POSGEN8,직종별 친척/친구/지인 존재 여부8: 이/미용사,2,"[1, 2]",binary,factual_status_behavior,POSGEN,test,4,3,social_trust_participation,0.9494,personal_fact,0.23,0.48,none,none,topic_disagree
+POSGEN9,직종별 친척/친구/지인 존재 여부9: 안내원,2,"[1, 2]",binary,factual_status_behavior,POSGEN,calibration,2,3,social_trust_participation,0.9405,personal_fact,0.15,0.6,none,none,topic_disagree
+POSTMAT1,한국에서 가장 우선적으로 해야 하는 사항1,4,"[1, 2, 3, 4]",nominal_unordered,attitude_value_perception,POSTMAT,calibration,2,3,politics_gov,0.9918,politics_gov,1.84,1.16,last,first,desirable_disagree;nominal_with_direction
+POSTMAT2,한국에서 가장 우선적으로 해야 하는 사항2,4,"[1, 2, 3, 4]",nominal_unordered,attitude_value_perception,POSTMAT,calibration,0,3,politics_gov,0.9901,politics_gov,1.76,1.2,last,first,desirable_disagree;nominal_with_direction
+PROUDART,한국의 예술과 문학 성취에 대한 자긍심,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PROUDART,test,4,3,migration_identity,0.84,religion_values,1.83,1.07,first,first,topic_disagree
+PROUDDEM,한국의 민주주의에 대한 자긍심,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PROUDDEM,test,4,3,politics_gov,0.9951,politics_gov,1.89,1.2,first,first,
+PROUDECO,한국의 경제적 성취에 대한 자긍심,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PROUDECO,calibration,2,3,economy_work_welfare,0.9936,economy_work_welfare,1.59,1.21,first,first,
+PROUDGRP,한국사회의 공정성에 대한 자긍심,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PROUDGRP,calibration,1,3,politics_gov,0.2434,economy_work_welfare,1.86,1.26,first,first,topic_disagree;topic_low_conf
+PROUDHIS,한국의 역사에 대한 자긍심,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PROUDHIS,calibration,0,3,migration_identity,0.9745,migration_identity,1.91,1.2,first,first,
+PROUDMIL,한국의 군사력에 대한 자긍심,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PROUDMIL,calibration,1,3,migration_identity,0.4275,politics_gov,1.4,1.27,first,first,topic_disagree;topic_low_conf
+PROUDPOL,한국의 국제 정치 영향력에 대한 자긍심,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PROUDPOL,calibration,1,3,politics_gov,0.9833,politics_gov,1.87,1.2,first,first,
+PROUDSCI,한국의 과학기술 성취에 대한 자긍심,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PROUDSCI,validation,3,3,economy_work_welfare,0.2292,media_information,1.78,1.02,first,first,topic_disagree;topic_low_conf
+PROUDSPT,한국의 스포츠 성취에 대한 자긍심,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PROUDSPT,calibration,0,3,migration_identity,0.5909,health_wellbeing,1.58,0.99,first,first,topic_disagree;topic_low_conf
+PROUDSSS,한국의 사회보장제도에 대한 자긍심,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,PROUDSSS,calibration,1,3,economy_work_welfare,0.9694,economy_work_welfare,1.77,1.1,first,first,
+REBORNKR,다시 태어나고 싶은 나라: 대한민국 / 다른나라,3,"[1, 2, 3]",nominal_unordered,attitude_value_perception,REBORNKR,calibration,1,0,migration_identity,0.9773,migration_identity,1.82,1.01,first,first,nominal_with_direction
+RESSECUR,거주 지역 치안 수준,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,RESSECUR,calibration,2,0,social_trust_participation,0.8251,personal_fact,0.76,0.93,first,first,topic_disagree
+RETURNFM,귀농생활,3,"[1, 2, 3]",nominal_unordered,attitude_value_perception,RETURNFM,calibration,1,2,personal_fact,0.2059,personal_fact,0.18,0.61,none,first,desirable_disagree;topic_low_conf
+RGHTSMIN,시민 권리 중요성에 대한 인식2: 정부의 소수자 집단 권리 존중과 보호,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,RGHTSMIN,calibration,0,1,discrimination_minority,0.9934,politics_gov,1.78,1.18,last,last,topic_disagree
+RITGRV23,의례 빈도1: 묘(납골당) 방문,5,"[1, 2, 3, 4, 5]",frequency_nonmonotone_code,factual_status_behavior,RITGRV,validation,3,2,personal_fact,0.5472,religion_values,1.48,1.06,first,middle,topic_disagree;desirable_disagree;topic_low_conf
+SATFIN,가계 상태 만족도,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SATFIN,test,4,2,economy_work_welfare,0.9975,economy_work_welfare,1.94,1.04,first,first,
+SATPOL,한국 정치 상황에 대한 만족도,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SATPOL,calibration,2,2,politics_gov,0.9955,politics_gov,1.72,1.39,first,first,
+SEDISTAN,국가선호도: 가장 친밀하게 느끼는 국가,5,"[1, 2, 3, 4, 5]",nominal_unordered,attitude_value_perception,SEDISTAN,test,4,1,migration_identity,0.9051,migration_identity,1.77,1.08,first,first,nominal_with_direction
+SELFLIF1,삶을 결정할 자유가 있는지 여부,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SELFLIF,calibration,2,2,religion_values,0.2775,religion_values,1.71,0.94,first,first,topic_low_conf
+SELFLIF2,내 능력을 보여줄 기회가 있는지 여부,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SELFLIF,calibration,2,2,social_trust_participation,0.2408,social_trust_participation,1.82,1.04,last,last,topic_low_conf
+SELFLIF3,일에서 성취감을 느끼는지 여부,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SELFLIF,validation,3,2,economy_work_welfare,0.8826,health_wellbeing,1.78,0.7,first,first,topic_disagree
+SELFLIF4,내가 하는 일이 가치 있고 타인에게 도움이 된다고 느끼는지 여부,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SELFLIF,calibration,1,2,health_wellbeing,0.851,health_wellbeing,1.91,0.85,first,first,
+SELFLIF5,내가 잘하는 일이 많다고 느끼는지 여부,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SELFLIF,validation,3,2,health_wellbeing,0.9671,health_wellbeing,1.74,0.92,first,first,
+SERVEPEO,행정기관의 대민 봉사에 대한 평가,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SERVEPEO,test,4,1,politics_gov,0.9915,politics_gov,1.57,1.12,first,first,
+SEXATT1,성관계에 대한 태도1: 혼전성교,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,SEXATT,calibration,1,4,family_gender,0.9916,family_gender,2.68,1.76,first,first,
+SEXATT2,성관계에 대한 태도2: 혼외성교,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,SEXATT,calibration,2,4,family_gender,0.9954,family_gender,2.89,1.97,first,first,
+SEXATT3,성관계에 대한 태도3: 동성성교,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,SEXATT,validation,3,4,family_gender,0.9584,discrimination_minority,2.94,2.06,first,first,topic_disagree
+SEXROLE123,성역할에 대한 인식1: 아내는 남편이 경력을 쌓을 수 있도록 내조,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,SEXROLE,calibration,2,4,family_gender,0.9988,family_gender,1.9,1.51,first,middle,desirable_disagree
+SIMNONKN,생각과 행동이 비슷한 사람과 다른 사람 중 더 많이 접촉하는 사람,3,"[1, 2, 3]",ordinal_monotone,factual_status_behavior,SIMNONKN,calibration,2,4,social_trust_participation,0.9949,social_trust_participation,1.09,0.94,middle,first,desirable_disagree
+SOCNET10,친구·친척·지인 관계에 대한 만족,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SOCNET,validation,3,3,social_trust_participation,0.9979,social_trust_participation,1.54,1.02,first,first,
+SOCNET3,동네 사람들에게 친밀감을 느끼는지 여부,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SOCNET,test,4,3,social_trust_participation,0.9991,social_trust_participation,0.95,0.74,first,first,
+SOCNET7,주변 사람들과 사교적 만남 여부,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,factual_status_behavior,SOCNET,validation,3,3,social_trust_participation,0.9901,social_trust_participation,1.14,0.88,last,middle,desirable_disagree
+SOCNET9,또래 대비 사교활동 참여 정도,5,"[1, 2, 3, 4, 5]",ordinal_monotone,factual_status_behavior,SOCNET,test,4,3,social_trust_participation,0.9968,social_trust_participation,1.81,0.92,last,middle,desirable_disagree
+SOLOK,시민 권리 중요성에 대한 인식1: 적정 생활수준 유지,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,SOLOK,test,4,0,economy_work_welfare,0.4663,politics_gov,1.13,0.94,last,last,topic_disagree;topic_low_conf
+SUCDAMBT,인생 성공 요인4: 야망,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SUCDAMBT,calibration,0,4,religion_values,0.8673,religion_values,1.23,0.87,first,first,
+SUCDBRIB,인생 성공 요인8: 뇌물,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SUCDBRIB,calibration,1,4,politics_gov,0.6474,religion_values,2.94,1.99,last,last,topic_disagree;topic_low_conf
+SUCDEDUC,인생 성공 요인3: 본인 학력,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SUCDEDUC,calibration,2,4,personal_fact,0.2817,personal_fact,1.88,0.88,last,first,desirable_disagree;topic_low_conf
+SUCDEFRT,인생 성공 요인5: 열심히 일,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SUCDEFRT,calibration,2,4,economy_work_welfare,0.9641,economy_work_welfare,1.96,0.87,first,first,
+SUCDKNOW,인생 성공 요인6: 좋은 사람 아는 것,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SUCDKNOW,calibration,0,4,social_trust_participation,0.9828,social_trust_participation,1.71,0.86,first,first,
+SUCDPAED,인생 성공 요인2: 부모 교육,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SUCDPAED,test,4,4,family_gender,0.9154,family_gender,1.82,0.89,first,first,
+SUCDPOL,인생 성공 요인7: 정치적 연고,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SUCDPOL,calibration,0,4,politics_gov,0.9572,politics_gov,1.91,1.21,last,last,
+SUCDRACE,인생 성공 요인9: 인종,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SUCDRACE,validation,3,4,migration_identity,0.9498,discrimination_minority,2.1,1.73,last,last,topic_disagree
+SUCDREL,인생 성공 요인10: 종교,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SUCDREL,test,4,4,religion_values,0.9943,religion_values,1.89,1.23,first,middle,desirable_disagree
+SUCDSEX,인생 성공 요인11: 성별,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SUCDSEX,calibration,0,4,family_gender,0.979,family_gender,2.23,1.41,last,first,desirable_disagree
+SUCDWLTH,인생 성공 요인1: 부유한 집안,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,SUCDWLTH,calibration,0,4,economy_work_welfare,0.9631,economy_work_welfare,1.95,1.11,last,last,
+SUICIDE131,자살할 권리1: 불치병을 앓고 있을 경우,2,"[1, 2]",binary,attitude_value_perception,SUICIDE,calibration,0,4,religion_values,0.6764,religion_values,2.33,1.91,last,last,topic_low_conf
+SUICIDE132,자살할 권리2: 파산했을 경우,2,"[1, 2]",binary,attitude_value_perception,SUICIDE,calibration,1,4,economy_work_welfare,0.9259,religion_values,2.9,2.02,last,last,topic_disagree
+SUICIDE133,자살할 권리3: 가족의 명예를 더럽혔을 경우,2,"[1, 2]",binary,attitude_value_perception,SUICIDE,test,4,4,family_gender,0.8676,religion_values,2.59,2.11,last,last,topic_disagree
+SUICIDE134,자살할 권리4: 사는 것이 피곤해서 죽고 싶을 경우,2,"[1, 2]",binary,attitude_value_perception,SUICIDE,calibration,1,4,health_wellbeing,0.3963,religion_values,2.97,2.17,last,last,topic_disagree;topic_low_conf
+TIRED1M,지난 한 달간 일로 인해 지쳤던 경험,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,TIRED1M,calibration,1,3,economy_work_welfare,0.8099,health_wellbeing,1.65,0.67,first,first,topic_disagree
+TRUEKOR,한국인이 되기 위한 자격요건에 대한 의견,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,TRUEKOR,validation,3,0,migration_identity,0.9984,migration_identity,1.9,1.15,first,middle,desirable_disagree
+TYPEINSR,건강 보험 종류,4,"[1, 2, 3, 4]",nominal_unordered,factual_status_behavior,TYPEINSR,test,4,4,personal_fact,0.6822,health_wellbeing,0.5,0.66,first,first,topic_disagree;topic_low_conf;nominal_with_direction
+UNEASABL,나는 어떤 일을 할 수 있는 내 능력에 불안함을 느낄 때가 많다,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,UNEASABL,calibration,1,4,health_wellbeing,0.923,health_wellbeing,1.8,1.01,first,first,
+UNIFI,남북통일의 필요성,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,UNIFI,test,4,0,migration_identity,0.9923,migration_identity,1.9,1.31,first,first,
+UPPERCL1,일반 시민과 권력 집단 간 갈등에 대한 인식,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,UPPERCL,validation,3,1,politics_gov,0.9812,politics_gov,1.36,1.17,last,middle,desirable_disagree
+UPPERCL2,사업가에 대한 인식,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,UPPERCL,calibration,1,1,economy_work_welfare,0.9908,economy_work_welfare,1.96,1.39,last,last,
+UPPERCL3,전문가 의견에 대한 인식,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,UPPERCL,calibration,1,1,social_trust_participation,0.9732,social_trust_participation,1.03,0.99,first,first,
+URBRURAL,거주지역 규모에 대한 주관적 평가,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,URBRURAL,calibration,2,0,personal_fact,0.9954,personal_fact,0.13,0.72,first,first,
+VOLUN12M,지난 1년간 봉사 및 자선 단체 활동 참여 경험,6,"[1, 2, 3, 4, 5, 6]",ordinal_monotone,factual_status_behavior,VOLUN12M,calibration,1,1,personal_fact,0.743,social_trust_participation,1.78,0.99,first,first,topic_disagree
+VOTE22,2022년 제8회 전국동시지방선거 투표 여부,2,"[1, 2]",binary,factual_status_behavior,VOTE,validation,3,4,personal_fact,0.8709,personal_fact,1.51,0.6,first,none,desirable_disagree
+WARPOS,한반도의 전쟁 가능성,4,"[1, 2, 3, 4]",ordinal_monotone,attitude_value_perception,WARPOS,calibration,1,1,migration_identity,0.7689,politics_gov,1.53,1.21,last,last,topic_disagree
+WATCHGOV,시민 덕목 중요성에 대한 인식4: 정부 일에 대한 관심,7,"[1, 2, 3, 4, 5, 6, 7]",ordinal_monotone,attitude_value_perception,WATCHGOV,calibration,0,4,politics_gov,0.9865,politics_gov,1.54,0.89,last,last,
+WRLDGOVT,국제관계에 대한 의견2: 환경문제 해결을 위해 국제기구에 권한 부여,5,"[1, 2, 3, 4, 5]",ordinal_monotone,attitude_value_perception,WRLDGOVT,calibration,0,3,politics_gov,0.9959,politics_gov,0.93,0.93,first,first,

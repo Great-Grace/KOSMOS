@@ -1,0 +1,35 @@
+{
+  "name": "KOSMOS design v2",
+  "frozen_at": "2026-11-12T03:16:29+09:00",
+  "files": {
+    "items_246.csv": "d026a2750381975bfa0d7cf9e0e69910a2c767e595a58d74cff12f29cc2ce4b4",
+    "cells.csv": "ffa63dbcd6c96a19474a2a393dde20780a53580e1ead5c4e06a4ebb4c173e010",
+    "prompts_v2.csv": "b89fa0540c109b0fd5f5caea251605277d59439a9fcde1c401e5cb8cd65280ef",
+    "item_manifest_v2.csv": "9681d3da9db7bb218fc206f177cd62e69de73b0f71781795f009005fd3a1599e"
+  },
+  "counts": {
+    "items": 246,
+    "prompts_total": 5904,
+    "prompts_phase1": 2952,
+    "prompts_phase2": 2952,
+    "k": 100,
+    "calls_per_model_phase1": 295200
+  },
+  "conditions": {
+    "phase1": [
+      "c0",
+      "L0",
+      "L1 (성별×연령5, 10셀)"
+    ],
+    "phase2": [
+      "L2 (성별×연령3×수도권, 12셀) — 1단계 결과를 보고 결정"
+    ]
+  },
+  "system_prompt": "보기 번호 숫자 하나만 출력하고 다른 말은 하지 마십시오.",
+  "classification": {
+    "primary": "sionic-ai/jev-omni (OpenGateway Decisions)",
+    "cross_check": "sionic-ai/decider-4b",
+    "run_date": "2026-11-12",
+    "note": "분류는 분석용 라벨이며 프롬프트에는 영향이 없다."
+  }
+}
