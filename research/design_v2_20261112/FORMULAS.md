@@ -1,17 +1,19 @@
 # KOSMOS 파이프라인 수식 정리 (v2)
 
-> **한 줄 요약**: 문항 고르기 → 사람 정답지 → 모델 100번 응답 → 개수 → 평활화·지수 보정 → 거리·순위 지표 → 동점 규칙·신뢰영역까지, 각 단계가 어떤 식으로 계산되는지 코드와 1:1로 적었다.
+> **한 줄 요약**: v2 실험(프롬프트 2,952개를 모델마다 **k = 100번** 호출해 보기별 **개수 벡터**를 얻는 방식)의 분석 파이프라인을, 사람 정답지 → 개수 → 평활화·지수 보정 → 거리·순위 지표 → 동점 규칙·신뢰영역 순서로 코드와 1:1로 적었다.
+>
+> 대상은 2026-11-12에 DeepSeek V4.1 Flash Ultrafast(OpenGateway)와 Claude Haiku 5.5(Anthropic Batch)로 돌린 1단계 실험뿐이다. 11월 초 Haiku 파일럿이나 오픈웨이트 로짓 실험(v1)은 다루지 않는다.
 
 | | |
 |---|---|
-| 기준 | `DESIGN.md`(확정 설계), `analysis/`의 노트북·스크립트, `kgss_metrics.py`, `kgss_calibration.py` |
+| 기준 | `DESIGN.md`(확정 설계), `analysis/`의 노트북·스크립트 (`v2_calibration_test.ipynb`, `v2_metrics.ipynb`, `radius_ties.py`, `population_region.py`) |
 | 수식 표기 | GitHub 수식 렌더링(`$…$`, `$$…$$`)을 쓴다. 안 보이면 코드블록의 일반 텍스트 식을 보면 된다. |
 | 작성 | 2026-11-13 |
 | 원칙 | 코드에 있는 식만 적었다. 코드와 다른 곳은 "⚠"로 표시했다. |
 
 ## 목차
 0. [기호](#0-기호)
-1. [문항 선정 단계](#1-문항-선정-단계)
+1. [실험이 고정한 입력](#1-실험이-고정한-입력)
 2. [사람 정답지](#2-사람-정답지)
 3. [모델 응답 → 개수 텐서](#3-모델-응답--개수-텐서)
 4. [평활화와 지수 보정, 균등 혼합](#4-평활화와-지수-보정-균등-혼합)
@@ -21,8 +23,7 @@
 8. [모분포 95% 신뢰영역](#8-모분포-95-신뢰영역)
 9. [분할과 실행 순서](#9-분할과-실행-순서)
 10. [호출 수와 비용](#10-호출-수와-비용)
-11. [부록: v1 지표](#11-부록-v1-지표)
-12. [코드 대응표](#12-코드-대응표)
+11. [코드 대응표](#11-코드-대응표)
 
 ---
 
@@ -44,65 +45,30 @@
 
 ---
 
-## 1. 문항 선정 단계
+## 1. 실험이 고정한 입력
 
-v1 때 만든 파이프라인이고, v2의 246문항도 여기서 나왔다 (`kgss_inventory.py`, `kgss_agreement.py`, `kgss_codebook.py`).
+실험 전에 `MANIFEST.json`의 SHA-256으로 고정한 것들이다. 이 값이 바뀌면 설계가 바뀐 것이다.
 
-### 1.1 인구통계 설명력 $\eta^2$
-문항 점수 $y$를 셀(인구통계 조합) $g$로 나눴을 때, 셀 평균이 설명하는 분산 비율.
+| 항목 | 값 | 파일 |
+|---|---|---|
+| 문항 | 246개 (KGSS 2023). 척도 유형: 서열형 211 · 이진형 23 · 명목형 11 · 비단조 빈도코드 1 | `item_manifest_v2.csv`, `items_246.csv` |
+| 보기 | 문항당 $K_i$개, 최대 7개. 보기 $j$의 응답 코드 $x_{ij}$는 연속 정수가 아닐 수 있다 | `item_manifest_v2.csv`의 `codes` |
+| 페르소나 | 12개: c0(없음), L0("한국 성인"), L1 10셀(성별 2 × 연령 5구간) | `cells.csv` |
+| 프롬프트 | $246 \times 12 = 2{,}952$개 (1단계) | `prompts_v2.csv` |
+| 표본 | 프롬프트마다 $k = 100$번. 표본 번호 $s = 0,\dots,99$ | |
+| 문항 분할 | calibration 148 / validation 49 / test 49 (9절) | `item_manifest_v2.csv`의 `split_60_20_20` |
 
-$$
-\eta^2 = \frac{SS_{between}}{SS_{total}}
-= \frac{\sum_g n_g\,(\bar y_g - \bar y)^2}{\sum_n (y_n - \bar y)^2},
-\qquad \text{unexplained} = 1 - \eta^2
-$$
+- 250문항에서 선택지에 결측 코드가 섞인 3개(`MEDIAPOL`, `HLPRT1`, `HUMNAT`)와 설문 원문이 빈 1개(`HATOPSEX`)를 빼 246문항이 됐다. 246문항 모두 프롬프트 선택지 코드와 KGSS 2023 실제 응답 코드가 일치하고, 유효 응답 비율 90% 미만 문항은 없다.
+- 문항 주제·민감도 분류는 분석용 라벨일 뿐이고 프롬프트에는 들어가지 않는다.
 
-- 응답자가 100명 미만이거나 분산이 0이면 계산하지 않는다.
-- 분산 기반이라 서열형에만 의미가 있다. 문항 선정의 **층화 축**으로만 쓴다.
+**모델별 호출 설정** (같은 프롬프트, `DESIGN.md` 4절)
 
-### 1.2 최빈응답 기준선 (명목형도 가능)
-인구통계만으로 도달할 수 있는 개인 예측 정확도의 상한.
-
-$$
-\text{marginal\_modal} = \max_j \hat q_j,\qquad
-\text{cell\_modal} = \sum_g \frac{n_g}{n}\max_j \hat q_{g,j},\qquad
-\text{gain} = \text{cell\_modal} - \text{marginal\_modal}
-$$
-
-### 1.3 태깅 일치도 (3인 독립 태깅)
-
-**Cohen의 $\kappa$ (두 사람)**
-
-$$
-\kappa = \frac{p_o - p_e}{1 - p_e},\qquad
-p_o = \frac1n\sum_n \mathbf 1[a_n = b_n],\qquad
-p_e = \sum_c \bar a_c\,\bar b_c
-$$
-
-($\bar a_c$는 태거 A가 범주 $c$를 고른 비율, $p_e = 1$이면 $\kappa = 1$)
-
-**Fleiss의 $\kappa$ (세 사람 전체)** — $N$개 문항, $r = 3$명, 문항 $i$에서 범주 $c$를 고른 사람 수 $n_{ic}$
-
-$$
-P_i = \frac{\sum_c n_{ic}^2 - r}{r(r-1)},\quad
-\bar P = \frac1N\sum_i P_i,\quad
-p_c = \frac{\sum_i n_{ic}}{N r},\quad
-\bar P_e = \sum_c p_c^2,\quad
-\kappa = \frac{\bar P - \bar P_e}{1 - \bar P_e}
-$$
-
-전원이 답한 문항만 쓴다.
-
-### 1.4 A/B 분할표본 순서효과
-같은 문항을 보기 순서만 바꿔 물은 두 집단의 분포 $p^A, p^B$ 사이 거리.
-
-$$
-\text{효과\_TV거리} = \tfrac12\sum_j \left|p^A_j - p^B_j\right|
-$$
-
-### 1.5 문항 필터
-- 유효 응답 비율이 90% 미만이거나, 비해당(IAP) 비율이 5%를 넘는 문항은 뺀다 (`--min-answer 0.9`, `--max-iap 0.05`).
-- v2에서는 250문항 중 결함 4개(`MEDIAPOL`, `HLPRT1`, `HUMNAT`, `HATOPSEX`)를 빼 **246문항**이 됐다.
+| | DeepSeek Ultrafast | Claude Haiku 5.5 |
+|---|---|---|
+| 추론 | 끔 (`reasoning_effort: "none"`) | 끔 (`thinking: disabled`) |
+| temperature | 1.0 | 기본값(전송 안 함) |
+| 최대 출력 | 16토큰 | 5토큰 |
+| 결과 | 295,200건 | 295,200건 |
 
 ---
 
@@ -172,6 +138,16 @@ $$
 - 같은 `(probe_id, sample_idx)`가 겹치면 **먼저 나온 것**만 쓴다.
 - 파싱 실패·거부는 유효 응답에서 빠진다. 그래서 $n_{mpi} < 100$일 수 있고, 평활화의 영향이 커진다.
 
+**실제 유효 응답 수** (`raw/v2`, 프롬프트 2,952개 × 100번 = 295,200건)
+
+| | 유효 | 무효 (`invalid_type`별) | 유효율 |
+|---|---|---|---|
+| DeepSeek Ultrafast | 295,158 | `length` 28 · `explanation` 8 · `out_of_range` 4 · `refusal` 2 | 99.99% |
+| Haiku 5.5 | 290,643 | `explanation` 2,840 · `refusal` 1,717 | 98.5% |
+
+- DeepSeek 파일은 295,210줄이다. 초과 10줄은 `api_error`이고, 위 규칙대로 버린다(같은 `(probe_id, sample_idx)`는 첫 줄만 센다).
+- **파싱 규칙** (`runners/run_deepseek_eco.py`의 `parse_response`, DeepSeek 기준): 응답 전체가 숫자 하나이면, 그 숫자가 문항 보기 코드에 있을 때 유효이고 없으면 `out_of_range`다. 빈 응답이나 거부 표현("죄송", "저는 AI" 등)이 있으면 `refusal`, 그 밖의 문장은 `explanation`이다. 출력 상한(`finish_reason = length`)에 걸려 유효하지 않으면 `length`다. Haiku의 분류 코드는 확인하지 않았다.
+
 ### 3.3 원비율
 $$
 \hat r_{mpij} = \frac{c_{mpij}}{\max(n_{mpi},\,1)}
@@ -198,7 +174,6 @@ $$
 
 - $\beta = 1$이면 평활화만 한 "보정 전" 분포다.
 - $\beta = 1/T$이므로 **온도** $T$를 올리는 것($T>1$, $\beta<1$)은 분포를 평평하게 만든다. 모드 붕괴(한 보기로 쏠림)를 풀어 준다.
-- `kgss_calibration.scale_probability_temperature`의 $p_i^{(T)} \propto p_i^{1/T}$와 같은 식이다. 단, 그 함수는 이미 확률인 벡터에 적용하고, v2는 개수에 $\alpha$를 더한 값에 적용한다.
 
 ### 4.2 $\beta^*$ 고르기 (calibration 148문항)
 그리드 $\beta \in \{0.05, 0.055, \dots, 1.5\}$ (간격 0.005)에서 calibration 문항의 평균 TVD가 최소인 값을 고른다.
@@ -263,7 +238,6 @@ W_1(a,b) = \frac{\displaystyle\sum_{j=1}^{K-1}\bigl|F_a(j) - F_b(j)\bigr|\,\bigl
 $$
 
 - 명목형 문항에는 정의하지 않는다(NaN).
-- v1의 `kgss_metrics.wasserstein_1d`는 코드 간격 대신 순번 $0,1,\dots,K-1$을 좌표로 쓰는 버전이 기본이다. v2 노트북은 위 식(코드 간격 + 범위 정규화)을 쓴다.
 
 ### 5.4 최빈값 일치 / 쏠림 지표
 $$
@@ -538,68 +512,14 @@ $$
 
 ---
 
-## 11. 부록: v1 지표
-
-초기(v1) 오픈웨이트 모델 실험에서 쓴 지표다 (`kgss_metrics.py`, `kgss_calibration.py`). v2의 TVD·순위 지표와 직접 비교하지 않는다.
-
-**인구 단위 Wasserstein vs 평균 Wasserstein**
-
-$$
-A = W_1\Bigl(\sum_i w_i\,P_{\mathrm{LLM}}(Y\mid X_i),\ P_{\mathrm{KGSS}}(Y)\Bigr),\qquad
-B = \frac1N\sum_i W_1\bigl(P_{\mathrm{LLM}}(Y\mid X_i),\ P_{\mathrm{KGSS}}(Y)\bigr)
-$$
-
-- $A$: 응답자별 예측분포를 **먼저 섞은 뒤** 정답과 비교 (현재 쓰는 정의)
-- $B$: 응답자별 거리를 **평균** (과거 오류가 있던 정의. 10월 재실험에서 $A$로 정정)
-
-**셀별 조건부 Wasserstein**
-
-$$
-C = \sum_c w_c\,W_1\bigl(P_{\mathrm{LLM}}(Y\mid c),\ P_{\mathrm{KGSS}}(Y\mid c)\bigr)
-$$
-
-**엔트로피 분해** (모드 붕괴 vs 조건부 확신도)
-
-$$
-H\!\left(\sum_i w_iP_i\right) = \underbrace{\sum_i w_iH(P_i)}_{\text{조건부 엔트로피}} + \underbrace{I(Y;X)}_{\text{페르소나 상호정보량}}
-$$
-
-**하위집단 편차 상관 (subgroup r)**
-
-$$
-\text{기존:}\ \mathrm{corr}_v\bigl(\mu^{\mathrm h}_{vc} - \mu^{\mathrm h}_{v},\ \mu^{\mathrm m}_{vc}\bigr),\qquad
-\text{수정(Centered):}\ \mathrm{corr}_v\bigl(\mu^{\mathrm h}_{vc} - \mu^{\mathrm h}_{v},\ \mu^{\mathrm m}_{vc} - \mu^{\mathrm m}_{v}\bigr)
-$$
-
-모델 쪽 평균을 빼지 않은 기존 식은 문항 자체의 지지율 차이를 재는 가짜 신호가 섞여, 센터링한 식으로 바로잡았다.
-
-**온도 보정 + 균등 혼합** (`kgss_calibration.py`)
-
-$$
-p^{(T)}_i = \frac{p_i^{1/T}}{\sum_j p_j^{1/T}},\qquad
-P' = (1-\lambda)P + \lambda\,\mathrm{U},\ \ \mathrm{U}_k = \tfrac1K
-$$
-
-집단 분포는 응답자(페르소나) 단위로 보정한 뒤 섞는 방식(Method A, 주)과 섞은 뒤 보정하는 방식(Method B, 보조) 두 가지를 둔다.
-
-$$
-\text{A:}\ \bar P_{g,T} = \sum_{i\in g} w_i\,\mathrm{Calib}(P_i,T),\qquad
-\text{B:}\ \bar P_{g,T} = \mathrm{Calib}\Bigl(\sum_{i\in g} w_iP_i,\ T\Bigr)
-$$
-
----
-
-## 12. 코드 대응표
+## 11. 코드 대응표
 
 | 절 | 식 | 파일·함수 |
 |---|---|---|
-| 1.1–1.2 | $\eta^2$, 최빈 기준선 | `kgss_inventory.py` `eta_squared`, `modal_baseline` |
-| 1.3 | Cohen·Fleiss $\kappa$ | `kgss_agreement.py` `cohen_kappa`, `fleiss_kappa` |
-| 1.4 | A/B 효과 TV거리 | `kgss_codebook.py` (`효과_TV거리`) |
-| 2.1–2.3 | 가중 분포, $SE$, $n_{\mathrm{eff}}$ | `analysis/v2_calibration_test.ipynb` 3번째 코드 셀, `kgss_metrics.human_weighted_distribution` |
+| 2.1–2.3 | 가중 분포, $SE$, $n_{\mathrm{eff}}$ | `analysis/v2_calibration_test.ipynb` 정답지 셀, `analysis/radius_ties.py` |
 | 3.2 | 개수 텐서 | 노트북의 `load_counts`, `analysis/radius_ties.py` `load_counts` |
 | 4.1–4.2 | 평활화·지수, $\beta^*$ | 노트북 `to_prob`, 그리드 서치 셀, `frozen_beta.json` |
-| 4.4 | 균등 혼합 | 노트북 `best_lam` 셀, `kgss_calibration.mix_with_uniform` |
+| 4.4 | 균등 혼합 | 노트북 `best_lam` 셀 |
 | 5.1–5.3 | TVD, JSD, $W_1$ | 노트북 `tvd`, `jsd`, `w1_masked`/`w1_full` |
 | 5.4 | 엔트로피 비, top_share | `analysis/v2_metrics.ipynb` (`ENT_RATIO`, `TOP`) |
 | 5.6–5.7 | 부트스트랩, 모델 차이 | 노트북 `boot_ci`, 모델 차이 셀 |

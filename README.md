@@ -24,7 +24,7 @@ LLM에 인구통계 페르소나를 프롬프트로 부여해 한국 여론조�
 **데이터와 키**
 - KGSS 원본(`.sav`, 코드북)은 성균관대 SRC에서 별도 신청 없이 받아 루트에 둔다(아래 v1의 "데이터" 절 참고).
   현재 파일 목록에는 없지만 과거 커밋 히스토리에는 들어 있다.
-- **v2 응답 원본은 `results/raw_gz/`에 gzip으로 올려 두었다**(`gunzip -k <파일>.gz`). 해당 폴더의 구성은 `results/README.md` 참고.
+- **v2 응답 원본(DeepSeek·Haiku, 각 295,200건)은 `results/raw_gz/v2/`에 gzip으로 올려 두었다**(`gunzip -k <파일>.gz`). 구성은 `results/README.md` 참고.
 - 10월 재실험 원본(`reexperiment_20261009/`, 약 710MB)과 API 키(`.env*`)는 올리지 않았다.
 - `requirements.txt`는 UTF-16LE라 `uv pip install -r`가 바로 안 된다. UTF-8로 변환한 사본을 쓴다.
 
@@ -66,7 +66,7 @@ python3 research/design_v2_20261112/runners/aggregate_counts.py raw/v2/deepseek_
 - **프롬프트·문항·셀은 `MANIFEST.json` 해시로 고정**돼 있다. 바뀌면 설계가 바뀐 것이다.
 - DeepSeek는 처음 Eco 등급으로 시작했다가 속도 때문에 Ultrafast로 바꿔 처음부터 다시 돌렸다
   (경위와 비교 결과는 `DESIGN.md`의 "Eco → Ultrafast 전환").
-- 응답 원본 위치: 로컬은 `raw/v2/`·`raw/exaone_stage1.jsonl`, 저장소에는 `results/raw_gz/`(압축본).
+- 응답 원본 위치: 로컬은 `raw/v2/`, 저장소에는 `results/raw_gz/v2/`(압축본, DeepSeek·Haiku). K-EXAONE 팀원 결과는 아직 저장소에 없다.
 
 ---
 
