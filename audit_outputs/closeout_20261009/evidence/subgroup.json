@@ -1,0 +1,54 @@
+{
+  "common125_valid118": {
+    "n_items": 118,
+    "n_batteries": 85,
+    "centered_r": 0.14943168932777381,
+    "range_normalized_r": 0.2662773820372783,
+    "within_item_r": 0.024004868434456397,
+    "battery_ci": [
+      0.08035388646761477,
+      0.2154084823162882
+    ],
+    "n_boot_valid": 2000,
+    "ci_scope": "Conditional on observed human/persona cell estimates; exploratory battery resampling"
+  },
+  "ordinal96": {
+    "n_items": 96,
+    "n_batteries": 75,
+    "centered_r": 0.10978986000100965,
+    "range_normalized_r": 0.08224727346991069,
+    "within_item_r": 0.0042631300361101925,
+    "battery_ci": [
+      0.04382035849522943,
+      0.1746720401972734
+    ],
+    "n_boot_valid": 2000,
+    "ci_scope": "Conditional on observed human/persona cell estimates; exploratory battery resampling"
+  },
+  "attitude101_valid": {
+    "n_items": 101,
+    "n_batteries": 77,
+    "centered_r": 0.10063225027539244,
+    "range_normalized_r": 0.07075634815896421,
+    "within_item_r": -0.02134085600884014,
+    "battery_ci": [
+      0.027232745110715665,
+      0.16785601752455714
+    ],
+    "n_boot_valid": 2000,
+    "ci_scope": "Conditional on observed human/persona cell estimates; exploratory battery resampling"
+  },
+  "factual17_valid": {
+    "n_items": 17,
+    "n_batteries": 8,
+    "centered_r": 0.3801169726483456,
+    "range_normalized_r": 0.37522318741771027,
+    "within_item_r": 0.2934118195387476,
+    "battery_ci": [
+      0.2627456548899154,
+      0.6832042193754341
+    ],
+    "n_boot_valid": 2000,
+    "ci_scope": "Conditional on observed human/persona cell estimates; exploratory battery resampling"
+  }
+}

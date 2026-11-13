@@ -1,0 +1,1884 @@
+diff --git a/kgss_c0_validity.py b/kgss_c0_validity.py
+index 5776bd5..d68d7a4 100644
+--- a/kgss_c0_validity.py
++++ b/kgss_c0_validity.py
+@@ -75,7 +75,19 @@ def pick_col(dfr, names):
+     return None
+ 
+ 
+-def real_options(var, vt):
++LEAKED_DK_INAP_PATTERNS = (
++    "모름", "무응답", "비해당", "응답거절",
++    "don't know", "dont know", "no answer", "refusal", "not applicable", "inapplicable", "iap",
++)
++ADMIN_EXCLUDE_VARS = {"SAMPLEAB"}
++
++
++def is_leaked_missing_label(label: str) -> bool:
++    s = str(label).strip().lower()
++    return any(pat in s for pat in LEAKED_DK_INAP_PATTERNS)
++
++
++def real_options(var, vt, filter_leaked_dk_inap: bool = False):
+     if var not in vt.index:
+         return []
+     row = vt.loc[var]
+@@ -91,6 +103,8 @@ def real_options(var, vt):
+         code = float(k)
+         if code in STRUCTURAL or code in dk or code in inap:
+             continue
++        if filter_leaked_dk_inap and is_leaked_missing_label(lab):
++            continue
+         out.append((code, lab))
+     return out
+ 
+@@ -106,16 +120,14 @@ def entropy_bits(p):
+     return float(-np.sum(p * np.log2(p)))
+ 
+ 
+-def weighted_dist(df, var, codes):
+-    s = df[[var, "FINALWT"]].dropna()
+-    s = s[s[var].isin(codes)]
+-    if len(s) < 100:
+-        return None
+-    tot = s["FINALWT"].sum()
+-    return [round(float(s.loc[s[var] == c, "FINALWT"].sum() / tot), 4) for c in codes]
++def weighted_dist(df, var, codes, round_digits=4):
++    from kgss_metrics import human_weighted_distribution
++    return human_weighted_distribution(df, var, codes, weight_col="FINALWT", min_n=100, round_digits=round_digits)
+ 
+ 
+ def build(args):
++    from kgss_metrics import human_cell_distributions
++
+     inv, outdir = Path(args.inv), Path(args.out)
+     outdir.mkdir(parents=True, exist_ok=True)
+     df = pd.read_parquet(inv / "kgss_clean.parquet")
+@@ -124,8 +136,10 @@ def build(args):
+ 
+     wave = pd.read_csv(inv / "wave_items.csv")
+     vt = pd.read_csv(inv / "variables.csv").set_index("var")
+-    worded = pd.read_csv(args.worded).set_index("var")["설문원문"]
++    worded_df = pd.read_csv(args.worded).set_index("var")
++    worded = worded_df["설문원문"]
+     sexlab = sex_labels(vt)
++    clean_prompts = getattr(args, "clean_prompts", False)
+ 
+     personas = None
+     if args.level == "full":
+@@ -133,33 +147,59 @@ def build(args):
+         personas["AGE_GRP"] = pd.cut(personas["AGE"], AGE_BINS, labels=AGE_LABELS, right=False)
+ 
+     cand = wave[wave["is_item_cand"]]["var"].tolist()
+-    rows, cellrows = [], []
++    wave_meta = wave.set_index("var")
++    rows, cell_dfs = [], []
+     n_skip = 0
+     for v in cand:
+-        opts = real_options(v, vt)
++        if clean_prompts and v in ADMIN_EXCLUDE_VARS:
++            n_skip += 1
++            continue
++        opts = real_options(v, vt, filter_leaked_dk_inap=clean_prompts)
+         codes = [int(c) for c, _ in opts]
+         if len(opts) < 2 or any(not (1 <= c <= 9) for c in codes) or len(set(codes)) != len(codes):
+             n_skip += 1
+             continue
+-        gold = weighted_dist(sub, v, [float(c) for c in codes])
++        gold = weighted_dist(sub, v, [float(c) for c in codes], round_digits=4)
+         if gold is None:
+             n_skip += 1
+             continue
+-        grand_mean = float(np.sum(np.array(codes) * np.array(gold)))
+-        txt = str(worded.get(v, "") or "")
++        raw_txt = worded.get(v, "")
++        stem_source = "question_stem"
++        if pd.isna(raw_txt) or str(raw_txt).strip().lower() in ("", "nan"):
++            if clean_prompts:
++                # 설문원문이 결측(NaN)인 경우 variables_worded의 표제목 또는 wave_items/variables의 label로 대체
++                tbl_title = str(worded_df.loc[v, "표제목"]) if v in worded_df.index and "표제목" in worded_df.columns and pd.notna(worded_df.loc[v, "표제목"]) else ""
++                bat = str(wave_meta.loc[v, "battery"]) if v in wave_meta.index and pd.notna(wave_meta.loc[v, "battery"]) else ""
++                lab = str(vt.loc[v, "label"]) if v in vt.index and pd.notna(vt.loc[v, "label"]) else ""
++                txt = tbl_title.strip() or lab.strip() or bat.strip()
++                stem_source = "label_fallback_provisional"
++                if not txt:
++                    n_skip += 1
++                    continue
++            else:
++                txt = "nan"
++                stem_source = "missing_stem"
++        else:
++            txt = str(raw_txt).strip()
+         opt_txt = "\n".join(f"{c}. {lab}" for c, (_, lab) in zip(codes, opts))
+         item_text = f"문항: {txt}\n\n선택지:\n{opt_txt}\n\n번호로만 답하십시오."
++        prompt_metadata = {
++            "prompt_stem_source": stem_source,
++            "prompt_requires_review": stem_source != "question_stem",
++        }
+ 
+         if args.level == "c0":
+             rows.append({
+                 "probe_id": f"C0_{v}", "var": v, "prompt": item_text,
+                 "codes": json.dumps(codes), "gold": json.dumps(gold),
++                **prompt_metadata,
+             })
+         elif args.level == "adult":  # 구체적 인구통계 없이 "한국 성인" 머리말만
+             rows.append({
+                 "probe_id": f"ADULT_{v}", "var": v,
+                 "prompt": f"당신은 한국 성인입니다.\n\n{item_text}",
+                 "codes": json.dumps(codes), "gold": json.dumps(gold),
++                **prompt_metadata,
+             })
+         elif args.level == "demo":  # 셀마다 별도 프롬프트 (성별+연령 머리말)
+             for sex_code, sex_lab in sexlab.items():
+@@ -170,107 +210,319 @@ def build(args):
+                         "var": v, "sex": sex_code, "age_grp": age_grp,
+                         "prompt": f"{head}\n\n{item_text}",
+                         "codes": json.dumps(codes), "gold": json.dumps(gold),
++                        **prompt_metadata,
+                     })
+         else:  # full: 페르소나 n명마다 별도 프롬프트 (6변수 서사형 머리말)
+             for _, p in personas.iterrows():
+                 rows.append({
+                     "probe_id": f"FULL_{v}_{int(p['persona_id'])}",
+                     "var": v, "sex": p["SEX"], "age_grp": p["AGE_GRP"],
++                    "persona_id": int(p["persona_id"]),
++                    "respid": p.get("RESPID"),
+                     "prompt": f"{p['persona_당신_하십시오체']}\n\n{item_text}",
+                     "codes": json.dumps(codes), "gold": json.dumps(gold),
++                    **prompt_metadata,
+                 })
+ 
+-        # 셀(성별x연령)별 실제 가중평균 응답 + 문항 전체평균 (subgroup r용, 전체평균은 편차 계산에 씀)
+-        for (sex, age_grp), g in sub.groupby(["SEX", "AGE_GRP"], observed=True):
+-            s = g[[v, "FINALWT"]].dropna()
+-            s = s[s[v].isin([float(c) for c in codes])]
+-            if s["FINALWT"].sum() <= 0 or len(s) < 5:
+-                continue
+-            mean_code = float((s[v] * s["FINALWT"]).sum() / s["FINALWT"].sum())
+-            cellrows.append({
+-                "var": v, "sex": sex, "age_grp": age_grp,
+-                "real_mean": mean_code, "real_grand": grand_mean,
+-            })
+-
+-    print(f"문항 {len(cellrows) and len(set(r['var'] for r in cellrows))}개 확정 "
+-          f"(제외 {n_skip}개), 프로브 {len(rows)}건")
++        # 셀(성별x연령)별 실제 가중분포 P_KGSS(Y|c), 셀 비중 P_KGSS(c), 실제 가중평균 응답
++        cdf = human_cell_distributions(
++            sub, v, [float(c) for c in codes],
++            cell_cols=("SEX", "AGE_GRP"), weight_col="FINALWT", min_cell_n=5,
++        )
++        if not cdf.empty:
++            cdf = cdf.rename(columns={"SEX": "sex", "AGE_GRP": "age_grp"})
++            # 기존 real_cells.csv와 호환되도록 real_grand를 반올림된 gold 기준으로도 맞추되,
++            # 정밀한 셀 분포(real_dist)와 셀 가중치(cell_weight_item_norm)를 함께 저장한다.
++            cdf["real_grand"] = float(np.sum(np.array(codes) * np.array(gold)))
++            cell_dfs.append(cdf)
++
++    cellrows_df = pd.concat(cell_dfs, ignore_index=True) if cell_dfs else pd.DataFrame()
++    n_vars = cellrows_df["var"].nunique() if not cellrows_df.empty else 0
++    print(f"문항 {n_vars}개 확정 (제외 {n_skip}개), 프로브 {len(rows)}건")
+     pd.DataFrame(rows).to_csv(outdir / "probes.csv", index=False, encoding="utf-8-sig")
+-    pd.DataFrame(cellrows).to_csv(outdir / "real_cells.csv", index=False, encoding="utf-8-sig")
++    cellrows_df.to_csv(outdir / "real_cells.csv", index=False, encoding="utf-8-sig")
+     print(f"-> {outdir / 'probes.csv'}, {outdir / 'real_cells.csv'}")
+ 
+ 
+ def score(args):
++    from kgss_metrics import (
++        aggregate_demo_cells,
++        build_cell_poststratified_row_weights,
++        compute_subgroup_correlations,
++        evaluate_item_distributions,
++        validate_prob_dist,
++    )
++
+     outdir = Path(args.out)
+     probes = pd.read_csv(outdir / "probes.csv")
+     logits = pd.read_csv(outdir / "logit_responses.csv")
+     cells = pd.read_csv(outdir / "real_cells.csv")
++    if probes.empty or probes["probe_id"].isna().any() or probes["probe_id"].duplicated().any():
++        raise ValueError("probes에는 비어 있지 않은 고유 probe_id가 필요합니다.")
++    if logits.empty or logits["model"].isna().any():
++        raise ValueError("logits에는 모델별 응답이 필요합니다.")
++    if logits.duplicated(["model", "probe_id"]).any():
++        raise ValueError("중복 (model, probe_id) 로짓 응답이 있습니다.")
++    expected_probes = set(probes["probe_id"])
++    for model, model_logits in logits.groupby("model"):
++        actual_probes = set(model_logits["probe_id"])
++        if actual_probes != expected_probes:
++            raise ValueError(
++                f"{model}: probe 응답 범위 불일치 "
++                f"(누락 {len(expected_probes - actual_probes)}개, "
++                f"미등록 {len(actual_probes - expected_probes)}개)"
++            )
++    classification = None
++    classification_path = getattr(args, "classification", None)
++    if classification_path:
++        classification = pd.read_csv(classification_path)
++        required = {"var", "scale_type", "include_in_clean_eval", "w1_valid_in_clean_eval"}
++        if not required.issubset(classification.columns):
++            raise ValueError(f"분류표 필수 열 누락: {sorted(required - set(classification.columns))}")
++        if classification["var"].isna().any() or classification["var"].duplicated().any():
++            raise ValueError("분류표 var는 비어 있지 않고 고유해야 합니다.")
++        classification = classification.set_index("var")
++        missing_vars = set(probes["var"]) - set(classification.index)
++        if missing_vars:
++            raise ValueError(f"분류표에 없는 평가 문항: {sorted(missing_vars)}")
++        scale_types = {"binary", "ordinal_monotone", "nominal_unordered", "frequency_nonmonotone_code"}
++        if not classification.loc[probes["var"].unique(), "scale_type"].isin(scale_types).all():
++            raise ValueError("분류표에 지원하지 않는 scale_type이 있습니다.")
++        for flag in ("include_in_clean_eval", "w1_valid_in_clean_eval"):
++            values = classification[flag].astype(str).str.strip().str.lower()
++            if not values.isin(["true", "false"]).all():
++                raise ValueError(f"분류표 {flag}는 True/False여야 합니다.")
++            classification[flag] = values.eq("true")
+     has_cells = "sex" in probes.columns
+-    level_name = {"C0_": "C0(페르소나 없음)", "ADULT_": "adult(한국 성인)",
+-                  "DEMO_": "demo(성별+연령)", "FULL_": "full(6변수)"}
+-    level = next((v for k, v in level_name.items() if probes["probe_id"].iloc[0].startswith(k)), "?")
++    level_key = next(
++        (k for k in ("C0_", "ADULT_", "DEMO_", "FULL_") if str(probes["probe_id"].iloc[0]).startswith(k)),
++        "?",
++    )
++    level_name = {
++        "C0_": "C0(페르소나 없음)",
++        "ADULT_": "adult(한국 성인)",
++        "DEMO_": "demo(성별+연령)",
++        "FULL_": "full(6변수)",
++    }
++    level = level_name.get(level_key, "?")
++
++    # 배터리(문항 묶음) 클러스터 정보를 wave_items.csv에서 로드 (존재할 경우)
++    wave_path = Path(getattr(args, "inv", "./inventory")) / "wave_items.csv"
++    battery_map = {}
++    if wave_path.exists():
++        wdf = pd.read_csv(wave_path)
++        if "var" in wdf.columns and "battery" in wdf.columns:
++            battery_map = wdf.set_index("var")["battery"].to_dict()
++
++    logit_cols = ["probe_id"] + [c for c in logits.columns if c not in probes.columns and c != "probe_id"]
++    d = probes.merge(logits[logit_cols], on="probe_id", how="inner")
++
++    L = [f"# {level} 조건 분포 재현 타당성 검증 (기존 지표 vs 수정 지표 비교)\n"]
++    if classification is None:
++        L.append("\n주의: 문항 분류표 없이 계산한 레거시 진단입니다. 명목형·결함 문항이 포함될 수 있어 발표용 주결과로 사용하지 마십시오.\n")
++    else:
++        L.append(f"\n문항 분류 적용: `{classification_path}`. W1·subgroup r은 정제 이진/단조서열 문항에 한정하고, TVD·엔트로피는 정제 전체 문항을 사용합니다.\n")
++    all_item_rows = []
+ 
+-    d = probes.merge(logits, on="probe_id", how="inner")
+-    from scipy.stats import wasserstein_distance, pearsonr
+-
+-    L = [f"# {level} 조건 분포 재현 타당성 검증\n"]
+     for model, g in d.groupby("model"):
+         L.append(f"\n## {model}\n")
+         g = g.copy()
+-        ws, masses = [], []
+-        model_pred = []
+-        ent_model, ent_gold = [], []
++        model_preds = []
+         for _, r in g.iterrows():
+-            gold = np.array(json.loads(r["gold"]))
+-            pred = np.array(json.loads(r["model_dist"]))
+-            n = len(gold)
+-            ws.append(wasserstein_distance(range(n), range(n), u_weights=pred, v_weights=gold))
+-            masses.append(r["mass"])
+             codes = json.loads(r["codes"])
+-            model_pred.append(float(np.sum(np.array(codes) * pred)))
+-            ent_model.append(entropy_bits(pred))
+-            ent_gold.append(entropy_bits(gold))
+-        g["model_pred"] = model_pred
+-        L.append(f"- 문항 {g['var'].nunique()}개 / 프로브 {len(g)}건, "
+-                 f"평균 Wasserstein거리 **{np.mean(ws):.4f}**, 평균 선택지확률질량 {np.mean(masses):.4f}\n")
+-        L.append(f"- 모드 붕괴 점검: 모델 출력 엔트로피 **{np.mean(ent_model):.3f}bit**"
+-                 f"(유효 선택지 {2**np.mean(ent_model):.2f}개) vs 실제 응답 엔트로피 "
+-                 f"{np.mean(ent_gold):.3f}bit(유효 선택지 {2**np.mean(ent_gold):.2f}개) "
+-                 f"— 비율 {np.mean(ent_model)/np.mean(ent_gold):.2f}\n")
++            pred = validate_prob_dist(json.loads(r["model_dist"]), tol=1e-3)
++            model_preds.append(float(np.sum(np.array(codes, dtype=float) * pred)))
++        g["model_pred"] = model_preds
++
++        item_metrics = []
++        for var, gv in g.groupby("var", sort=False):
++            gold = json.loads(gv["gold"].iloc[0])
++            codes = json.loads(gv["codes"].iloc[0])
++            preds = [json.loads(x) for x in gv["model_dist"]]
++            vc_cells = cells[cells["var"] == var].copy()
++
++            weights = None
++            cell_model_dists = None
++            cell_human_dists = None
++            cell_weights = None
++
++            if level_key == "DEMO_" and not vc_cells.empty and "cell_weight_item_norm" in vc_cells.columns:
++                cell_agg, merged_c = aggregate_demo_cells(
++                    gv, vc_cells, dist_col="model_dist",
++                    cell_cols=("sex", "age_grp"), weight_col="cell_weight_item_norm",
++                )
++                if not merged_c.empty:
++                    # Demo는 각 셀 c에 KGSS 셀 비중 w_c를 부여하되, 셀 내 프롬프트가 n_c개이면
++                    # 각 프롬프트 행에는 w_i = w_c / n_c를 부여하여 sum_{i in c} w_i == w_c가 되도록 함
++                    weights = build_cell_poststratified_row_weights(
++                        gv, merged_c,
++                        cell_cols=("sex", "age_grp"),
++                        dist_col="model_dist",
++                        expected_cell_agg=cell_agg,
++                    )
++                    if "real_dist" in merged_c.columns:
++                        cell_model_dists = merged_c["cell_model_dist"].tolist()
++                        cell_human_dists = [json.loads(x) for x in merged_c["real_dist"]]
++                        cell_weights = merged_c["cell_weight_matched_norm"].tolist()
++            elif level_key == "FULL_" and not vc_cells.empty and "real_dist" in vc_cells.columns:
++                # Full은 이미 FINALWT 비례 복원추출 표본이므로 기본 모집단 집계는 동일 가중 평균(weights=None)
++                # 단, 셀 사후층화 비교를 위해 cell_model_dists와 cell_weights도 함께 전달하여 기록
++                _, merged_c = aggregate_demo_cells(
++                    gv, vc_cells, dist_col="model_dist",
++                    cell_cols=("sex", "age_grp"), weight_col="cell_weight_item_norm",
++                )
++                if not merged_c.empty:
++                    cell_model_dists = merged_c["cell_model_dist"].tolist()
++                    cell_human_dists = [json.loads(x) for x in merged_c["real_dist"]]
++                    cell_weights = merged_c["cell_weight_matched_norm"].tolist()
++
++            m = evaluate_item_distributions(
++                pred_dists=preds,
++                gold_dist=gold,
++                codes=codes,
++                weights=weights,
++                cell_model_dists=cell_model_dists,
++                cell_human_dists=cell_human_dists,
++                cell_weights=cell_weights,
++                use_code_positions=getattr(args, "use_code_positions", False),
++            )
++            if level_key == "DEMO_" and "population_wasserstein_cell_weighted" in m:
++                if abs(m["population_wasserstein"] - m["population_wasserstein_cell_weighted"]) > 1e-10:
++                    raise AssertionError(
++                        f"DEMO 모집단 Wasserstein 불변식 위반 ({var}): "
++                        f"{m['population_wasserstein']} != {m['population_wasserstein_cell_weighted']}"
++                    )
++            m["model"] = model
++            m["level"] = level
++            m["var"] = var
++            m["mean_mass"] = float(gv["mass"].mean())
++            if classification is not None:
++                item_class = classification.loc[var]
++                included = bool(item_class["include_in_clean_eval"])
++                w1_valid = included and bool(item_class["w1_valid_in_clean_eval"]) and item_class["scale_type"] in ("binary", "ordinal_monotone")
++                m["scale_type"] = item_class["scale_type"]
++                m["include_in_clean_eval"] = included
++                m["w1_valid_for_evaluation"] = w1_valid
++                for key in list(m):
++                    if ("wasserstein" in key or key == "existing_minus_population_w") and not w1_valid:
++                        m[f"diagnostic_{key}"] = m[key]
++                        m[key] = np.nan
++            item_metrics.append(m)
++            all_item_rows.append(m)
++
++        mdf = pd.DataFrame(item_metrics)
++        if classification is not None:
++            mdf = mdf[mdf["include_in_clean_eval"]].copy()
+ 
+         if has_cells:
+-            # 셀 하나에 여러 프롬프트(full의 여러 페르소나)가 걸리면 문항당 값 하나로 평균
+             cell_pred = g.groupby(["var", "sex", "age_grp"], observed=True)["model_pred"].mean().reset_index()
+             merged = cell_pred.merge(cells, on=["var", "sex", "age_grp"], how="inner")
+         else:
+-            preds = dict(zip(g["var"], g["model_pred"]))
++            preds_map = dict(zip(g["var"], g["model_pred"]))
+             merged = cells.copy()
+-            merged["model_pred"] = merged["var"].map(preds)
++            merged["model_pred"] = merged["var"].map(preds_map)
+             merged = merged.dropna(subset=["model_pred"])
+-        merged["real_dev"] = merged["real_mean"] - merged["real_grand"]
+-
+-        rs = []
+-        for (sex, age_grp), gc in merged.groupby(["sex", "age_grp"], observed=True):
+-            if len(gc) < 5:
+-                continue
+-            r, p = pearsonr(gc["real_dev"], gc["model_pred"])
+-            rs.append(r)
+-        if rs:
+-            L.append(f"- subgroup r, 편차 기준 (성별×연령 {len(rs)}셀 평균): **{np.mean(rs):.3f}** "
+-                     f"(범위 {min(rs):.3f}~{max(rs):.3f})\n")
+-        if has_cells:
+-            L.append(f"> {level}. C0(같은 방식으로 계산한 subgroup r이 0 근처)과 비교해서 "
+-                     "여기서 r이 0에서 벗어나 올라가면, 이 조건의 페르소나 정보가 실제로 "
+-                     "셀 구분 능력을 만든다는 증거.\n")
+-        else:
+-            L.append(f"> {level}. 구체적 인구통계가 없어 모델 예측이 셀마다 안 달라지므로, "
+-                     "이 r은 \"모델이 인구통계 하위집단 차이를 우연히라도 맞히는지\"를 재는 "
+-                     "것이지 실제 조건화 능력을 재는 게 아니다. 이론상 0 근처가 정상"
+-                     "(서울 논문 C0 실측 0.03).\n")
++
++        span_map = dict(zip(mdf["var"], mdf["n_options"] - 1.0))
++        merged["span"] = merged["var"].map(span_map).fillna(1.0)
++        if battery_map:
++            merged["battery"] = merged["var"].map(battery_map)
++        if classification is not None:
++            valid_vars = set(mdf.loc[mdf["w1_valid_for_evaluation"], "var"])
++            merged = merged[merged["var"].isin(valid_vars)].copy()
++
++        sub_r = compute_subgroup_correlations(merged, cell_cols=("sex", "age_grp"), cluster_col="battery")
++
++        ex_w = float(mdf["existing_wasserstein"].mean())
++        pop_w = float(mdf["population_wasserstein"].mean())
++        pop_w_unw = float(mdf["population_wasserstein_unweighted"].mean())
++        ex_tvd = float(mdf["existing_tvd"].mean())
++        pop_tvd = float(mdf["population_tvd"].mean())
++        pop_tvd_unw = float(mdf["population_tvd_unweighted"].mean())
++        unif_w = float(mdf["uniform_wasserstein"].mean())
++        unif_tvd = float(mdf["uniform_tvd"].mean())
++        modal_w = float(mdf["marginal_modal_1hot_wasserstein"].mean())
++        median_w = float(mdf["marginal_median_1hot_wasserstein"].mean())
++        cond_ent_unw = float(mdf["model_conditional_entropy_bits"].mean())
++        cond_ent_w = float(mdf["model_conditional_entropy_weighted_bits"].mean())
++        pop_ent_w = float(mdf["model_population_entropy_bits"].mean())
++        pop_ent_unw = float(mdf["model_population_entropy_unweighted_bits"].mean())
++        gold_ent = float(mdf["human_entropy_bits"].mean())
++        mi_bits_w = float(mdf["mutual_information_bits"].mean())
++        mi_bits_unw = float(mdf["mutual_information_unweighted_bits"].mean())
++        mean_mass = float(g["mass"].mean())
++
++        L.append(f"- 문항 {g['var'].nunique()}개 / 프로브 {len(g)}건 / 평균 선택지확률질량 {mean_mass:.4f}\n")
++        if classification is not None:
++            L.append(f"- 평가 범위: 정제 전체 {len(mdf)}문항(TVD·엔트로피), 정제 이진/단조서열 {len(valid_vars)}문항(W1·subgroup r). 제외 W1은 CSV diagnostic_* 열에만 보존합니다.\n")
++        L.append(
++            f"- **Wasserstein 및 TVD 거리 비교**:\n"
++            f"  - 기존 산식 (개별 평균 $\\frac{{1}}{{N}}\\sum_i W_1(P_i, Q)$): **{ex_w:.4f}** (개별 평균 TVD: **{ex_tvd:.4f}**)\n"
++            f"  - 수정 산식 (모집단 집계 $W_1(\\sum_i w_i P_i, Q)$): **{pop_w:.4f}** "
++            f"(차이 {pop_w - ex_w:+.4f} / 동일가중 $w_i=1/N$ 집계: **{pop_w_unw:.4f}**)\n"
++            f"  - 수정 산식 TVD ($\\mathrm{{TVD}}(\\sum_i w_i P_i, Q)$): **{pop_tvd:.4f}** "
++            f"(동일가중 $w_i=1/N$ TVD: **{pop_tvd_unw:.4f}** / 균등분포 TVD 기준선: **{unif_tvd:.4f}**)\n"
++            f"  - 균등분포 기준선 (Uniform $W_1$ Baseline): **{unif_w:.4f}** "
++            f"(수정 산식 - 균등기준선: {pop_w - unif_w:+.4f})\n"
++            f"  - 전체 최빈 원핫 기준선 (Marginal Modal 1-hot $W_1$): **{modal_w:.4f}**\n"
++            f"  - 전체 중앙값 원핫 기준선 (Marginal Median 1-hot $W_1$, 최적 점질량): **{median_w:.4f}**\n"
++        )
++        if "conditional_cell_wasserstein_weighted" in mdf.columns:
++            cc_w = float(mdf["conditional_cell_wasserstein_weighted"].mean())
++            cc_unw = float(mdf["conditional_cell_wasserstein_unweighted"].mean())
++            cc_tvd_w = float(mdf["conditional_cell_tvd_weighted"].mean())
++            L.append(
++                f"  - 셀 조건부 Wasserstein ($\\sum_c w_c W_1(P(Y|c), P_{{KGSS}}(Y|c))$): "
++                f"**{cc_w:.4f}** (비가중 셀 평균: {cc_unw:.4f} / 셀 조건부 가중 TVD: {cc_tvd_w:.4f})\n"
++            )
++        L.append(
++            f"- **엔트로피 분해 (모드 붕괴 점검, 가중 vs 비가중)**:\n"
++            f"  - 모델 조건부 엔트로피 (가중 $\\sum_i w_i H(P_i)$ / 비가중 $\\frac{{1}}{{N}}\\sum_i H(P_i)$): "
++            f"**{cond_ent_w:.3f}bit** / **{cond_ent_unw:.3f}bit**\n"
++            f"  - 모델 모집단 집계 엔트로피 (가중 $H(\\sum_i w_i P_i)$ / 비가중 $H(\\frac{{1}}{{N}}\\sum_i P_i)$): "
++            f"**{pop_ent_w:.3f}bit** / **{pop_ent_unw:.3f}bit**\n"
++            f"  - 페르소나 상호정보량 $I(Y; X)$ (가중 / 비가중): "
++            f"**{mi_bits_w:.3f}bit** / **{mi_bits_unw:.3f}bit** "
++            f"(실제 인간 응답 엔트로피: **{gold_ent:.3f}bit**)\n"
++        )
++        ex_rs = list(sub_r["existing_cell_rs"].values())
++        ce_rs = list(sub_r["centered_cell_rs"].values())
++        if ex_rs:
++            L.append(
++                f"- **subgroup r (성별×연령 {len(ex_rs)}셀 평균)**:\n"
++                f"  - 기존 산식 (모델 미중심화): **{sub_r['existing_mean_r']:.3f}** "
++                f"(범위 {min(ex_rs):.3f}~{max(ex_rs):.3f})\n"
++            )
++        if ce_rs:
++            bat_ci_str = ""
++            if pd.notna(sub_r.get("centered_battery_boot_ci_low")):
++                bat_ci_str = (
++                    f" / 배터리 클러스터({sub_r['n_clusters']}개) 부트스트랩 95% CI "
++                    f"[{sub_r['centered_battery_boot_ci_low']:.3f}, {sub_r['centered_battery_boot_ci_high']:.3f}]"
++                )
++            L.append(
++                f"  - 수정 산식 (동일 관측셀·FINALWT 가중 중심화): **{sub_r['centered_mean_r']:.3f}** "
++                f"(범위 {min(ce_rs):.3f}~{max(ce_rs):.3f}, "
++                f"문항 부트스트랩 95% CI [{sub_r['centered_boot_ci_low']:.3f}, {sub_r['centered_boot_ci_high']:.3f}]"
++                f"{bat_ci_str})\n"
++                f"  - 수정 산식 (동일 관측셀 비가중 중심화): **{sub_r['centered_unweighted_mean_r']:.3f}**\n"
++                f"  - 수정 산식 (척도 폭 [0,1] 정규화 중심화): **{sub_r['scale_normalized_mean_r']:.3f}**\n"
++                f"  - 문항 내 10셀 상관 평균: **{sub_r['within_item_mean_r']:.3f}**\n"
++            )
+ 
+     text = "".join(L)
+-    (outdir / "c0_validity_result.md").write_text(text, encoding="utf-8")
++    out_md = outdir / (
++        "c0_validity_result.md"
++        if getattr(args, "overwrite_legacy", False)
++        else "c0_validity_recomputed.md"
++    )
++    out_md.write_text(text, encoding="utf-8")
++    if all_item_rows:
++        pd.DataFrame(all_item_rows).to_csv(
++            outdir / "c0_validity_comparison.csv", index=False, encoding="utf-8-sig"
++        )
+     print(text)
+-    print(f"-> {outdir / 'c0_validity_result.md'}")
++    print(f"-> {out_md}")
+ 
+ 
+ def main():
+@@ -285,8 +537,16 @@ def main():
+     b.add_argument("--personas", default="./persona_sample/persona_sample.csv")
+     b.add_argument("--n-personas", type=int, default=40)
+     b.add_argument("--seed", type=int, default=42)
++    b.add_argument("--clean-prompts", action="store_true",
++                   help="행정변수(SAMPLEAB) 제외, 결측 보기(모름/비해당) 필터링, 설문원문 NaN 라벨 대체 적용")
+     s = sub.add_parser("score")
+     s.add_argument("--out", default="./c0_check")
++    s.add_argument("--inv", default="./inventory")
++    s.add_argument("--classification", help="문항별 척도/정제 포함 규칙 CSV. 없으면 발표용이 아닌 레거시 진단으로 표시")
++    s.add_argument("--use-code-positions", action="store_true",
++                   help="비연속 선택지 코드일 때 순번(0..K-1) 대신 실제 코드값을 Wasserstein 좌표로 사용")
++    s.add_argument("--overwrite-legacy", action="store_true",
++                   help="기존 c0_validity_result.md를 덮어씀 (기본값: c0_validity_recomputed.md에 별도 저장)")
+     args = ap.parse_args()
+     {"build": build, "score": score}[args.cmd](args)
+ 
+diff --git a/kgss_persona_bootstrap.py b/kgss_persona_bootstrap.py
+index 4fe7bfb..4079c37 100644
+--- a/kgss_persona_bootstrap.py
++++ b/kgss_persona_bootstrap.py
+@@ -95,9 +95,9 @@ def persona_sentence(row: pd.Series, labels: dict[str, dict[str, str]],
+         head = f"다음은 {subj}."
+ 
+     if register == "formal":
+-        tail = f"{educ_lab}를 졸업했고 {region_lab}에 거주하며 {marital_lab}입니다."
++        tail = f"최종학력은 {educ_lab}이며 {region_lab}에 거주하며 {marital_lab}입니다."
+     else:
+-        tail = f"{educ_lab}를 졸업했고 {region_lab}에 거주하며 {marital_lab}이다."
++        tail = f"최종학력은 {educ_lab}이며 {region_lab}에 거주하며 {marital_lab}이다."
+ 
+     return f"{head} {tail} ({urban_lab} 지역 거주)"
+ 
+diff --git a/kgss_metrics.py b/kgss_metrics.py
+new file mode 100644
+index 0000000..7f40b49
+--- /dev/null
++++ b/kgss_metrics.py
+@@ -0,0 +1,754 @@
++"""
++KOSMOS 평가 파이프라인 검증 및 수정 지표 모듈 (kgss_metrics.py)
++
++기존 kgss_c0_validity.py의 평가 산식을 보존하면서, 연구 질문(Estimand)에 부합하는
++모집단 수준 집계 지표(Population Fidelity)와 조건부 지표(Conditional Fidelity)를
++명확히 분리하여 계산한다.
++
++핵심 구분:
++1. Population Wasserstein (모집단 분포 재현성, RQ1/RQ2):
++   A = W_1( sum_i w_i P_LLM(Y | X_i), P_KGSS(Y) )
++2. Existing Wasserstein (개별 조건부 분포 대 전체 모집단 분포 거리의 평균):
++   B = (1/N) * sum_i W_1( P_LLM(Y | X_i), P_KGSS(Y) )
++3. Conditional Cell Wasserstein (셀별 조건부 분포 재현성, Demo/Full):
++   C = sum_c w_c W_1( P_LLM(Y | c), P_KGSS(Y | c) )
++4. Entropy 분해 (모드 붕괴 vs 조건부 확신도):
++   H(sum_i w_i P_i) [모집단 엔트로피]
++   = sum_i w_i H(P_i) [조건부 엔트로피] + I(Y; X) [페르소나 상호정보량]
++5. Subgroup r (하위집단 편차 상관):
++   - 기존: corr_v( mu_human(v,c) - mu_human(v), mu_model(v,c) ) [모델 측 미중심화]
++   - 수정(Centered): corr_v( mu_human(v,c) - mu_human(v), mu_model(v,c) - mu_model(v) )
++   - 문항 내(Within-item): corr_c( mu_human(v,c), mu_model(v,c) )
++"""
++
++from __future__ import annotations
++
++import json
++from typing import Iterable, Sequence
++
++import numpy as np
++import pandas as pd
++from scipy.stats import pearsonr, wasserstein_distance
++
++AGE_BINS_5 = [18, 30, 40, 50, 60, 200]
++AGE_LABELS_5 = ["18-29", "30-39", "40-49", "50-59", "60+"]
++
++
++def validate_prob_dist(p: Sequence[float], tol: float = 1e-5) -> np.ndarray:
++    """확률분포 유효성(비음수, 합=1)을 검증하고 정규화된 float 배열을 반환한다."""
++    arr = np.asarray(p, dtype=float)
++    if arr.ndim != 1 or len(arr) == 0:
++        raise ValueError("확률분포는 비어 있지 않은 1차원 벡터여야 합니다.")
++    if np.any(~np.isfinite(arr)) or np.any(arr < -tol):
++        raise ValueError(f"유효하지 않은 확률값이 포함되어 있습니다: {arr}")
++    arr = np.maximum(arr, 0.0)
++    total = float(arr.sum())
++    if total <= 0:
++        raise ValueError("확률분포의 합이 0 이하입니다.")
++    return arr / total
++
++
++def entropy_bits(p: Sequence[float]) -> float:
++    """Shannon 엔트로피 (단위: bit)."""
++    arr = validate_prob_dist(p, tol=1e-3)
++    pos = arr[arr > 0]
++    return float(-np.sum(pos * np.log2(pos)))
++
++
++def wasserstein_1d(
++    u_probs: Sequence[float],
++    v_probs: Sequence[float],
++    codes: Sequence[float] | None = None,
++    use_code_positions: bool = False,
++) -> float:
++    """1차원 이산 확률분포 간 Wasserstein-1 거리.
++
++    기본값(use_code_positions=False)은 기존 코드와 동일하게 정렬된 범주 순번
++    0, 1, ..., K-1을 좌표로 사용한다. 비연속 선택지 코드의 실제 간격을 반영하려면
++    use_code_positions=True와 codes를 함께 전달한다.
++    """
++    u = validate_prob_dist(u_probs, tol=1e-3)
++    v = validate_prob_dist(v_probs, tol=1e-3)
++    if len(u) != len(v):
++        raise ValueError(f"분포 길이 불일치: {len(u)} != {len(v)}")
++    n = len(u)
++    if use_code_positions and codes is not None:
++        support = np.asarray(codes, dtype=float)
++        if len(support) != n:
++            raise ValueError(f"선택지 코드 개수({len(support)})와 분포 길이({n}) 불일치")
++    else:
++        support = np.arange(n, dtype=float)
++    return float(wasserstein_distance(support, support, u_weights=u, v_weights=v))
++
++
++def tvd_distance(u_probs: Sequence[float], v_probs: Sequence[float]) -> float:
++    """총변동거리(Total Variation Distance): 0.5 * sum_k |u_k - v_k|."""
++    u = validate_prob_dist(u_probs, tol=1e-3)
++    v = validate_prob_dist(v_probs, tol=1e-3)
++    if len(u) != len(v):
++        raise ValueError(f"분포 길이 불일치: {len(u)} != {len(v)}")
++    return float(0.5 * np.sum(np.abs(u - v)))
++
++
++def human_weighted_distribution(
++    df: pd.DataFrame,
++    var: str,
++    codes: Sequence[float | int],
++    weight_col: str = "FINALWT",
++    min_n: int = 100,
++    round_digits: int | None = None,
++) -> list[float] | None:
++    """문항별 실제 KGSS 응답자의 FINALWT 가중 응답분포 P_KGSS(Y=k)를 계산한다.
++
++    결측(NaN), 비해당/무응답, codes에 포함되지 않은 값은 제외한다.
++    유효 응답자 수가 min_n 미만이면 None을 반환한다.
++    """
++    if var not in df.columns or weight_col not in df.columns:
++        return None
++    float_codes = [float(c) for c in codes]
++    s = df[[var, weight_col]].dropna()
++    s = s[s[var].isin(float_codes) & (s[weight_col] > 0)]
++    if len(s) < min_n:
++        return None
++    tot = float(s[weight_col].sum())
++    if tot <= 0:
++        return None
++    dist = [float(s.loc[s[var] == c, weight_col].sum() / tot) for c in float_codes]
++    if round_digits is not None:
++        return [round(x, round_digits) for x in dist]
++    return dist
++
++
++def add_age_group(df: pd.DataFrame, age_col: str = "AGE", out_col: str = "AGE_GRP") -> pd.DataFrame:
++    """KGSS 표준 5개 연령대(18-29, 30-39, 40-49, 50-59, 60+) 컬럼을 추가한다."""
++    out = df.copy()
++    out[out_col] = pd.cut(out[age_col], AGE_BINS_5, labels=AGE_LABELS_5, right=False)
++    return out
++
++
++def human_cell_distributions(
++    df: pd.DataFrame,
++    var: str,
++    codes: Sequence[float | int],
++    cell_cols: Sequence[str] = ("SEX", "AGE_GRP"),
++    weight_col: str = "FINALWT",
++    min_cell_n: int = 5,
++) -> pd.DataFrame:
++    """성별×연령 등 교차 셀별 실제 KGSS 가중 응답분포 P_KGSS(Y|c)와 셀 비중 P_KGSS(c)를 계산한다."""
++    float_codes = [float(c) for c in codes]
++    req_cols = [var, weight_col] + list(cell_cols)
++    if any(c not in df.columns for c in req_cols):
++        return pd.DataFrame()
++
++    # 전체 조사 표본 기준 셀 가중치 (문항 무관 모집단 비중)
++    base = df[list(cell_cols) + [weight_col]].dropna()
++    base = base[base[weight_col] > 0]
++    total_pop_wt = float(base[weight_col].sum()) if len(base) else 0.0
++    pop_cell_wt = (
++        base.groupby(list(cell_cols), observed=True)[weight_col].sum() / total_pop_wt
++        if total_pop_wt > 0
++        else pd.Series(dtype=float)
++    )
++
++    # 해당 문항 유효 응답자 기준
++    s = df[req_cols].dropna()
++    s = s[s[var].isin(float_codes) & (s[weight_col] > 0)]
++    if s.empty:
++        return pd.DataFrame()
++    total_item_wt = float(s[weight_col].sum())
++    if total_item_wt <= 0:
++        return pd.DataFrame()
++
++    grand_dist = np.array([s.loc[s[var] == c, weight_col].sum() / total_item_wt for c in float_codes])
++    grand_mean = float(np.sum(np.array(float_codes) * grand_dist))
++
++    rows = []
++    for key, g in s.groupby(list(cell_cols), observed=True):
++        wt_sum = float(g[weight_col].sum())
++        if len(g) < min_cell_n or wt_sum <= 0:
++            continue
++        key_tuple = key if isinstance(key, tuple) else (key,)
++        c_dist = [float(g.loc[g[var] == c, weight_col].sum() / wt_sum) for c in float_codes]
++        c_mean = float(np.sum(np.array(float_codes) * np.array(c_dist)))
++        row = {col: val for col, val in zip(cell_cols, key_tuple)}
++        row.update({
++            "var": var,
++            "n_cell": int(len(g)),
++            "cell_weight_item": float(wt_sum / total_item_wt),
++            "cell_weight_pop": float(pop_cell_wt.get(key, wt_sum / total_item_wt)),
++            "real_dist": json.dumps(c_dist),
++            "real_mean": c_mean,
++            "real_grand": grand_mean,
++        })
++        rows.append(row)
++
++    out = pd.DataFrame(rows)
++    if not out.empty:
++        # 유효 셀들의 가중치 합이 1이 되도록 정규화한 열 제공
++        s_item = out["cell_weight_item"].sum()
++        out["cell_weight_item_norm"] = out["cell_weight_item"] / s_item if s_item > 0 else 1.0 / len(out)
++        s_pop = out["cell_weight_pop"].sum()
++        out["cell_weight_pop_norm"] = out["cell_weight_pop"] / s_pop if s_pop > 0 else 1.0 / len(out)
++    return out
++
++
++def aggregate_distributions(
++    dists: Sequence[Sequence[float]],
++    weights: Sequence[float] | None = None,
++) -> np.ndarray:
++    """조건부 예측분포 P_i들을 가중치 w_i로 집계하여 모집단 예측분포 sum_i w_i P_i를 반환한다."""
++    if len(dists) == 0:
++        raise ValueError("집계할 분포가 없습니다.")
++    mat = np.vstack([validate_prob_dist(d, tol=1e-3) for d in dists])
++    if weights is None:
++        w = np.ones(len(mat), dtype=float) / len(mat)
++    else:
++        w = np.asarray(weights, dtype=float)
++        if len(w) != len(mat):
++            raise ValueError(f"가중치 개수({len(w)})와 분포 개수({len(mat)}) 불일치")
++        if np.any(w < 0) or float(w.sum()) <= 0:
++            raise ValueError("가중치는 비음수이고 합이 양수여야 합니다.")
++        w = w / float(w.sum())
++    agg = np.sum(w[:, None] * mat, axis=0)
++    return validate_prob_dist(agg, tol=1e-5)
++
++
++def aggregate_demo_cells(
++    cell_df: pd.DataFrame,
++    cell_weights_df: pd.DataFrame,
++    dist_col: str = "model_dist",
++    cell_cols: Sequence[str] = ("sex", "age_grp"),
++    weight_col: str = "cell_weight_item_norm",
++) -> tuple[np.ndarray, pd.DataFrame]:
++    """Demo(또는 셀 매핑된 Full) 조건의 셀별 예측분포를 KGSS 셀 가중치로 집계한다.
++
++    한 셀에 여러 프롬프트(n_c개)가 있는 경우 셀 내 단순평균으로 P_LLM(Y|c)를 먼저 구한 뒤,
++    KGSS 모집단 셀 비중 P_KGSS(c)를 곱해 P_LLM(Y) = sum_c P_KGSS(c) P_LLM(Y|c)를 산출한다.
++    이는 각 프롬프트 행 i in c에 w_i = w_c / n_c 가중치를 부여해 행 단위로 집계한 것과
++    수학적으로 완전히 동치이다(sum_{i in c} w_i = w_c).
++    일부 셀이 결측인 경우 관측된 셀들의 가중치 합으로 재정규화한다.
++    """
++    records = []
++    for key, g in cell_df.groupby(list(cell_cols), observed=True):
++        key_tuple = key if isinstance(key, tuple) else (key,)
++        dists = [json.loads(x) if isinstance(x, str) else x for x in g[dist_col]]
++        cell_mean_dist = aggregate_distributions(dists)
++        rec = {col: val for col, val in zip(cell_cols, key_tuple)}
++        rec["cell_model_dist"] = cell_mean_dist
++        rec["n_prompts"] = int(len(dists))
++        records.append(rec)
++
++    c_pred = pd.DataFrame(records)
++    merged = c_pred.merge(cell_weights_df, on=list(cell_cols), how="inner")
++    if merged.empty:
++        # 매칭되는 셀 가중치가 없을 경우 관측된 셀의 동일 가중 평균으로 폴백
++        c_pred["cell_weight_matched_norm"] = 1.0 / len(c_pred) if len(c_pred) > 0 else np.nan
++        c_pred["row_weight_per_prompt"] = c_pred["cell_weight_matched_norm"] / c_pred["n_prompts"]
++        agg = aggregate_distributions(c_pred["cell_model_dist"].tolist())
++        return agg, c_pred
++
++    w = merged[weight_col].to_numpy(dtype=float)
++    w_norm = w / float(w.sum())
++    merged = merged.copy()
++    merged["cell_weight_matched_norm"] = w_norm
++    merged["row_weight_per_prompt"] = merged["cell_weight_matched_norm"] / merged["n_prompts"].to_numpy(dtype=float)
++    agg = aggregate_distributions(merged["cell_model_dist"].tolist(), weights=w_norm)
++    return agg, merged
++
++
++def build_cell_poststratified_row_weights(
++    row_df: pd.DataFrame,
++    merged_cells: pd.DataFrame,
++    cell_cols: Sequence[str] = ("sex", "age_grp"),
++    dist_col: str | None = "model_dist",
++    expected_cell_agg: np.ndarray | None = None,
++    tol: float = 1e-10,
++) -> list[float]:
++    """각 프롬프트 행 i에 셀 가중치 나누기 셀 내 인원수(w_i = w_c / n_c)를 할당하고 불변식을 검증한다.
++
++    불변식(Invariant):
++    1. 관측된 모든 셀 c에 대해 sum_{i in c} w_i == w_c_norm
++    2. 행 가중 집계 sum_i w_i P_i == 셀 평균 선집계 sum_c w_c_norm P_bar_c
++    """
++    if merged_cells.empty or "row_weight_per_prompt" not in merged_cells.columns:
++        return [1.0 / len(row_df)] * len(row_df)
++
++    key_cols = list(cell_cols)
++    w_per_row_map = {
++        tuple(row[c] for c in key_cols): float(row["row_weight_per_prompt"])
++        for _, row in merged_cells.iterrows()
++    }
++    cell_target_map = {
++        tuple(row[c] for c in key_cols): float(row["cell_weight_matched_norm"])
++        for _, row in merged_cells.iterrows()
++    }
++
++    raw_weights = []
++    row_keys = []
++    for _, r in row_df.iterrows():
++        k = tuple(r[c] for c in key_cols)
++        row_keys.append(k)
++        if k not in w_per_row_map:
++            raise ValueError(f"관측 행의 셀 키 {k}가 merged_cells에 존재하지 않습니다.")
++        raw_weights.append(w_per_row_map[k])
++
++    w_arr = np.asarray(raw_weights, dtype=float)
++    w_arr = w_arr / float(w_arr.sum())
++
++    # 불변식 1: 셀별 행 가중치 합 == 정규화된 셀 가중치 w_c_norm
++    for k, target_wc in cell_target_map.items():
++        cell_sum = float(np.sum([w for rk, w in zip(row_keys, w_arr) if rk == k]))
++        if abs(cell_sum - target_wc) > tol:
++            raise AssertionError(
++                f"셀 가중치 불변식 위반 (cell={k}): sum_{{i in c}} w_i = {cell_sum:.12f} != w_c = {target_wc:.12f}"
++            )
++
++    # 불변식 2: 행 단위 가중합 분포 == 셀 평균 선집계 분포
++    if dist_col is not None and dist_col in row_df.columns and expected_cell_agg is not None:
++        row_dists = [json.loads(x) if isinstance(x, str) else x for x in row_df[dist_col]]
++        row_agg = aggregate_distributions(row_dists, weights=w_arr)
++        max_diff = float(np.max(np.abs(row_agg - expected_cell_agg)))
++        if max_diff > tol:
++            raise AssertionError(
++                f"행 가중 집계와 셀 선집계 분포 불일치: max|diff| = {max_diff:.12e} > {tol}"
++            )
++
++    return w_arr.tolist()
++
++
++def aggregate_full_personas(
++    persona_dists: Sequence[Sequence[float]],
++    already_pps_sampled: bool = True,
++    raw_weights: Sequence[float] | None = None,
++) -> np.ndarray:
++    """Full 조건의 개인별 예측분포 P_LLM(Y|X_i)를 모집단 분포로 집계한다.
++
++    주의 (이중 가중 방지):
++    kgss_persona_bootstrap.py에서 이미 FINALWT에 비례하여 복원추출(PPS with replacement)한
++    표본인 경우(already_pps_sampled=True), Hansen-Hurwitz 불편추정량은 단순 표본평균
++    (1/N) * sum_i P_LLM(Y|X_i)이다. 여기에 FINALWT를 다시 곱하면 FINALWT^2에 비례하는
++    이중 가중(double-weighting) 편향이 발생하므로 raw_weights를 적용하지 않는다.
++    비가중 표본에서 추출된 경우(already_pps_sampled=False)에만 raw_weights를 적용한다.
++    """
++    if already_pps_sampled or raw_weights is None:
++        return aggregate_distributions(persona_dists, weights=None)
++    return aggregate_distributions(persona_dists, weights=raw_weights)
++
++
++def evaluate_item_distributions(
++    pred_dists: Sequence[Sequence[float]],
++    gold_dist: Sequence[float],
++    codes: Sequence[float | int] | None = None,
++    weights: Sequence[float] | None = None,
++    cell_model_dists: Sequence[Sequence[float]] | None = None,
++    cell_human_dists: Sequence[Sequence[float]] | None = None,
++    cell_weights: Sequence[float] | None = None,
++    use_code_positions: bool = False,
++) -> dict[str, float]:
++    """단일 문항에 대해 기존 지표와 수정된 지표(가중/비가중 포함)를 모두 계산하여 반환한다."""
++    gold = validate_prob_dist(gold_dist, tol=1e-3)
++    preds = [validate_prob_dist(p, tol=1e-3) for p in pred_dists]
++    n_opts = len(gold)
++
++    # 1. 기존 방식: 개별 프롬프트별 W_1(P_i, Q) 및 TVD(P_i, Q) 계산 후 평균
++    indiv_w = [
++        wasserstein_1d(p, gold, codes=codes, use_code_positions=use_code_positions)
++        for p in preds
++    ]
++    indiv_tvd = [tvd_distance(p, gold) for p in preds]
++    existing_w = float(np.mean(indiv_w))
++    existing_tvd = float(np.mean(indiv_tvd))
++
++    # 가중치가 주어진 경우 정규화 (기본값은 동일 가중 1/N)
++    unw_arr = np.ones(len(preds), dtype=float) / len(preds)
++    if weights is not None:
++        w_arr = np.asarray(weights, dtype=float)
++        w_arr = w_arr / float(w_arr.sum())
++    else:
++        w_arr = unw_arr.copy()
++    weighted_mean_w = float(np.sum(w_arr * np.array(indiv_w)))
++    weighted_mean_tvd = float(np.sum(w_arr * np.array(indiv_tvd)))
++
++    # 2. 수정 방식: 모집단 예측분포 P_agg = sum_i w_i P_i 먼저 집계 후 거리 계산
++    pop_pred = aggregate_distributions(preds, weights=w_arr)
++    pop_pred_unw = aggregate_distributions(preds, weights=unw_arr)
++    population_w = wasserstein_1d(
++        pop_pred, gold, codes=codes, use_code_positions=use_code_positions
++    )
++    population_w_unw = wasserstein_1d(
++        pop_pred_unw, gold, codes=codes, use_code_positions=use_code_positions
++    )
++    population_tvd = tvd_distance(pop_pred, gold)
++    population_tvd_unw = tvd_distance(pop_pred_unw, gold)
++
++    # 3. 기준선(Baselines)
++    unif = np.ones(n_opts, dtype=float) / n_opts
++    uniform_w = wasserstein_1d(unif, gold, codes=codes, use_code_positions=use_code_positions)
++    uniform_tvd = tvd_distance(unif, gold)
++
++    modal_1hot = np.zeros(n_opts, dtype=float)
++    modal_1hot[int(np.argmax(gold))] = 1.0
++    marginal_modal_1hot_w = wasserstein_1d(
++        modal_1hot, gold, codes=codes, use_code_positions=use_code_positions
++    )
++    marginal_modal_1hot_tvd = tvd_distance(modal_1hot, gold)
++
++    # 1D Wasserstein의 이론적 최적 점질량(1-hot) 위치는 최빈값(mode)이 아니라 중앙값(median)임
++    cdf_gold = np.cumsum(gold)
++    median_idx = int(np.searchsorted(cdf_gold, 0.5 - 1e-12))
++    median_idx = min(max(median_idx, 0), n_opts - 1)
++    median_1hot = np.zeros(n_opts, dtype=float)
++    median_1hot[median_idx] = 1.0
++    marginal_median_1hot_w = wasserstein_1d(
++        median_1hot, gold, codes=codes, use_code_positions=use_code_positions
++    )
++    marginal_median_1hot_tvd = tvd_distance(median_1hot, gold)
++
++    # 4. 엔트로피 분해: 조건부 엔트로피 E[H(P_i)] vs 모집단 엔트로피 H(E[P_i])
++    indiv_ent = [entropy_bits(p) for p in preds]
++    cond_entropy_unweighted = float(np.mean(indiv_ent))
++    cond_entropy_weighted = float(np.sum(w_arr * np.array(indiv_ent)))
++    pop_entropy = entropy_bits(pop_pred)
++    pop_entropy_unweighted = entropy_bits(pop_pred_unw)
++    gold_entropy = entropy_bits(gold)
++    mutual_info_bits = float(max(0.0, pop_entropy - cond_entropy_weighted))
++    mutual_info_unweighted_bits = float(max(0.0, pop_entropy_unweighted - cond_entropy_unweighted))
++
++    out = {
++        "n_options": float(n_opts),
++        "n_probes": float(len(preds)),
++        "existing_wasserstein": existing_w,
++        "weighted_mean_wasserstein": weighted_mean_w,
++        "population_wasserstein": population_w,
++        "population_wasserstein_unweighted": population_w_unw,
++        "wasserstein_jensen_gap": float(weighted_mean_w - population_w),
++        "existing_minus_population_w": float(existing_w - population_w),
++        "existing_tvd": existing_tvd,
++        "weighted_mean_tvd": weighted_mean_tvd,
++        "population_tvd": population_tvd,
++        "population_tvd_unweighted": population_tvd_unw,
++        "uniform_wasserstein": uniform_w,
++        "uniform_tvd": uniform_tvd,
++        "marginal_modal_1hot_wasserstein": marginal_modal_1hot_w,
++        "marginal_modal_1hot_tvd": marginal_modal_1hot_tvd,
++        "marginal_median_1hot_wasserstein": marginal_median_1hot_w,
++        "marginal_median_1hot_tvd": marginal_median_1hot_tvd,
++        "human_entropy_bits": gold_entropy,
++        "model_conditional_entropy_bits": cond_entropy_unweighted,
++        "model_conditional_entropy_weighted_bits": cond_entropy_weighted,
++        "model_population_entropy_bits": pop_entropy,
++        "model_population_entropy_unweighted_bits": pop_entropy_unweighted,
++        "mutual_information_bits": mutual_info_bits,
++        "mutual_information_unweighted_bits": mutual_info_unweighted_bits,
++    }
++
++    # 5. 조건부 셀 재현성 (Conditional Cell Fidelity) 및 셀 가중 모집단 집계
++    if cell_model_dists is not None and cell_human_dists is not None and len(cell_model_dists) > 0:
++        c_ws = [
++            wasserstein_1d(pm, ph, codes=codes, use_code_positions=use_code_positions)
++            for pm, ph in zip(cell_model_dists, cell_human_dists)
++        ]
++        c_tvds = [tvd_distance(pm, ph) for pm, ph in zip(cell_model_dists, cell_human_dists)]
++        out["conditional_cell_wasserstein_unweighted"] = float(np.mean(c_ws))
++        out["conditional_cell_tvd_unweighted"] = float(np.mean(c_tvds))
++        if cell_weights is not None:
++            cw = np.asarray(cell_weights, dtype=float)
++            cw = cw / float(cw.sum())
++            out["conditional_cell_wasserstein_weighted"] = float(np.sum(cw * np.array(c_ws)))
++            out["conditional_cell_tvd_weighted"] = float(np.sum(cw * np.array(c_tvds)))
++            cell_pop_pred = aggregate_distributions(cell_model_dists, weights=cw)
++        else:
++            out["conditional_cell_wasserstein_weighted"] = float(np.mean(c_ws))
++            out["conditional_cell_tvd_weighted"] = float(np.mean(c_tvds))
++            cell_pop_pred = aggregate_distributions(cell_model_dists)
++        out["population_wasserstein_cell_weighted"] = wasserstein_1d(
++            cell_pop_pred, gold, codes=codes, use_code_positions=use_code_positions
++        )
++        out["population_tvd_cell_weighted"] = tvd_distance(cell_pop_pred, gold)
++
++    return out
++
++
++def compute_subgroup_correlations(
++    merged_cells: pd.DataFrame,
++    cell_cols: Sequence[str] = ("sex", "age_grp"),
++    min_items_per_cell: int = 5,
++    min_cells_per_item: int = 5,
++    n_boot: int = 2000,
++    seed: int = 42,
++    cluster_col: str | None = "battery",
++) -> dict[str, object]:
++    """성별×연령 셀별 하위집단 상관(subgroup r)을 다각도로 분리·검증하여 계산한다.
++
++    1. existing_cell_r:
++       corr_v(real_mean - real_grand, model_pred)
++       기존 kgss_c0_validity.py 산식. 인간 편차만 중심화하고 모델 기댓값은 중심화하지 않아
++       문항 척도 분산 Var_v(model_grand)가 분모를 팽창시켜 오라클조차 r≈0.18로 감쇠됨.
++    2. centered_cell_r (엄격 가중치·관측셀 일치 중심화):
++       corr_v(real_mean - real_grand_matched, model_pred - model_grand_matched)
++       동일한 관측 셀 집합 C_v와 동일한 정규화 가중치 w_{v,c}를 인간과 모델 양쪽에 똑같이 적용해
++       문항 전체평균을 빼서 셀 편차끼리 상관시킴. 오라클(model_pred == real_mean)일 때 정확히 r = 1.0.
++    3. centered_unweighted_cell_r:
++       인간과 모델 양쪽 모두 관측 셀 단순평균(1/|C_v|)으로 중심화한 상관계수.
++    4. scale_normalized_cell_r:
++       문항별 척도 범위 차이(2점 척도 vs 7점 척도)의 영향을 제거하기 위해 각 문항의 편차를
++       척도 폭(span = max(codes) - min(codes))으로 나눈 뒤 계산한 상관계수.
++    5. within_item_r:
++       각 문항 v 내부에서 셀들에 대해 corr_c(real_mean, model_pred)를 구한 뒤 문항 평균.
++    6. 부트스트랩 95% CI (탐색적 불확실성 범위):
++       - 문항(var) 단위 부트스트랩: 관측된 셀 평균이 주어졌을 때 문항 표집 변동을 반영.
++       - 문항군(battery) 클러스터 부트스트랩: POSGEN1..10 등 동일 배터리 문항 묶음 간 의존성을 반영.
++       (주의: 인간 응답자 및 페르소나 표본추출 불확실성까지 모두 반영한 모수적 추론이 아니므로
++        탐색적 지표로 해석해야 하며, 평균 r을 제곱하여 설명분산 R^2로 해석해서는 안 됨.)
++    """
++    if merged_cells.empty:
++        return {
++            "existing_mean_r": np.nan,
++            "centered_mean_r": np.nan,
++            "centered_unweighted_mean_r": np.nan,
++            "scale_normalized_mean_r": np.nan,
++            "within_item_mean_r": np.nan,
++            "centered_boot_ci_low": np.nan,
++            "centered_boot_ci_high": np.nan,
++            "centered_boot_p_two_sided": np.nan,
++            "centered_battery_boot_ci_low": np.nan,
++            "centered_battery_boot_ci_high": np.nan,
++            "centered_battery_boot_p_two_sided": np.nan,
++            "n_items": 0,
++            "n_clusters": 0,
++            "existing_cell_rs": {},
++            "centered_cell_rs": {},
++            "within_item_rs": {},
++        }
++
++    df = merged_cells.copy()
++    df["real_dev_legacy"] = df["real_mean"] - df["real_grand"]
++
++    # 관측된 동일 셀 집합에서 인간과 모델에 동일한 가중치(FINALWT 정규화 가중치)를 적용해 중심화
++    if "cell_weight_item_norm" in df.columns:
++        def _matched_w_means(g: pd.DataFrame) -> pd.Series:
++            w = g["cell_weight_item_norm"].to_numpy(dtype=float)
++            if w.sum() <= 0:
++                w = np.ones(len(g), dtype=float) / len(g)
++            else:
++                w = w / w.sum()
++            return pd.Series({
++                "real_grand_matched": float(np.sum(w * g["real_mean"].to_numpy(dtype=float))),
++                "model_grand_matched": float(np.sum(w * g["model_pred"].to_numpy(dtype=float))),
++            })
++        gm = df.groupby("var", observed=True).apply(_matched_w_means, include_groups=False)
++        df = df.merge(gm, on="var", how="left")
++    else:
++        df["real_grand_matched"] = df.groupby("var", observed=True)["real_mean"].transform("mean")
++        df["model_grand_matched"] = df.groupby("var", observed=True)["model_pred"].transform("mean")
++
++    df["real_dev"] = df["real_mean"] - df["real_grand_matched"]
++    df["model_dev"] = df["model_pred"] - df["model_grand_matched"]
++
++    # 비가중(1/|C_v|) 동일 중심화 편차
++    df["real_dev_unw"] = df["real_mean"] - df.groupby("var", observed=True)["real_mean"].transform("mean")
++    df["model_dev_unw"] = df["model_pred"] - df.groupby("var", observed=True)["model_pred"].transform("mean")
++
++    # 척도 범위(span) 정규화 편차
++    if "span" in df.columns:
++        span_vals = np.maximum(df["span"].to_numpy(dtype=float), 1.0)
++        df["real_dev_sn"] = df["real_dev"] / span_vals
++        df["model_dev_sn"] = df["model_dev"] / span_vals
++    else:
++        df["real_dev_sn"] = df["real_dev"]
++        df["model_dev_sn"] = df["model_dev"]
++
++    existing_rs: dict[str, float] = {}
++    centered_rs: dict[str, float] = {}
++    centered_unw_rs: dict[str, float] = {}
++    scale_norm_rs: dict[str, float] = {}
++
++    for key, gc in df.groupby(list(cell_cols), observed=True):
++        if len(gc) < min_items_per_cell:
++            continue
++        label = "_".join(str(x) for x in (key if isinstance(key, tuple) else (key,)))
++        if gc["real_dev_legacy"].std(ddof=1) > 1e-12 and gc["model_pred"].std(ddof=1) > 1e-12:
++            r_ex, _ = pearsonr(gc["real_dev_legacy"], gc["model_pred"])
++            existing_rs[label] = float(r_ex)
++        if gc["real_dev"].std(ddof=1) > 1e-12 and gc["model_dev"].std(ddof=1) > 1e-12:
++            r_ce, _ = pearsonr(gc["real_dev"], gc["model_dev"])
++            centered_rs[label] = float(r_ce)
++        if gc["real_dev_unw"].std(ddof=1) > 1e-12 and gc["model_dev_unw"].std(ddof=1) > 1e-12:
++            r_cu, _ = pearsonr(gc["real_dev_unw"], gc["model_dev_unw"])
++            centered_unw_rs[label] = float(r_cu)
++        if gc["real_dev_sn"].std(ddof=1) > 1e-12 and gc["model_dev_sn"].std(ddof=1) > 1e-12:
++            r_sn, _ = pearsonr(gc["real_dev_sn"], gc["model_dev_sn"])
++            scale_norm_rs[label] = float(r_sn)
++
++    within_item_rs: dict[str, float] = {}
++    for var, gv in df.groupby("var", observed=True):
++        if len(gv) < min_cells_per_item:
++            continue
++        if gv["real_mean"].std(ddof=1) > 1e-12 and gv["model_pred"].std(ddof=1) > 1e-12:
++            r_it, _ = pearsonr(gv["real_mean"], gv["model_pred"])
++            within_item_rs[str(var)] = float(r_it)
++
++    def _boot_mean_r_from_indices(R_mat: np.ndarray, M_mat: np.ndarray, idx: np.ndarray) -> float | None:
++        Rb = R_mat[idx]
++        Mb = M_mat[idx]
++        c_rs = []
++        for c_idx in range(R_mat.shape[1]):
++            mask = np.isfinite(Rb[:, c_idx]) & np.isfinite(Mb[:, c_idx])
++            if np.sum(mask) < min_items_per_cell:
++                continue
++            rc = Rb[mask, c_idx]
++            mc = Mb[mask, c_idx]
++            rc_c = rc - np.mean(rc)
++            mc_c = mc - np.mean(mc)
++            denom = float(np.sqrt(np.sum(rc_c ** 2) * np.sum(mc_c ** 2)))
++            if denom > 1e-12:
++                c_rs.append(float(np.sum(rc_c * mc_c) / denom))
++        return float(np.mean(c_rs)) if c_rs else None
++
++    # 문항 단위 및 배터리 클러스터 단위 부트스트랩
++    ci_low, ci_high, boot_p = np.nan, np.nan, np.nan
++    b_ci_low, b_ci_high, b_boot_p = np.nan, np.nan, np.nan
++    n_items_total = int(df["var"].nunique())
++    n_clusters_total = n_items_total
++
++    if centered_rs and n_boot > 0:
++        df["_cell_key"] = [
++            "_".join(str(row[c]) for c in cell_cols) for _, row in df[list(cell_cols)].iterrows()
++        ]
++        piv_r = df.pivot_table(index="var", columns="_cell_key", values="real_dev", aggfunc="mean")
++        piv_m = df.pivot_table(index="var", columns="_cell_key", values="model_dev", aggfunc="mean")
++        if len(piv_r) >= min_items_per_cell:
++            R_mat = piv_r.to_numpy(dtype=float)
++            M_mat = piv_m.to_numpy(dtype=float)
++            n_items = R_mat.shape[0]
++            rng = np.random.default_rng(seed)
++            boot_means = []
++            for _ in range(n_boot):
++                idx = rng.integers(0, n_items, size=n_items)
++                val = _boot_mean_r_from_indices(R_mat, M_mat, idx)
++                if val is not None:
++                    boot_means.append(val)
++            if boot_means:
++                b_arr = np.asarray(boot_means, dtype=float)
++                ci_low = float(np.percentile(b_arr, 2.5))
++                ci_high = float(np.percentile(b_arr, 97.5))
++                boot_p = float(2.0 * min(np.mean(b_arr <= 0.0), np.mean(b_arr >= 0.0)))
++
++            # 배터리(문항 묶음) 클러스터 부트스트랩
++            if cluster_col and cluster_col in df.columns:
++                var_to_cluster = (
++                    df[["var", cluster_col]]
++                    .drop_duplicates(subset=["var"])
++                    .set_index("var")[cluster_col]
++                    .fillna("")
++                    .astype(str)
++                    .to_dict()
++                )
++                clusters: dict[str, list[int]] = {}
++                for row_i, v_name in enumerate(piv_r.index):
++                    raw_cl = var_to_cluster.get(v_name, "").strip()
++                    cl_key = raw_cl if raw_cl and raw_cl.lower() != "nan" else f"__single__{v_name}"
++                    clusters.setdefault(cl_key, []).append(row_i)
++                cluster_keys = list(clusters.keys())
++                n_clusters_total = len(cluster_keys)
++                rng_cl = np.random.default_rng(seed)
++                cl_boot_means = []
++                for _ in range(n_boot):
++                    sampled_cl = rng_cl.integers(0, n_clusters_total, size=n_clusters_total)
++                    idx_list = []
++                    for c_i in sampled_cl:
++                        idx_list.extend(clusters[cluster_keys[int(c_i)]])
++                    idx_cl = np.asarray(idx_list, dtype=int)
++                    val_cl = _boot_mean_r_from_indices(R_mat, M_mat, idx_cl)
++                    if val_cl is not None:
++                        cl_boot_means.append(val_cl)
++                if cl_boot_means:
++                    cb_arr = np.asarray(cl_boot_means, dtype=float)
++                    b_ci_low = float(np.percentile(cb_arr, 2.5))
++                    b_ci_high = float(np.percentile(cb_arr, 97.5))
++                    b_boot_p = float(2.0 * min(np.mean(cb_arr <= 0.0), np.mean(cb_arr >= 0.0)))
++
++    return {
++        "existing_mean_r": float(np.mean(list(existing_rs.values()))) if existing_rs else np.nan,
++        "centered_mean_r": float(np.mean(list(centered_rs.values()))) if centered_rs else np.nan,
++        "centered_unweighted_mean_r": float(np.mean(list(centered_unw_rs.values()))) if centered_unw_rs else np.nan,
++        "scale_normalized_mean_r": float(np.mean(list(scale_norm_rs.values()))) if scale_norm_rs else np.nan,
++        "within_item_mean_r": float(np.mean(list(within_item_rs.values()))) if within_item_rs else np.nan,
++        "centered_boot_ci_low": ci_low,
++        "centered_boot_ci_high": ci_high,
++        "centered_boot_p_two_sided": boot_p,
++        "centered_battery_boot_ci_low": b_ci_low,
++        "centered_battery_boot_ci_high": b_ci_high,
++        "centered_battery_boot_p_two_sided": b_boot_p,
++        "n_items": n_items_total,
++        "n_clusters": n_clusters_total,
++        "existing_cell_rs": existing_rs,
++        "centered_cell_rs": centered_rs,
++        "within_item_rs": within_item_rs,
++    }
++
++
++def evaluate_personal_accuracy_paired(
++    obs_df: pd.DataFrame,
++    cond_a: str = "full",
++    cond_b: str = "demo",
++    n_boot: int = 2000,
++    seed: int = 42,
++) -> dict[str, float]:
++    """개인 응답 예측 정확도(일반 정확도 및 셀 최빈 정규화 정확도)와 대응 차이 부트스트랩을 계산한다.
++
++    입력 obs_df 필수 열:
++    - level: 조건명 (예: 'c0', 'adult', 'demo', 'full')
++    - persona_id: 페르소나 표본 ID (또는 RESPID)
++    - var: 문항 변수명
++    - is_correct: 모델 최빈 예측 == 실제 개인 응답 여부 (0 또는 1)
++    - cell_modal: 해당 문항의 성별×연령 셀 최빈 정확도 (0 < cell_modal <= 1)
++    - respid (선택): 중복 추출된 원 응답자 클러스터 ID
++    """
++    df = obs_df.copy()
++    df["norm_acc"] = df["is_correct"].astype(float) / df["cell_modal"].astype(float)
++
++    # 동일 (persona_id, var) 쌍으로 정렬하여 완전 대응(balanced panel) 구성
++    piv_raw = df.pivot_table(index=["persona_id", "var"], columns="level", values="is_correct", aggfunc="mean")
++    piv_norm = df.pivot_table(index=["persona_id", "var"], columns="level", values="norm_acc", aggfunc="mean")
++
++    both_raw = piv_raw[[cond_a, cond_b]].dropna()
++    both_norm = piv_norm[[cond_a, cond_b]].dropna()
++
++    mean_raw_a = float(both_raw[cond_a].mean())
++    mean_raw_b = float(both_raw[cond_b].mean())
++    diff_raw = float((both_raw[cond_a] - both_raw[cond_b]).mean())
++
++    mean_norm_a = float(both_norm[cond_a].mean())
++    mean_norm_b = float(both_norm[cond_b].mean())
++    diff_norm = float((both_norm[cond_a] - both_norm[cond_b]).mean())
++
++    # 페르소나 단위 집계 후 부트스트랩 (일반 정확도 vs 정규화 정확도 분리)
++    p_raw_diff = (both_raw[cond_a] - both_raw[cond_b]).groupby("persona_id").mean()
++    p_norm_diff = (both_norm[cond_a] - both_norm[cond_b]).groupby("persona_id").mean()
++
++    rng = np.random.default_rng(seed)
++    n_p = len(p_raw_diff)
++    boot_raw = np.empty(n_boot, dtype=float)
++    boot_norm = np.empty(n_boot, dtype=float)
++    raw_vals = p_raw_diff.to_numpy(dtype=float)
++    norm_vals = p_norm_diff.to_numpy(dtype=float)
++    for b in range(n_boot):
++        idx = rng.integers(0, n_p, size=n_p)
++        boot_raw[b] = float(raw_vals[idx].mean())
++        boot_norm[b] = float(norm_vals[idx].mean())
++
++    return {
++        f"raw_acc_{cond_a}": mean_raw_a,
++        f"raw_acc_{cond_b}": mean_raw_b,
++        "raw_diff_mean": diff_raw,
++        "raw_diff_linearity_error": abs(diff_raw - (mean_raw_a - mean_raw_b)),
++        "raw_boot_ci_low": float(np.percentile(boot_raw, 2.5)),
++        "raw_boot_ci_high": float(np.percentile(boot_raw, 97.5)),
++        f"norm_acc_{cond_a}": mean_norm_a,
++        f"norm_acc_{cond_b}": mean_norm_b,
++        "norm_diff_mean": diff_norm,
++        "norm_diff_linearity_error": abs(diff_norm - (mean_norm_a - mean_norm_b)),
++        "norm_boot_ci_low": float(np.percentile(boot_norm, 2.5)),
++        "norm_boot_ci_high": float(np.percentile(boot_norm, 97.5)),
++    }
+diff --git a/tests/test_kosmos_audit.py b/tests/test_kosmos_audit.py
+new file mode 100644
+index 0000000..da19b71
+--- /dev/null
++++ b/tests/test_kosmos_audit.py
+@@ -0,0 +1,567 @@
++"""
++Unit tests for the KOSMOS evaluation pipeline audit (TEST 1 through TEST 7 + additional metric checks).
++
++Verifies:
++- TEST 1: Identical distributions -> Wasserstein = 0
++- TEST 2: Single-prompt condition (C0 / adult) -> Existing W1 == Population W1
++- TEST 3: Male/Female 50:50 opposite conditional distributions counterexample ->
++          Existing W1 = 0.5, Corrected Population W1 = 0.0, Conditional Cell W1 = 0.0
++- TEST 4: Unconditional marginal copy (P_LLM(Y|c) = P_KGSS(Y)) under true polarizing subgroups ->
++          Existing W1 = 0.0 (falsely rewards stereotype blindness),
++          Population W1 = 0.0,
++          Conditional Cell W1 = 0.5 (detects failure to capture subgroup heterogeneity)
++- TEST 5: Non-uniform cell weights (e.g., 80:20) -> weighted vs. unweighted aggregation difference
++- TEST 6: Probability simplex normalization (sum = 1, non-negative, invalid weights rejected)
++- TEST 7: Missing cell / zero-sample cell handling -> automatic weight renormalization to 1.0
++- Additional tests:
++  - TEST 8: Subgroup r centering bug: Perfect Oracle achieves centered r = 1.0, while uncentered r < 1.0
++  - TEST 9: Personal Accuracy paired difference linearity: mean(A - B) == mean(A) - mean(B)
++"""
++from __future__ import annotations
++
++import unittest
++
++import numpy as np
++import pandas as pd
++
++from kgss_metrics import (
++    aggregate_demo_cells,
++    aggregate_distributions,
++    aggregate_full_personas,
++    compute_subgroup_correlations,
++    evaluate_item_distributions,
++    evaluate_personal_accuracy_paired,
++    validate_prob_dist,
++    wasserstein_1d,
++)
++
++
++class TestKosmosAuditMetrics(unittest.TestCase):
++    def test_1_identical_distributions_zero_wasserstein(self):
++        """TEST 1: 동일한 두 분포의 Wasserstein = 0."""
++        p = np.array([0.15, 0.35, 0.30, 0.20])
++        q = np.array([0.15, 0.35, 0.30, 0.20])
++        w = wasserstein_1d(p, q, codes=[1, 2, 3, 4])
++        self.assertAlmostEqual(w, 0.0, places=12)
++
++    def test_2_single_prompt_condition_equivalence(self):
++        """TEST 2: C0/adult 단일 분포에서 기존 방식과 수정 방식이 동일한 값 반환."""
++        codes = [1, 2, 3, 4, 5]
++        p_llm = [[0.10, 0.20, 0.40, 0.20, 0.10]]
++        q_kgss = [0.25, 0.25, 0.20, 0.15, 0.15]
++
++        res = evaluate_item_distributions(
++            pred_dists=p_llm,
++            gold_dist=q_kgss,
++            codes=codes,
++        )
++        self.assertAlmostEqual(res["existing_wasserstein"], res["population_wasserstein"], places=12)
++        self.assertAlmostEqual(res["weighted_mean_wasserstein"], res["population_wasserstein"], places=12)
++        self.assertAlmostEqual(res["wasserstein_jensen_gap"], 0.0, places=12)
++        self.assertAlmostEqual(
++            res["model_conditional_entropy_bits"], res["model_population_entropy_bits"], places=12
++        )
++
++    def test_3_counterexample_perfect_conditional_reproduction(self):
++        """
++        TEST 3: 남녀 50:50 반례 검증.
++        남성(50%): 찬성 100%, 반대 0% -> [1.0, 0.0]
++        여성(50%): 찬성 0%, 반대 100% -> [0.0, 1.0]
++        모집단 전체: [0.5, 0.5]
++        모델이 남녀 조건부 분포를 완벽히 재현했을 때:
++        - 기존 방식 B = (1/2)*W([1,0],[0.5,0.5]) + (1/2)*W([0,1],[0.5,0.5]) = 0.5
++        - 수정 모집단 방식 A = W(0.5*[1,0] + 0.5*[0,1], [0.5,0.5]) = W([0.5,0.5], [0.5,0.5]) = 0.0
++        - 조건부 방식 C = 0.5*W([1,0],[1,0]) + 0.5*W([0,1],[0,1]) = 0.0
++        """
++        codes = [1, 2]
++        pred_dists = [
++            [1.0, 0.0],  # 남성 예측
++            [0.0, 1.0],  # 여성 예측
++        ]
++        gold_marginal = [0.5, 0.5]
++        weights = [0.5, 0.5]
++        cell_human_dists = [
++            [1.0, 0.0],  # 남성 실제
++            [0.0, 1.0],  # 여성 실제
++        ]
++
++        res = evaluate_item_distributions(
++            pred_dists=pred_dists,
++            gold_dist=gold_marginal,
++            codes=codes,
++            weights=weights,
++            cell_model_dists=pred_dists,
++            cell_human_dists=cell_human_dists,
++            cell_weights=weights,
++        )
++        self.assertAlmostEqual(res["existing_wasserstein"], 0.5, places=12)
++        self.assertAlmostEqual(res["population_wasserstein"], 0.0, places=12)
++        self.assertAlmostEqual(res["conditional_cell_wasserstein_weighted"], 0.0, places=12)
++        self.assertAlmostEqual(res["wasserstein_jensen_gap"], 0.5, places=12)
++        # 개별 조건부 엔트로피는 0비트이지만 집계된 모집단 엔트로피는 1비트
++        self.assertAlmostEqual(res["model_conditional_entropy_bits"], 0.0, places=12)
++        self.assertAlmostEqual(res["model_population_entropy_bits"], 1.0, places=12)
++        self.assertAlmostEqual(res["mutual_information_bits"], 1.0, places=12)
++
++    def test_4_unconditional_copy_penalized_only_by_conditional_metric(self):
++        """
++        TEST 4: 모든 집단이 동일한 [0.5, 0.5]를 예측할 때:
++        - 기존 방식 = 0.0 (집단별 차이를 전혀 못 잡아내도 0점 부여)
++        - 수정 모집단 방식 = 0.0 (모집단 주변분포는 [0.5, 0.5]로 일치하므로 0점)
++        - 조건부 방식 = 0.5 (실제 남녀 조건부 분포 [1,0], [0,1]과의 괴리를 정확히 포착)
++        """
++        codes = [1, 2]
++        pred_dists = [
++            [0.5, 0.5],  # 남성 예측 (차별화 실패)
++            [0.5, 0.5],  # 여성 예측 (차별화 실패)
++        ]
++        gold_marginal = [0.5, 0.5]
++        weights = [0.5, 0.5]
++        cell_human_dists = [
++            [1.0, 0.0],  # 남성 실제
++            [0.0, 1.0],  # 여성 실제
++        ]
++
++        res = evaluate_item_distributions(
++            pred_dists=pred_dists,
++            gold_dist=gold_marginal,
++            codes=codes,
++            weights=weights,
++            cell_model_dists=pred_dists,
++            cell_human_dists=cell_human_dists,
++            cell_weights=weights,
++        )
++        self.assertAlmostEqual(res["existing_wasserstein"], 0.0, places=12)
++        self.assertAlmostEqual(res["population_wasserstein"], 0.0, places=12)
++        self.assertAlmostEqual(res["conditional_cell_wasserstein_weighted"], 0.5, places=12)
++
++    def test_5_nonuniform_cell_weights_80_20(self):
++        """TEST 5: 가중치가 균등하지 않은 경우(예: 80:20) 가중 집계와 단순 평균의 차이 검증."""
++        codes = [1, 2]
++        cell_df = pd.DataFrame([
++            {"sex": 1, "age_grp": "20s", "model_dist": [1.0, 0.0]},
++            {"sex": 2, "age_grp": "20s", "model_dist": [0.0, 1.0]},
++        ])
++        cell_weights_df = pd.DataFrame([
++            {"sex": 1, "age_grp": "20s", "cell_weight_item_norm": 0.8},
++            {"sex": 2, "age_grp": "20s", "cell_weight_item_norm": 0.2},
++        ])
++
++        agg_weighted, _ = aggregate_demo_cells(cell_df, cell_weights_df)
++        agg_unweighted = aggregate_distributions([[1.0, 0.0], [0.0, 1.0]], weights=None)
++
++        np.testing.assert_allclose(agg_weighted, np.array([0.8, 0.2]), atol=1e-12)
++        np.testing.assert_allclose(agg_unweighted, np.array([0.5, 0.5]), atol=1e-12)
++
++        # 실제 모집단이 셀 비중(80:20)과 일치하는 [0.8, 0.2]일 때:
++        gold_marginal = [0.8, 0.2]
++        w_weighted = wasserstein_1d(agg_weighted, gold_marginal, codes=codes)
++        w_unweighted = wasserstein_1d(agg_unweighted, gold_marginal, codes=codes)
++        self.assertAlmostEqual(w_weighted, 0.0, places=12)
++        self.assertAlmostEqual(w_unweighted, 0.3, places=12)
++
++    def test_6_probability_normalization_and_validation(self):
++        """TEST 6: 확률분포 합이 1인지(정규화 검증) 및 음수/영벡터 예외 처리 검증."""
++        raw = [2.0, 3.0, 5.0]
++        normed = validate_prob_dist(raw)
++        self.assertAlmostEqual(float(normed.sum()), 1.0, places=12)
++        self.assertTrue(np.all(normed >= 0.0))
++
++        agg = aggregate_full_personas([[0.2, 0.8], [0.6, 0.4]], already_pps_sampled=True)
++        self.assertAlmostEqual(float(agg.sum()), 1.0, places=12)
++        np.testing.assert_allclose(agg, np.array([0.4, 0.6]), atol=1e-12)
++
++        with self.assertRaises(ValueError):
++            validate_prob_dist([-0.1, 1.1])
++        with self.assertRaises(ValueError):
++            validate_prob_dist([0.0, 0.0])
++
++    def test_7_missing_cell_weight_renormalization(self):
++        """TEST 7: 결측 셀 또는 표본 0인 셀이 있을 때 가중치 재정규화 및 안전한 예외 처리 검증."""
++        cell_df = pd.DataFrame([
++            {"sex": 1, "age_grp": "20s", "model_dist": [0.6, 0.4]},
++            {"sex": 2, "age_grp": "20s", "model_dist": [0.2, 0.8]},
++        ])
++        # 3개 셀 중 1개 셀(sex=1, age_grp=60+)이 관측되지 않은 상황 -> 관측 셀 가중치(0.30:0.30 -> 0.5:0.5)로 재정규화
++        cell_weights_df = pd.DataFrame([
++            {"sex": 1, "age_grp": "20s", "cell_weight_item_norm": 0.30},
++            {"sex": 2, "age_grp": "20s", "cell_weight_item_norm": 0.30},
++            {"sex": 1, "age_grp": "60+", "cell_weight_item_norm": 0.40},
++        ])
++        agg, merged = aggregate_demo_cells(cell_df, cell_weights_df)
++        self.assertEqual(len(merged), 2)
++        self.assertAlmostEqual(float(agg.sum()), 1.0, places=12)
++        np.testing.assert_allclose(agg, np.array([0.4, 0.6]), atol=1e-12)
++
++        # 가중치 벡터 합이 0 이하인 경우 ValueError 발생
++        with self.assertRaises(ValueError):
++            aggregate_distributions([[0.6, 0.4], [0.2, 0.8]], weights=[0.0, 0.0])
++
++    def test_8_subgroup_r_centering_bug_and_oracle(self):
++        """
++        TEST 8 (추가 검증): Subgroup r 중심화 누락 버그 증명.
++        문항 간 척도 평균(1~5점 vs 1~2점)이 다를 때,
++        모델이 실제 인간 셀 평균을 100% 완벽하게 맞혀도(model_pred == real_mean),
++        기존 코드(real_dev vs uncentered model_pred)는 r < 1.0이 나오고,
++        수정된 코드(real_dev vs centered model_dev)는 정확히 r = 1.0을 반환함을 검증.
++        """
++        rng = np.random.default_rng(42)
++        rows = []
++        cells = [(s, a) for s in (1, 2) for a in ("18-29", "30-39", "40-49", "50-59", "60+")]
++        for v_idx in range(30):
++            grand_mean = float(rng.uniform(1.2, 6.5))
++            devs = rng.normal(0.0, 0.15, size=len(cells))
++            devs = devs - devs.mean()
++            for (sex, age_grp), d in zip(cells, devs):
++                val = grand_mean + float(d)
++                rows.append({
++                    "var": f"V{v_idx:02d}",
++                    "sex": sex,
++                    "age_grp": age_grp,
++                    "real_mean": val,
++                    "real_grand": grand_mean,
++                    "model_pred": val,  # 100% 완벽한 오라클 예측
++                })
++        df = pd.DataFrame(rows)
++        res = compute_subgroup_correlations(df)
++        self.assertAlmostEqual(res["centered_mean_r"], 1.0, places=12)
++        self.assertAlmostEqual(res["within_item_mean_r"], 1.0, places=12)
++        self.assertLess(res["existing_mean_r"], 0.35)
++
++    def test_9_personal_accuracy_linearity_and_normalization(self):
++        """
++        TEST 9 (추가 검증): 개인 정확도 차이(mean(A-B) == mean(A) - mean(B)) 선형성 및
++        원시 정확도(Raw Acc) vs 정규화 정확도(Normalized Acc) 분리 검증.
++        """
++        rng = np.random.default_rng(123)
++        rows = []
++        for pid in range(1, 21):
++            for q_idx in range(10):
++                cell_modal = float(rng.uniform(0.45, 0.75))
++                rows.append({
++                    "level": "full",
++                    "persona_id": pid,
++                    "var": f"Q{q_idx}",
++                    "is_correct": int(rng.random() < 0.40),
++                    "cell_modal": cell_modal,
++                })
++                rows.append({
++                    "level": "demo",
++                    "persona_id": pid,
++                    "var": f"Q{q_idx}",
++                    "is_correct": int(rng.random() < 0.33),
++                    "cell_modal": cell_modal,
++                })
++        df = pd.DataFrame(rows)
++        res = evaluate_personal_accuracy_paired(df, cond_a="full", cond_b="demo", n_boot=500, seed=42)
++        self.assertAlmostEqual(res["raw_diff_linearity_error"], 0.0, places=12)
++        self.assertAlmostEqual(res["norm_diff_linearity_error"], 0.0, places=12)
++        self.assertNotAlmostEqual(res["raw_diff_mean"], res["norm_diff_mean"], places=3)
++
++    def test_10_median_vs_mode_point_mass_wasserstein(self):
++        """
++        TEST 10 (2차 검증): 1D Wasserstein 최적 점질량(1-hot) 위치가 최빈값(mode)이 아니라
++        중앙값(median)임을 이론적 반례 및 실제 KGSS 255개 문항 전체에서 검증.
++        """
++        # 1. 이론적 비대칭 분포: Q = [0.40, 0.25, 0.35] -> 최빈값=1(확률 0.40), 중앙값=2(누적 0.65 >= 0.5)
++        q = [0.40, 0.25, 0.35]
++        res = evaluate_item_distributions(pred_dists=[q], gold_dist=q, codes=[1, 2, 3])
++        # Mode(1번) 원핫 W1 = 0*0.40 + 1*0.25 + 2*0.35 = 0.95
++        # Median(2번) 원핫 W1 = 1*0.40 + 0*0.25 + 1*0.35 = 0.75
++        self.assertAlmostEqual(res["marginal_modal_1hot_wasserstein"], 0.95, places=12)
++        self.assertAlmostEqual(res["marginal_median_1hot_wasserstein"], 0.75, places=12)
++        self.assertLess(res["marginal_median_1hot_wasserstein"], res["marginal_modal_1hot_wasserstein"])
++
++        # 2. 실제 KGSS 2023 255개 문항 검증 (0.575823 < 0.590259)
++        import json
++        from pathlib import Path
++        probes_path = Path("c0_check/probes.csv")
++        if probes_path.exists():
++            probes = pd.read_csv(probes_path)
++            w_modes, w_meds, w_unifs = [], [], []
++            for _, r in probes.iterrows():
++                gold = json.loads(r["gold"])
++                codes = json.loads(r["codes"])
++                ev = evaluate_item_distributions(pred_dists=[gold], gold_dist=gold, codes=codes)
++                self.assertLessEqual(
++                    ev["marginal_median_1hot_wasserstein"],
++                    ev["marginal_modal_1hot_wasserstein"] + 1e-12,
++                )
++                w_modes.append(ev["marginal_modal_1hot_wasserstein"])
++                w_meds.append(ev["marginal_median_1hot_wasserstein"])
++                w_unifs.append(ev["uniform_wasserstein"])
++            self.assertAlmostEqual(float(np.mean(w_unifs)), 0.677218, places=5)
++            self.assertAlmostEqual(float(np.mean(w_modes)), 0.590259, places=5)
++            self.assertAlmostEqual(float(np.mean(w_meds)), 0.575823, places=5)
++
++    def test_11_real_data_integration_audit(self):
++        """
++        TEST 11 (2차 검증 통합 테스트): 실제 KGSS 2023 참조표 및 로컬 EXAONE 추론 캐시 데이터에서
++        원본 결과 파일 보존(SHA-256), 가중치 일치 중심화 subgroup r, 문항 부트스트랩 CI,
++        동일 문항 교집합(6문항/125문항) Wasserstein 재계산 정합성을 통합 검증.
++        """
++        import hashlib
++        import json
++        from pathlib import Path
++
++        # 1. 원본 GitHub c0_check*/c0_validity_result.md 보존 검증
++        expected_hashes = {
++            "c0_check/c0_validity_result.md": "77b47387ccfad681",
++            "c0_check_adult/c0_validity_result.md": "ed929349d134b730",
++            "c0_check_demo/c0_validity_result.md": "64f81ed43e3edcda",
++            "c0_check_full/c0_validity_result.md": "54c426e67f73e03a",
++        }
++        for rel_path, prefix in expected_hashes.items():
++            p = Path(rel_path)
++            if p.exists():
++                h = hashlib.sha256(p.read_bytes()).hexdigest()[:16]
++                self.assertEqual(h, prefix)
++
++        # 2. 실제 paired_demo 125문항에서 가중치 일치 중심화 및 부트스트랩 CI 검증
++        demo_dir = Path("audit_outputs/paired_demo_125items")
++        if (demo_dir / "probes.csv").exists() and (demo_dir / "logit_responses.csv").exists():
++            pr = pd.read_csv(demo_dir / "probes.csv")
++            lg = pd.read_csv(demo_dir / "logit_responses.csv")[["probe_id", "model", "model_dist", "mass"]]
++            rc = pd.read_csv(demo_dir / "real_cells.csv")
++            d = pr.merge(lg, on="probe_id")
++            d["model_pred"] = [
++                float(np.sum(np.array(json.loads(c), dtype=float) * np.array(json.loads(dist), dtype=float)))
++                for c, dist in zip(d["codes"], d["model_dist"])
++            ]
++            mc = d.groupby(["var", "sex", "age_grp"], as_index=False)["model_pred"].mean()
++            merged = mc.merge(rc, on=["var", "sex", "age_grp"], how="inner")
++            sub_r = compute_subgroup_correlations(merged, n_boot=2000, seed=42)
++            self.assertAlmostEqual(sub_r["existing_mean_r"], 0.0010, places=3)
++            self.assertAlmostEqual(sub_r["centered_mean_r"], 0.1833, places=3)
++            self.assertGreater(sub_r["centered_boot_ci_low"], 0.10)
++            self.assertLess(sub_r["centered_boot_ci_high"], 0.26)
++
++    def test_12_unequal_cell_size_end_to_end_score_invariant(self):
++        """
++        TEST 12 (3차 검증 - End-to-End Caller 및 불균등 셀 인원수 불변식 테스트):
++        셀별 프롬프트 수 n_c가 불균등(예: 셀 A는 1명, 셀 B는 9명)할 때,
++        kgss_c0_validity.score() 실제 실행 경로가 각 행에 w_i = w_c / n_c를 부여하여
++        독립적인 셀 평균 선집계(sum_c w_c P_bar_c)와 모든 지표(W1, TVD, 조건부 엔트로피,
++        모집단 엔트로피, 상호정보량)에서 1e-12 이내로 정확히 일치하는지 검증.
++        """
++        import argparse
++        import json
++        import tempfile
++        from pathlib import Path
++        import kgss_c0_validity
++        from kgss_metrics import build_cell_poststratified_row_weights, entropy_bits, tvd_distance
++
++        # 1. 합성 불균등 셀(n_A=1, n_B=9)에서 score() End-to-End 실행 검증
++        with tempfile.TemporaryDirectory() as tmpdir:
++            tmp = Path(tmpdir)
++            gold = [0.60, 0.30, 0.10]
++            codes = [1, 2, 3]
++            # 셀 (1.0, '18-29'): w_A = 0.70, 프롬프트 1개 -> P_A = [0.80, 0.15, 0.05]
++            # 셀 (2.0, '60+'):   w_B = 0.30, 프롬프트 9개 -> P_B 평균 = [0.10, 0.50, 0.40]
++            p_a = [0.80, 0.15, 0.05]
++            p_b_list = [
++                [0.05, 0.55, 0.40], [0.15, 0.45, 0.40], [0.10, 0.50, 0.40],
++                [0.08, 0.52, 0.40], [0.12, 0.48, 0.40], [0.10, 0.50, 0.40],
++                [0.07, 0.53, 0.40], [0.13, 0.47, 0.40], [0.10, 0.50, 0.40],
++            ]
++            probes_rows = [{
++                "probe_id": "DEMO_Q1_0", "var": "Q1", "sex": 1.0, "age_grp": "18-29",
++                "prompt": "test", "codes": json.dumps(codes), "gold": json.dumps(gold),
++            }]
++            logit_rows = [{
++                "probe_id": "DEMO_Q1_0", "model": "test_model",
++                "model_dist": json.dumps(p_a), "mass": 0.999,
++            }]
++            for idx, pb in enumerate(p_b_list, start=1):
++                probes_rows.append({
++                    "probe_id": f"DEMO_Q1_{idx}", "var": "Q1", "sex": 2.0, "age_grp": "60+",
++                    "prompt": "test", "codes": json.dumps(codes), "gold": json.dumps(gold),
++                })
++                logit_rows.append({
++                    "probe_id": f"DEMO_Q1_{idx}", "model": "test_model",
++                    "model_dist": json.dumps(pb), "mass": 0.999,
++                })
++
++            cells_rows = [
++                {
++                    "sex": 1.0, "age_grp": "18-29", "var": "Q1", "n_cell": 100,
++                    "cell_weight_item": 0.70, "cell_weight_pop": 0.70,
++                    "real_dist": json.dumps([0.75, 0.20, 0.05]),
++                    "real_mean": 1.30, "real_grand": 1.50,
++                    "cell_weight_item_norm": 0.70, "cell_weight_pop_norm": 0.70,
++                },
++                {
++                    "sex": 2.0, "age_grp": "60+", "var": "Q1", "n_cell": 100,
++                    "cell_weight_item": 0.30, "cell_weight_pop": 0.30,
++                    "real_dist": json.dumps([0.25, 0.55, 0.20]),
++                    "real_mean": 1.95, "real_grand": 1.50,
++                    "cell_weight_item_norm": 0.30, "cell_weight_pop_norm": 0.30,
++                },
++            ]
++            pd.DataFrame(probes_rows).to_csv(tmp / "probes.csv", index=False)
++            pd.DataFrame(logit_rows).to_csv(tmp / "logit_responses.csv", index=False)
++            pd.DataFrame(cells_rows).to_csv(tmp / "real_cells.csv", index=False)
++
++            kgss_c0_validity.score(
++                argparse.Namespace(out=str(tmp), inv="./inventory", use_code_positions=False, overwrite_legacy=False)
++            )
++            comp = pd.read_csv(tmp / "c0_validity_comparison.csv").iloc[0]
++
++            # 독립적인 셀 평균 선집계 계산: P_pop = 0.70 * P_A + 0.30 * mean(P_B)
++            p_b_mean = np.mean(np.array(p_b_list, dtype=float), axis=0)
++            indep_pop = 0.70 * np.array(p_a, dtype=float) + 0.30 * p_b_mean
++            indep_w1 = wasserstein_1d(indep_pop, gold)
++            indep_tvd = tvd_distance(indep_pop, gold)
++            indep_h_cond = 0.70 * entropy_bits(p_a) + 0.30 * float(np.mean([entropy_bits(pb) for pb in p_b_list]))
++            indep_h_pop = entropy_bits(indep_pop)
++            indep_mi = indep_h_pop - indep_h_cond
++
++            self.assertAlmostEqual(float(comp["population_wasserstein"]), indep_w1, places=12)
++            self.assertAlmostEqual(float(comp["population_tvd"]), indep_tvd, places=12)
++            self.assertAlmostEqual(float(comp["model_conditional_entropy_weighted_bits"]), indep_h_cond, places=12)
++            self.assertAlmostEqual(float(comp["model_population_entropy_bits"]), indep_h_pop, places=12)
++            self.assertAlmostEqual(float(comp["mutual_information_bits"]), indep_mi, places=12)
++
++            # 구버전 버그(셀 내 모든 행에 w_c를 그대로 부여: w_B_total = 9*0.30 = 2.70)와는 명확히 달라야 함
++            buggy_pop = (0.70 * np.array(p_a) + 2.70 * p_b_mean) / (0.70 + 2.70)
++            buggy_w1 = wasserstein_1d(buggy_pop, gold)
++            self.assertGreater(abs(indep_w1 - buggy_w1), 0.15)
++
++        # 2. 실제 paired_demo 125문항 및 공통 6문항에서 score() 출력과 독립 셀 선집계 일치 검증
++        demo_comp_path = Path("audit_outputs/paired_demo_125items/c0_validity_comparison.csv")
++        full_comp_path = Path("audit_outputs/full_6items/c0_validity_comparison.csv")
++        if demo_comp_path.exists() and full_comp_path.exists():
++            dm = pd.read_csv(demo_comp_path)
++            fl = pd.read_csv(full_comp_path)
++            # 모든 문항에서 행 가중 집계(population_wasserstein) == 셀 선집계(population_wasserstein_cell_weighted)
++            max_diff_w1 = float(np.max(np.abs(dm["population_wasserstein"] - dm["population_wasserstein_cell_weighted"])))
++            max_diff_tvd = float(np.max(np.abs(dm["population_tvd"] - dm["population_tvd_cell_weighted"])))
++            self.assertLess(max_diff_w1, 1e-12)
++            self.assertLess(max_diff_tvd, 1e-12)
++            # 125문항 평균 = 0.6020, 공통 6문항 평균 = 0.2713 검증
++            self.assertAlmostEqual(float(dm["population_wasserstein"].mean()), 0.6020, places=4)
++            dm_6 = dm[dm["var"].isin(set(fl["var"]))]
++            self.assertAlmostEqual(float(dm_6["population_wasserstein"].mean()), 0.2713, places=4)
++
++    def test_13_nearly_normalized_distributions_are_exactly_normalized(self):
++        from kgss_metrics import entropy_bits, tvd_distance
++        p = np.array([0.25, 0.75])
++        raw = p * 1.00005
++        np.testing.assert_allclose(validate_prob_dist(raw, tol=1e-3), p, atol=1e-15)
++        self.assertAlmostEqual(tvd_distance(raw, p), 0.0, places=14)
++        self.assertAlmostEqual(entropy_bits(raw), entropy_bits(p), places=14)
++
++    def test_14_persona_education_does_not_assert_graduation(self):
++        from kgss_persona_bootstrap import persona_sentence
++        labels = {
++            "SEX": {"1.0": "남성"}, "EDUC": {"4.0": "대학교"},
++            "REGION": {"1.0": "서울"}, "MARITAL": {"1.0": "미혼"},
++            "URBAN": {"1.0": "도시"},
++        }
++        row = pd.Series({"AGE": 22, "SEX": 1, "EDUC": 4, "REGION": 1, "MARITAL": 1, "URBAN": 1})
++        for addressee in ("당신", "이사람"):
++            for register in ("formal", "plain"):
++                sentence = persona_sentence(row, labels, addressee, register)
++                self.assertIn("최종학력은 대학교", sentence)
++                self.assertNotIn("졸업", sentence)
++
++    @staticmethod
++    def _write_score_fixture(tmp):
++        import json
++        pd.DataFrame([
++            {"probe_id": "C0_BIN", "var": "BIN", "prompt": "binary", "codes": "[1, 2]", "gold": "[0.5, 0.5]"},
++            {"probe_id": "C0_NOM", "var": "NOM", "prompt": "nominal", "codes": "[1, 2, 3]", "gold": "[0.2, 0.5, 0.3]"},
++        ]).to_csv(tmp / "probes.csv", index=False)
++        pd.DataFrame([
++            {"probe_id": "C0_BIN", "model": "m", "model_dist": "[0.6, 0.4]", "mass": 1.0},
++            {"probe_id": "C0_NOM", "model": "m", "model_dist": "[0.8, 0.1, 0.1]", "mass": 1.0},
++        ]).to_csv(tmp / "logit_responses.csv", index=False)
++        pd.DataFrame([
++            {"var": v, "sex": 1, "age_grp": "18-29", "real_mean": 1.5, "real_grand": 1.5}
++            for v in ("BIN", "NOM")
++        ]).to_csv(tmp / "real_cells.csv", index=False)
++        pd.DataFrame([
++            {"var": "BIN", "scale_type": "binary", "include_in_clean_eval": True, "w1_valid_in_clean_eval": True},
++            {"var": "NOM", "scale_type": "nominal_unordered", "include_in_clean_eval": True, "w1_valid_in_clean_eval": False},
++        ]).to_csv(tmp / "classification.csv", index=False)
++
++    def test_15_score_applies_classification_to_metrics_and_subgroups(self):
++        import argparse
++        import contextlib
++        import io
++        import tempfile
++        from pathlib import Path
++        from unittest.mock import patch
++        import kgss_c0_validity
++        with tempfile.TemporaryDirectory() as tmpdir:
++            tmp = Path(tmpdir)
++            self._write_score_fixture(tmp)
++            args = argparse.Namespace(out=str(tmp), inv=str(tmp), classification=str(tmp / "classification.csv"))
++            with patch("kgss_metrics.compute_subgroup_correlations", wraps=compute_subgroup_correlations) as subgroup:
++                with contextlib.redirect_stdout(io.StringIO()):
++                    kgss_c0_validity.score(args)
++                self.assertEqual(set(subgroup.call_args.args[0]["var"]), {"BIN"})
++            metrics = pd.read_csv(tmp / "c0_validity_comparison.csv").set_index("var")
++            self.assertTrue(np.isnan(metrics.loc["NOM", "population_wasserstein"]))
++            self.assertGreater(metrics.loc["NOM", "diagnostic_population_wasserstein"], 0)
++            self.assertGreater(metrics.loc["NOM", "population_tvd"], 0)
++            self.assertAlmostEqual(metrics.loc["BIN", "population_wasserstein"], 0.1, places=12)
++            self.assertIn("정제 이진/단조서열 1문항", (tmp / "c0_validity_recomputed.md").read_text())
++            cl = pd.read_csv(tmp / "classification.csv")
++            cl.iloc[:1].to_csv(tmp / "classification.csv", index=False)
++            with self.assertRaisesRegex(ValueError, "분류표에 없는"):
++                kgss_c0_validity.score(args)
++
++    def test_16_score_rejects_missing_and_duplicate_logit_rows(self):
++        import argparse
++        import tempfile
++        from pathlib import Path
++        import kgss_c0_validity
++        with tempfile.TemporaryDirectory() as tmpdir:
++            tmp = Path(tmpdir)
++            self._write_score_fixture(tmp)
++            args = argparse.Namespace(out=str(tmp), inv=str(tmp))
++            logits = pd.read_csv(tmp / "logit_responses.csv")
++            logits.iloc[:1].to_csv(tmp / "logit_responses.csv", index=False)
++            with self.assertRaisesRegex(ValueError, "누락 1개"):
++                kgss_c0_validity.score(args)
++            pd.concat([logits, logits.iloc[:1]], ignore_index=True).to_csv(tmp / "logit_responses.csv", index=False)
++            with self.assertRaisesRegex(ValueError, "중복"):
++                kgss_c0_validity.score(args)
++
++    def test_17_actual_clean_build_marks_provisional_stems(self):
++        import argparse
++        import contextlib
++        import io
++        import json
++        import tempfile
++        from pathlib import Path
++        import kgss_c0_validity
++        required = [Path("inventory/kgss_clean.parquet"), Path("inventory/variables.csv"),
++                    Path("inventory/wave_items.csv"), Path("selection/variables_worded.csv")]
++        if any(not path.exists() for path in required):
++            self.skipTest("실제 clean build 검증용 KGSS 참조 파일이 없습니다.")
++        with tempfile.TemporaryDirectory() as tmpdir:
++            with contextlib.redirect_stdout(io.StringIO()):
++                kgss_c0_validity.build(argparse.Namespace(
++                    inv="./inventory", out=tmpdir, year=2023,
++                    worded="./selection/variables_worded.csv", level="c0", clean_prompts=True,
++                ))
++            probes = pd.read_csv(Path(tmpdir) / "probes.csv")
++            self.assertNotIn("SAMPLEAB", set(probes["var"]))
++            self.assertFalse(probes["prompt"].str.contains(r"문항:\s*(?:nan|None)(?:\n|$)", regex=True).any())
++            fallback = probes[probes["prompt_stem_source"] == "label_fallback_provisional"]
++            self.assertEqual(set(fallback["var"]), {"HATOPSEX", "HHSEX", "HHMARI", "HHAWAY", "HHEMPLY"})
++            self.assertTrue(fallback["prompt_requires_review"].all())
++            for _, row in probes.iterrows():
++                codes, gold = json.loads(row["codes"]), json.loads(row["gold"])
++                self.assertEqual(len(codes), len(gold))
++                self.assertTrue(np.all(np.asarray(gold) >= 0))
++                self.assertLess(abs(sum(gold) - 1), 1e-3)
++                for line in row["prompt"].splitlines():
++                    if line[:1].isdigit() and ". " in line:
++                        self.assertFalse(kgss_c0_validity.is_leaked_missing_label(line.split(". ", 1)[1]))
++
++
++if __name__ == "__main__":
++    unittest.main(verbosity=2)

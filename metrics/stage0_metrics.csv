@@ -1,0 +1,10 @@
+﻿group_type,group_name,n_calls,n_valid,valid_rate,refusal_rate,explanation_rate,out_of_range_rate,mean_input_tokens,mean_output_tokens
+condition,adult_당신_하십시오체,400,400,1.0,0.0,0.0,0.0,232.84,3.0
+condition,adult_당신_해라체,400,400,1.0,0.0,0.0,0.0,231.94,3.0
+condition,adult_이사람_하십시오체,400,394,0.985,0.015,0.0,0.0,239.85,3.03
+condition,adult_이사람_해라체,400,386,0.965,0.0175,0.0175,0.0,238.74,3.07
+condition,c0,400,376,0.94,0.055,0.005,0.0,218.76,3.12
+sensitivity,sensitive_10items,1000,991,0.991,0.007,0.002,0.0,255.14,3.02
+sensitivity,non_sensitive_10items,1000,965,0.965,0.028,0.007,0.0,209.7,3.07
+addressee,adult_당신,800,800,1.0,0.0,0.0,0.0,232.39,3.0
+addressee,adult_이사람,800,780,0.975,0.01625,0.00875,0.0,239.29,3.05

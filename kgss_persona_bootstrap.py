@@ -95,9 +95,9 @@ def persona_sentence(row: pd.Series, labels: dict[str, dict[str, str]],
         head = f"다음은 {subj}."
 
     if register == "formal":
-        tail = f"{educ_lab}를 졸업했고 {region_lab}에 거주하며 {marital_lab}입니다."
+        tail = f"최종학력은 {educ_lab}이며 {region_lab}에 거주하며 {marital_lab}입니다."
     else:
-        tail = f"{educ_lab}를 졸업했고 {region_lab}에 거주하며 {marital_lab}이다."
+        tail = f"최종학력은 {educ_lab}이며 {region_lab}에 거주하며 {marital_lab}이다."
 
     return f"{head} {tail} ({urban_lab} 지역 거주)"
 

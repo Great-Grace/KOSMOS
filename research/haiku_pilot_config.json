@@ -1,0 +1,71 @@
+{
+  "model_id": "claude-haiku-5-5",
+  "temperature": 1.0,
+  "max_tokens": 5,
+  "system_prompt": "보기 번호 숫자 하나만 출력하고 다른 말은 하지 마십시오.",
+  "prefill_text": "정답: ",
+  "prefill_supported": false,
+  "jeffreys_alpha": 0.5,
+  "bootstrap_iters": 2000,
+  "permutation_iters": 2000,
+  "random_seed": 20261105,
+  "stage_k": {
+    "stage0": 20,
+    "stage1": 50,
+    "stage2": 20,
+    "verbal0": 1,
+    "verbal1": 5
+  },
+  "stage0_items": {
+    "sensitive": [
+      "IMMCRIME",
+      "OPPSEGOV",
+      "HATOPSEX",
+      "TRUEKOR",
+      "OBEYLAWS",
+      "IMMIDEAS",
+      "OTHERS1",
+      "SEXATT3",
+      "SEXROLE123",
+      "IMMECON"
+    ],
+    "non_sensitive": [
+      "SUCDPOL",
+      "EPOLLENJY",
+      "POLPAR05",
+      "LIFESAT",
+      "CONLABOR",
+      "MEDIAPOL",
+      "MEMB6",
+      "RITGRV23",
+      "URBRURAL",
+      "TYPEINSR"
+    ]
+  },
+  "gates": {
+    "gate0_min_valid_rate": 0.95,
+    "gate1_min_nll_beat_uniform_rate": 0.7,
+    "gate1_ci_level": 0.95,
+    "gate2_min_median_subgroup_r": 0.2,
+    "gate2_max_perm_p": 0.05,
+    "gate3_tost_delta_tvd": 0.02
+  },
+  "pricing_batch_per_mtok": {
+    "input": 0.05,
+    "output": 0.25
+  },
+  "pricing_standard_per_mtok": {
+    "input": 0.1,
+    "output": 0.5
+  },
+  "verbal": {
+    "system_prompt": "설문 응답 분포를 예측하는 과제입니다. 각 보기의 예상 응답 비율(%)을 보기 순서대로 담은 JSON 숫자 배열 하나만 출력하십시오. 예: [40, 35, 20, 5]. 합계는 100이어야 합니다. 다른 말은 하지 마십시오.",
+    "group_pop": "한국 성인 전체",
+    "group_cell_template": "한국의 {persona}",
+    "user_template": "대상 집단: {group}\n\n{item_block}\n\n이 집단에게 위 문항을 물었을 때 각 보기를 고르는 사람의 비율(%)을 예측하십시오.",
+    "max_tokens": 120,
+    "sum_tolerance_pct": 2.0,
+    "floor_pct": 0.5,
+    "min_valid_rate": 0.95
+  }
+}

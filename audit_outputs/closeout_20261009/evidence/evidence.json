@@ -1,0 +1,89 @@
+{
+  "date_kst": "2026-10-09",
+  "source": "/Users/taewoo/Documents/antigravity/serene-lavoisier",
+  "source_commit": "da22600f18f33cb085744c8c972cb5a1af6c6795",
+  "method": "Independent CDF W1 / L1 TVD / normalized probabilities; no audited helper imports",
+  "metadata": {
+    "c0": {
+      "n_items": 197,
+      "n_probes": 197
+    },
+    "adult": {
+      "n_items": 145,
+      "n_probes": 145
+    },
+    "paired_demo": {
+      "n_items": 125,
+      "n_probes": 5000,
+      "n_personas": 40,
+      "n_unique_respondents": 37,
+      "cell_counts": {
+        "(1.0, '18-29')": 7,
+        "(1.0, '30-39')": 5,
+        "(1.0, '40-49')": 4,
+        "(1.0, '50-59')": 1,
+        "(1.0, '60+')": 5,
+        "(2.0, '18-29')": 2,
+        "(2.0, '30-39')": 2,
+        "(2.0, '40-49')": 4,
+        "(2.0, '50-59')": 3,
+        "(2.0, '60+')": 7
+      }
+    },
+    "full": {
+      "n_items": 6,
+      "n_probes": 240,
+      "n_personas": 40,
+      "n_unique_respondents": 37,
+      "cell_counts": {
+        "(1.0, '18-29')": 7,
+        "(1.0, '30-39')": 5,
+        "(1.0, '40-49')": 4,
+        "(1.0, '50-59')": 1,
+        "(1.0, '60+')": 5,
+        "(2.0, '18-29')": 2,
+        "(2.0, '30-39')": 2,
+        "(2.0, '40-49')": 4,
+        "(2.0, '50-59')": 3,
+        "(2.0, '60+')": 7
+      }
+    }
+  },
+  "input_sha256": {
+    "audit_outputs/item_classification_255.csv": "500402d4636f947fb16348c0f1d848526d71389c95e0db818f1b03b768479a67",
+    "c0_check/probes.csv": "60fbf773799538fe48ed2f31d001e334fbbb1ec5263b89bf37871b24c6ef00d8",
+    "audit_outputs/c0_cached/probes.csv": "e248ceec62ea6822d851068c1042eb03e1fc9188e4be491b1ac09d374b307de0",
+    "audit_outputs/c0_cached/logit_responses.csv": "4af5b677c3967a3c31bd99f2eac25bcf75afbce5f00df47d239dd733b354513e",
+    "audit_outputs/c0_cached/real_cells.csv": "3a28ef6edf49a060703a51eca387aaa87725e53770d259fe3b8543f95e32f57e",
+    "audit_outputs/adult_cached/probes.csv": "29a28539844c3319526ae023f3f10575baffaf2225c10f45b0214ab8e8ef69a3",
+    "audit_outputs/adult_cached/logit_responses.csv": "62bee8326f48dfae6cadc746a568e973b6a829cfdf97458f799ceeea53420a17",
+    "audit_outputs/adult_cached/real_cells.csv": "d3d07d6f5ae8747b5850078445302f4cbcbbba99949d8130fbb94a3df0bab205",
+    "audit_outputs/paired_demo_125items/probes.csv": "2c079b83569a755dc7c962cc98b60c34a6bd96b093bcccd48504cdcd48d2320e",
+    "audit_outputs/paired_demo_125items/logit_responses.csv": "5b5e36140c91769a928b5db70f7eb29c6649e596dbdf4f915e29f40148998e10",
+    "audit_outputs/paired_demo_125items/real_cells.csv": "f5751e61a2505b88a3f7ebf2665c80e7bc09bbbd0d9a2967309d61bf736f3d5a",
+    "audit_outputs/full_6items/probes.csv": "549678ede97aa51b7249cb2cdbc2bac9fc06eebd9b10ae390b0c7d5d0b3444aa",
+    "audit_outputs/full_6items/logit_responses.csv": "f9df0e987b257a2072ab3515b7dc514822d6f6250b317a248ba07e0c9f74661f",
+    "audit_outputs/full_6items/real_cells.csv": "f03231573fc2aab333ac94daea352734a21652b13975cbe89ad34c80bbb97b04",
+    "kgss_c0_validity.py": "fc4590ee045f2f24b1d55f41972f721b5d5c514eb2ea35707178564260ca189f",
+    "kgss_metrics.py": "b72bc57acf9bcc879e7727c676d0c618b7945790cfaf3b136b8d37ba87eb8141",
+    "kgss_persona_bootstrap.py": "25874b9e028fdf0fc0896fc85e80170689b8e9ec2fff167f84fa162c6c5b0a95",
+    "tests/test_kosmos_audit.py": "60a44d07e0f6acb0fa3c87a06b647a1828f45d2743d74dcfc46c063a38fa6f81",
+    "c0_check/c0_validity_result.md": "77b47387ccfad681bc8ab3891be68ce675b327e8ae21cfe704f36f21e2e69829",
+    "c0_check_adult/c0_validity_result.md": "ed929349d134b730e2c4b431cab57cba55f43604f6b8632531b114afbac1af35",
+    "c0_check_demo/c0_validity_result.md": "64f81ed43e3edcda5e9eca125f29c5594ccb8f4e2bcb7200cdd4ef5dfa6ca36b",
+    "c0_check_full/c0_validity_result.md": "54c426e67f73e03a822480be20bc4f64a8c473c13443545f0797ddc031205883"
+  },
+  "python": "3.12.6",
+  "numpy": "2.5.3",
+  "pandas": "3.0.6",
+  "seed": 42,
+  "n_boot": 2000,
+  "full_graduate_prompts_assert_graduation": 40,
+  "publication_scope": "EXAONE cached-data audit, not complete 246-item model experiment",
+  "limitations": [
+    "Manual ordinal taxonomy assumptions remain; TVD is primary across categories",
+    "Cell/battery confidence intervals do not constitute survey-design inference",
+    "Full original caches and Kanana are unavailable; no new inference performed",
+    "GRADUATE outcome assertion in old Full prompts; exclude from added-information claims"
+  ]
+}

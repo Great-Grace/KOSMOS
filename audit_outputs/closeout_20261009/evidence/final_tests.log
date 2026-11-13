@@ -1,0 +1,54 @@
+# demo(성별+연령) 조건 분포 재현 타당성 검증 (기존 지표 vs 수정 지표 비교)
+
+주의: 문항 분류표 없이 계산한 레거시 진단입니다. 명목형·결함 문항이 포함될 수 있어 발표용 주결과로 사용하지 마십시오.
+
+## test_model
+- 문항 1개 / 프로브 10건 / 평균 선택지확률질량 0.9990
+- **Wasserstein 및 TVD 거리 비교**:
+  - 기존 산식 (개별 평균 $\frac{1}{N}\sum_i W_1(P_i, Q)$): **0.7450** (개별 평균 TVD: **0.4700**)
+  - 수정 산식 (모집단 집계 $W_1(\sum_i w_i P_i, Q)$): **0.0650** (차이 -0.6800 / 동일가중 $w_i=1/N$ 집계: **0.6950**)
+  - 수정 산식 TVD ($\mathrm{TVD}(\sum_i w_i P_i, Q)$): **0.0550** (동일가중 $w_i=1/N$ TVD: **0.4300** / 균등분포 TVD 기준선: **0.2667**)
+  - 균등분포 기준선 (Uniform $W_1$ Baseline): **0.5000** (수정 산식 - 균등기준선: -0.4350)
+  - 전체 최빈 원핫 기준선 (Marginal Modal 1-hot $W_1$): **0.5000**
+  - 전체 중앙값 원핫 기준선 (Marginal Median 1-hot $W_1$, 최적 점질량): **0.5000**
+  - 셀 조건부 Wasserstein ($\sum_c w_c W_1(P(Y|c), P_{KGSS}(Y|c))$): **0.1400** (비가중 셀 평균: 0.2000 / 셀 조건부 가중 TVD: 0.0950)
+- **엔트로피 분해 (모드 붕괴 점검, 가중 vs 비가중)**:
+  - 모델 조건부 엔트로피 (가중 $\sum_i w_i H(P_i)$ / 비가중 $\frac{1}{N}\sum_i H(P_i)$): **1.025bit** / **1.307bit**
+  - 모델 모집단 집계 엔트로피 (가중 $H(\sum_i w_i P_i)$ / 비가중 $H(\frac{1}{N}\sum_i P_i)$): **1.369bit** / **1.479bit**
+  - 페르소나 상호정보량 $I(Y; X)$ (가중 / 비가중): **0.344bit** / **0.172bit** (실제 인간 응답 엔트로피: **1.295bit**)
+
+-> /var/folders/qn/2npgr5290ln20ss61v15vym80000gn/T/tmp0scqjmgr/c0_validity_recomputed.md
+test_10_median_vs_mode_point_mass_wasserstein (test_kosmos_audit.TestKosmosAuditMetrics.test_10_median_vs_mode_point_mass_wasserstein)
+TEST 10 (2차 검증): 1D Wasserstein 최적 점질량(1-hot) 위치가 최빈값(mode)이 아니라 ... ok
+test_11_real_data_integration_audit (test_kosmos_audit.TestKosmosAuditMetrics.test_11_real_data_integration_audit)
+TEST 11 (2차 검증 통합 테스트): 실제 KGSS 2023 참조표 및 로컬 EXAONE 추론 캐시 데이터에서 ... ok
+test_12_unequal_cell_size_end_to_end_score_invariant (test_kosmos_audit.TestKosmosAuditMetrics.test_12_unequal_cell_size_end_to_end_score_invariant)
+TEST 12 (3차 검증 - End-to-End Caller 및 불균등 셀 인원수 불변식 테스트): ... ok
+test_13_nearly_normalized_distributions_are_exactly_normalized (test_kosmos_audit.TestKosmosAuditMetrics.test_13_nearly_normalized_distributions_are_exactly_normalized) ... ok
+test_14_persona_education_does_not_assert_graduation (test_kosmos_audit.TestKosmosAuditMetrics.test_14_persona_education_does_not_assert_graduation) ... ok
+test_15_score_applies_classification_to_metrics_and_subgroups (test_kosmos_audit.TestKosmosAuditMetrics.test_15_score_applies_classification_to_metrics_and_subgroups) ... ok
+test_16_score_rejects_missing_and_duplicate_logit_rows (test_kosmos_audit.TestKosmosAuditMetrics.test_16_score_rejects_missing_and_duplicate_logit_rows) ... ok
+test_17_actual_clean_build_marks_provisional_stems (test_kosmos_audit.TestKosmosAuditMetrics.test_17_actual_clean_build_marks_provisional_stems) ... ok
+test_1_identical_distributions_zero_wasserstein (test_kosmos_audit.TestKosmosAuditMetrics.test_1_identical_distributions_zero_wasserstein)
+TEST 1: 동일한 두 분포의 Wasserstein = 0. ... ok
+test_2_single_prompt_condition_equivalence (test_kosmos_audit.TestKosmosAuditMetrics.test_2_single_prompt_condition_equivalence)
+TEST 2: C0/adult 단일 분포에서 기존 방식과 수정 방식이 동일한 값 반환. ... ok
+test_3_counterexample_perfect_conditional_reproduction (test_kosmos_audit.TestKosmosAuditMetrics.test_3_counterexample_perfect_conditional_reproduction)
+TEST 3: 남녀 50:50 반례 검증. ... ok
+test_4_unconditional_copy_penalized_only_by_conditional_metric (test_kosmos_audit.TestKosmosAuditMetrics.test_4_unconditional_copy_penalized_only_by_conditional_metric)
+TEST 4: 모든 집단이 동일한 [0.5, 0.5]를 예측할 때: ... ok
+test_5_nonuniform_cell_weights_80_20 (test_kosmos_audit.TestKosmosAuditMetrics.test_5_nonuniform_cell_weights_80_20)
+TEST 5: 가중치가 균등하지 않은 경우(예: 80:20) 가중 집계와 단순 평균의 차이 검증. ... ok
+test_6_probability_normalization_and_validation (test_kosmos_audit.TestKosmosAuditMetrics.test_6_probability_normalization_and_validation)
+TEST 6: 확률분포 합이 1인지(정규화 검증) 및 음수/영벡터 예외 처리 검증. ... ok
+test_7_missing_cell_weight_renormalization (test_kosmos_audit.TestKosmosAuditMetrics.test_7_missing_cell_weight_renormalization)
+TEST 7: 결측 셀 또는 표본 0인 셀이 있을 때 가중치 재정규화 및 안전한 예외 처리 검증. ... ok
+test_8_subgroup_r_centering_bug_and_oracle (test_kosmos_audit.TestKosmosAuditMetrics.test_8_subgroup_r_centering_bug_and_oracle)
+TEST 8 (추가 검증): Subgroup r 중심화 누락 버그 증명. ... ok
+test_9_personal_accuracy_linearity_and_normalization (test_kosmos_audit.TestKosmosAuditMetrics.test_9_personal_accuracy_linearity_and_normalization)
+TEST 9 (추가 검증): 개인 정확도 차이(mean(A-B) == mean(A) - mean(B)) 선형성 및 ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 3.675s
+
+OK

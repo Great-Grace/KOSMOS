@@ -1,0 +1,10 @@
+{
+  "publication_scope": "Corrected evaluation of available EXAONE caches, full research unfinished",
+  "source_inputs_unchanged_since_final_recompute": true,
+  "actual_score_crosschecked": true,
+  "main_tests": 17,
+  "explicit_skips": 0,
+  "patch_applies_to_original_commit": true,
+  "new_model_inference_performed": false,
+  "slack_sent": false
+}

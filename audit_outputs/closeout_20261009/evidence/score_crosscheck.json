@@ -1,0 +1,30 @@
+{
+  "c0": {
+    "population_tvd": 4.440892098500626e-16,
+    "population_wasserstein": 9.992007221626409e-16,
+    "model_conditional_entropy_weighted_bits": 4.440892098500626e-16,
+    "model_population_entropy_bits": 2.220446049250313e-16,
+    "mutual_information_bits": 0.0
+  },
+  "adult": {
+    "population_tvd": 1.942890293094024e-16,
+    "population_wasserstein": 4.440892098500626e-16,
+    "model_conditional_entropy_weighted_bits": 4.440892098500626e-16,
+    "model_population_entropy_bits": 4.440892098500626e-16,
+    "mutual_information_bits": 0.0
+  },
+  "paired_demo": {
+    "population_tvd": 2.7755575615628914e-16,
+    "population_wasserstein": 1.5543122344752192e-15,
+    "model_conditional_entropy_weighted_bits": 4.440892098500626e-16,
+    "model_population_entropy_bits": 7.979727989493313e-16,
+    "mutual_information_bits": 7.979727989493313e-16
+  },
+  "full": {
+    "population_tvd": 1.1102230246251565e-16,
+    "population_wasserstein": 1.9992688060632702e-16,
+    "model_conditional_entropy_weighted_bits": 0.0,
+    "model_population_entropy_bits": 3.0010716134398763e-16,
+    "mutual_information_bits": 3.3610267347050637e-16
+  }
+}

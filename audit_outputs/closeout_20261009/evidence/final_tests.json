@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/Users/taewoo/Documents/Codex/2026-10-08/new-chat/work/audit-venv/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_*.py",
+    "-v"
+  ],
+  "cwd": "/Users/taewoo/Documents/antigravity/serene-lavoisier",
+  "exit_code": 0,
+  "test_count": 17,
+  "explicit_skip_mentions": 0,
+  "scope": "Numerical, classification, input completeness, prompt wording and clean-build checks; not model inference"
+}
