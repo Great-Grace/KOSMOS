@@ -3,10 +3,11 @@
 LLM에 인구통계 페르소나를 프롬프트로 부여해 한국 여론조사 문항(KGSS)에
 응답시키고, 가상 응답이 실제 응답을 얼마나 재현하는지 정량 분석한다.
 
-## 처음 읽는 사람용 요약
+> ## ✅ 현재 기준은 **v2** (2026-11-12 확정)
+> 실험 설계·조건·상태는 [`research/design_v2_20261112/DESIGN.md`](research/design_v2_20261112/DESIGN.md)가 기준이다.
+> 아래 "v2 실험 환경"만 읽어도 실행할 수 있다. 맨 아래 **v1**(초기 구상, Colab GPU 기반)은 접어 두었다.
 
-> **현재 기준 설계는 v2다.** 아래 "연구 설계" 이하는 초기(v1) 구상이고, 확정된
-> 실험 설계·조건·상태는 `research/design_v2_20261112/DESIGN.md`가 우선한다.
+## 처음 읽는 사람용 요약
 
 **한 줄 요약**: LLM 3종에게 KGSS 2023의 246문항을 페르소나 없이, "한국 성인"으로,
 성별×연령 10개 집단으로 각각 100번씩 물어서 실제 한국인 응답 분포와 얼마나
@@ -19,9 +20,12 @@ LLM에 인구통계 페르소나를 프롬프트로 부여해 한국 여론조�
 4. `research/design_v2_20261112/analysis/` — 분석 코드와 결과표
 5. `audit_outputs/` — 검증·감사 산출물
 
-**이 저장소에 없는 것**: KGSS 원본(`.sav`, 코드북)은 위 "데이터" 절대로 직접 받는다
-(과거 커밋 히스토리에는 들어 있다). LLM 응답 원본(`raw/`, `reexperiment_20261009/`)과
-API 키(`.env*`)는 현재 파일 목록에 올리지 않았다. 응답 원본이 필요하면 태우에게 따로 요청한다.
+**데이터와 키**
+- KGSS 원본(`.sav`, 코드북)은 성균관대 SRC에서 별도 신청 없이 받아 루트에 둔다(아래 v1의 "데이터" 절 참고).
+  현재 파일 목록에는 없지만 과거 커밋 히스토리에는 들어 있다.
+- **v2 응답 원본은 `results/raw_gz/`에 gzip으로 올려 두었다**(`gunzip -k <파일>.gz`). 해당 폴더의 구성은 `results/README.md` 참고.
+- 10월 재실험 원본(`reexperiment_20261009/`, 약 710MB)과 API 키(`.env*`)는 올리지 않았다.
+- `requirements.txt`는 UTF-16LE라 `uv pip install -r`가 바로 안 된다. UTF-8로 변환한 사본을 쓴다.
 
 ## v2 실험 환경 (API 호출)
 
@@ -61,7 +65,15 @@ python3 research/design_v2_20261112/runners/aggregate_counts.py raw/v2/deepseek_
 - **프롬프트·문항·셀은 `MANIFEST.json` 해시로 고정**돼 있다. 바뀌면 설계가 바뀐 것이다.
 - DeepSeek는 처음 Eco 등급으로 시작했다가 속도 때문에 Ultrafast로 바꿔 처음부터 다시 돌렸다
   (경위와 비교 결과는 `DESIGN.md`의 "Eco → Ultrafast 전환").
-- 응답 원본 위치: `raw/v2/`(`haiku_p1.jsonl`, `deepseek_ultrafast_p1.jsonl`), `raw/exaone_stage1.jsonl`.
+- 응답 원본 위치: 로컬은 `raw/v2/`·`raw/exaone_stage1.jsonl`, 저장소에는 `results/raw_gz/`(압축본).
+
+---
+
+<details>
+<summary><b>v1 (초기 구상, 2026-10 이전) — 펼쳐서 보기</b></summary>
+
+> 아래는 오픈웨이트 모델(EXAONE 2.4B, Kanana 2.1B)을 Colab GPU에서 돌리던 **v1**의 설계·실행 순서·결과다.
+> 현재 진행 중인 실험은 위의 **v2**다. 재현·참고용으로만 남겨 둔다.
 
 ## 연구 설계
 
@@ -266,3 +278,5 @@ uv run kgss_token_check.py --contam-probes .\experiment\experiment_probes.csv --
 - **미완료**: Core29 본실험(현재 4문항 파일럿), T4 신규 추론, 외부 검증, 인칭×화계.
 - **환경 메모**: `requirements.txt`는 UTF-16LE로 저장돼 있어 `uv pip install -r`가
   실패한다. UTF-8로 변환한 사본을 쓰면 `tests/` 45개가 통과한다(2026-10-18 확인).
+
+</details>
