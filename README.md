@@ -15,10 +15,11 @@ LLM에 인구통계 페르소나를 프롬프트로 부여해 한국 여론조�
 
 **읽는 순서**
 1. `research/design_v2_20261112/DESIGN.md` — 확정 설계 (무엇을 묻는가, 조건, 상태)
-2. `research/preregistration_haiku_pilot.md`, `research/preregistration_verbalized_arm.md` — 사전등록
-3. `gates.md`, `gates_exaone.md`, `gates_exploratory.md` — 단계별 통과 기준
-4. `research/design_v2_20261112/analysis/` — 분석 코드와 결과표
-5. `audit_outputs/` — 검증·감사 산출물
+2. [`research/design_v2_20261112/FORMULAS.md`](research/design_v2_20261112/FORMULAS.md) — **파이프라인 수식 정리** (정답지, 개수, 평활화·지수 보정, TVD·순위·RADIUS·신뢰영역)
+3. `research/preregistration_haiku_pilot.md`, `research/preregistration_verbalized_arm.md` — 사전등록
+4. `gates.md`, `gates_exaone.md`, `gates_exploratory.md` — 단계별 통과 기준
+5. `research/design_v2_20261112/analysis/` — 분석 코드와 결과표
+6. `audit_outputs/` — 검증·감사 산출물
 
 **데이터와 키**
 - KGSS 원본(`.sav`, 코드북)은 성균관대 SRC에서 별도 신청 없이 받아 루트에 둔다(아래 v1의 "데이터" 절 참고).
