@@ -3,6 +3,26 @@
 LLM에 인구통계 페르소나를 프롬프트로 부여해 한국 여론조사 문항(KGSS)에
 응답시키고, 가상 응답이 실제 응답을 얼마나 재현하는지 정량 분석한다.
 
+## 처음 읽는 사람용 요약
+
+> **현재 기준 설계는 v2다.** 아래 "연구 설계" 이하는 초기(v1) 구상이고, 확정된
+> 실험 설계·조건·상태는 `research/design_v2_20261112/DESIGN.md`가 우선한다.
+
+**한 줄 요약**: LLM 3종에게 KGSS 2023의 246문항을 페르소나 없이, "한국 성인"으로,
+성별×연령 10개 집단으로 각각 100번씩 물어서 실제 한국인 응답 분포와 얼마나
+맞는지 잰다.
+
+**읽는 순서**
+1. `research/design_v2_20261112/DESIGN.md` — 확정 설계 (무엇을 묻는가, 조건, 상태)
+2. `research/preregistration_haiku_pilot.md`, `research/preregistration_verbalized_arm.md` — 사전등록
+3. `gates.md`, `gates_exaone.md`, `gates_exploratory.md` — 단계별 통과 기준
+4. `research/design_v2_20261112/analysis/` — 분석 코드와 결과표
+5. `audit_outputs/` — 검증·감사 산출물
+
+**이 저장소에 없는 것**: KGSS 원본(`.sav`, 코드북)은 위 "데이터" 절대로 직접 받는다.
+LLM 응답 원본(`raw/`, `reexperiment_20261009/`)과 API 키(`.env*`)는 올리지 않았다.
+응답 원본이 필요하면 태우에게 따로 요청한다.
+
 ## 연구 설계
 
 관측되는 건 "LLM 응답 분포가 실제와 다르다"는 사실 하나지만 원인은 여러
