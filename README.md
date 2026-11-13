@@ -19,9 +19,49 @@ LLM에 인구통계 페르소나를 프롬프트로 부여해 한국 여론조�
 4. `research/design_v2_20261112/analysis/` — 분석 코드와 결과표
 5. `audit_outputs/` — 검증·감사 산출물
 
-**이 저장소에 없는 것**: KGSS 원본(`.sav`, 코드북)은 위 "데이터" 절대로 직접 받는다.
-LLM 응답 원본(`raw/`, `reexperiment_20261009/`)과 API 키(`.env*`)는 올리지 않았다.
-응답 원본이 필요하면 태우에게 따로 요청한다.
+**이 저장소에 없는 것**: KGSS 원본(`.sav`, 코드북)은 위 "데이터" 절대로 직접 받는다
+(과거 커밋 히스토리에는 들어 있다). LLM 응답 원본(`raw/`, `reexperiment_20261009/`)과
+API 키(`.env*`)는 현재 파일 목록에 올리지 않았다. 응답 원본이 필요하면 태우에게 따로 요청한다.
+
+## v2 실험 환경 (API 호출)
+
+초기(v1)에는 오픈웨이트 모델을 Colab GPU에서 돌렸지만, v2는 **외부 API로 응답을
+받아 모은다.** 같은 프롬프트(`prompts_v2.csv`, 2,952개)를 모델마다 프롬프트당 100회씩
+물어 응답 원본(jsonl)을 쌓고, 보기 개수 벡터로 집계해 분석한다.
+
+| 모델 | 경로 | 실행기 | 키(환경변수) | 핵심 설정 |
+|---|---|---|---|---|
+| DeepSeek V4.1 Flash Ultrafast | OpenGateway | `runners/run_deepseek_eco.py` | `OPENGATEWAY_API_KEY` (`.env.opengateway`) | `reasoning_effort: "none"`, temperature 1.0, 최대 16토큰, 동시 60건 |
+| K-EXAONE 2.5 | LG 공식 무료 API | `team_template/run_exaone_team.py` | `EXAONE_API_KEY` (폴더의 `.env`) | 추론 `low`(끌 수 없음), temperature 1.0, 최대 4,000토큰 |
+| Claude Haiku 5.5 | Anthropic Message Batches | `runners/run_haiku_batch.py` | `ANTHROPIC_API_KEY` (`.env.anthropic`) | thinking 끔, 최대 5토큰, temperature 미전송 |
+
+실행기는 모두 `research/design_v2_20261112/`에 있고, KOSMOS 루트에서 실행한다.
+**API 키 파일은 저장소에 없다.** 각자 발급받아 루트에 `.env.*`로 만들면 된다(`.gitignore` 처리됨).
+
+```bash
+# DeepSeek (OpenGateway)
+set -a; . ./.env.opengateway; set +a
+python3 research/design_v2_20261112/runners/run_deepseek_eco.py --test 5   # 시험
+python3 research/design_v2_20261112/runners/run_deepseek_eco.py            # 1단계 본실행
+
+# Haiku (Batch) — ANTHROPIC_API_KEY 필요, 예산 가드 기본 $4.70
+R="uv run --no-project --with certifi python research/design_v2_20261112/runners/run_haiku_batch.py"
+$R submit --samples 0:1 && $R wait          # 시험 배치
+$R submit --samples 1:100 --chunk 10 && $R wait
+
+# 응답 원본 → 보기 개수 벡터
+python3 research/design_v2_20261112/runners/aggregate_counts.py raw/v2/deepseek_ultrafast_p1.jsonl
+```
+
+- **이어 돌리기**: 출력 파일에 이미 있는 `(probe_id, sample_idx)`는 건너뛴다. 끊기면 같은 명령을 다시 실행한다.
+- **K-EXAONE는 팀원 4명이 표본 번호로 분담**한다(0–24 / 25–49 / 50–74 / 75–99). 팀원은 패키지 폴더를
+  AI 에이전트에 열고 `AGENT_TASK.md를 읽고 그대로 진행해줘`라고만 하면 된다. 실행기는 프롬프트 파일
+  해시를 검사해 바뀌면 거부하고, 끝나면 `finalize.py`가 결과 zip 하나를 만든다. 패키지는 `make_team_packages.py`로
+  `team_template/`에서 만들고, 팀원 결과는 `merge_check.py`로 합친다.
+- **프롬프트·문항·셀은 `MANIFEST.json` 해시로 고정**돼 있다. 바뀌면 설계가 바뀐 것이다.
+- DeepSeek는 처음 Eco 등급으로 시작했다가 속도 때문에 Ultrafast로 바꿔 처음부터 다시 돌렸다
+  (경위와 비교 결과는 `DESIGN.md`의 "Eco → Ultrafast 전환").
+- 응답 원본 위치: `raw/v2/`(`haiku_p1.jsonl`, `deepseek_ultrafast_p1.jsonl`), `raw/exaone_stage1.jsonl`.
 
 ## 연구 설계
 
