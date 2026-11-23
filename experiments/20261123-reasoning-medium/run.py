@@ -251,7 +251,7 @@ logf.close()
 
 git = lambda *x: subprocess.run(["git", *x], cwd=ROOT, capture_output=True, text=True).stdout.strip()
 json.dump({"time": datetime.datetime.now().isoformat(timespec="seconds"), "git_commit": git("rev-parse", "--short", "HEAD"),
-           "git_dirty": bool(git("status", "--porcelain", "--untracked-files=no")) or bool(git("ls-files", "--others", "--exclude-standard", str(HERE.relative_to(ROOT)))),
+           "git_dirty": bool(git("status", "--porcelain", "--untracked-files=no")) or bool(git("ls-files", "--others", "--exclude-standard", str(HERE.relative_to(ROOT)), f":(exclude){HERE.relative_to(ROOT).as_posix()}/out")),  # out/은 이 스크립트가 만드는 결과라 제외
            "script_sha256_16": hashlib.sha256((HERE / "run.py").read_bytes()).hexdigest()[:16],
            "inputs": {k: {"path": str(p.relative_to(ROOT)), "sha256_16": hashlib.sha256(p.read_bytes()).hexdigest()[:16]} for k, p in RAW.items()},
            "params": {"k": K, "bootstrap": B, "null_reps": NULL_REPS, "seed": 20261123, "beta_grid": [0.05, 1.5, 0.005], "beta": BETA},
