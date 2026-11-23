@@ -1,0 +1,47 @@
+{
+ "time": "2026-11-23T22:59:13",
+ "git_commit": "b8ad639",
+ "git_dirty": false,
+ "script_sha256_16": "1f6386448f38d6fd",
+ "inputs": {
+  "끔": {
+   "path": "raw\\v2\\deepseek_eco_p1.jsonl",
+   "sha256_16": "d7fdd6591b7ad3ea"
+  },
+  "low": {
+   "path": "raw\\v2\\deepseek_eco_low_p1.jsonl",
+   "sha256_16": "1037909302c4c99c"
+  },
+  "medium": {
+   "path": "raw\\v2\\deepseek_eco_medium_p1.jsonl",
+   "sha256_16": "db77f6ff9a7df8d3"
+  }
+ },
+ "params": {
+  "k": 50,
+  "bootstrap": 2000,
+  "null_reps": 200,
+  "seed": 20261123,
+  "beta_grid": [
+   0.05,
+   1.5,
+   0.005
+  ],
+  "beta": {
+   "끔": {
+    "페르소나_없음": 0.335,
+    "한국성인_10셀": 0.35
+   },
+   "low": {
+    "페르소나_없음": 0.305,
+    "한국성인_10셀": 0.365
+   },
+   "medium": {
+    "페르소나_없음": 0.3,
+    "한국성인_10셀": 0.35
+   }
+  }
+ },
+ "paid_calls": 0,
+ "include_test": false
+}
