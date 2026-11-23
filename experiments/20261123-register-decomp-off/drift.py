@@ -15,7 +15,7 @@ HERE = Path(__file__).resolve().parent
 which = sys.argv[1] if len(sys.argv) > 1 else "off"
 src = (HERE / "run.py").read_text(encoding="utf-8").split("# ── 주 가설군")[0]
 src = src.replace('SETTING = "끔"', f'SETTING = "{"끔" if which == "off" else "low"}"')
-src = src.replace('logf = open(out / "run.log", "w", encoding="utf-8")', "import io as _io; logf = _io.StringIO()")
+src = src.replace('logf = open(out / "run.log", "w", encoding="utf-8")', "import io as _io; logf = _io.StringIO()", 1)
 src = src.replace("    print(s)\n", "")
 g = {"__file__": str(HERE / "run.py")}
 exec(src, g)
