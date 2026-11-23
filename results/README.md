@@ -48,7 +48,8 @@ for f in results/raw_gz/v2/*.jsonl.part01.gz; do b=$(basename "$f" .part01.gz); 
 
 | 파일 | 내용 | 줄 수 | 쓰는 실험 |
 |---|---|---|---|
-| `raw_gz/v2/deepseek_eco_high_high60_p1.jsonl.gz` | DeepSeek Eco, 추론 high, 원문 문체, 60문항(`subsets/high60.csv`) | 36,000 | reasoning-high |
+| `raw_gz/v2/deepseek_eco_high_high60_p1.jsonl.gz` | DeepSeek Eco, 추론 high, 원문 문체, 60문항(`subsets/high60.csv`) | 36,000 | reasoning-high, reasoning-high-full |
+| `raw_gz/v2/deepseek_eco_high_high_rest137_p1.jsonl.gz` | DeepSeek Eco, 추론 high, 원문 문체, 나머지 137문항(`subsets/high_rest137.csv`) | 82,200 | reasoning-high-full |
 
 - 응답 한 줄 = `(probe_id, sample_idx)` 하나. `valid`, `invalid_type`으로 유효 여부를 표시한다.
 - `*_counts.csv`는 `research/design_v2_20261112/runners/aggregate_counts.py`로 원응답에서 다시 만들 수 있다.
