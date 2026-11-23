@@ -1,0 +1,29 @@
+{
+ "time": "2026-11-23T22:56:11",
+ "git_commit": "77f209e",
+ "git_dirty": false,
+ "script_sha256_16": "e16a74c6d4fc7771",
+ "inputs": {
+  "원문": {
+   "path": "raw/v2/deepseek_eco_p1.jsonl",
+   "sha256_16": "d7fdd6591b7ad3ea"
+  },
+  "이사람하십시오": {
+   "path": "raw/v2/deepseek_eco_register_p1.jsonl",
+   "sha256_16": "22bf1ce63129cfee"
+  },
+  "decomp": {
+   "path": "raw/v2/deepseek_eco_decomp_p1.jsonl",
+   "sha256_16": "363de36ad9b30f2b"
+  }
+ },
+ "params": {
+  "k": 50,
+  "bootstrap": 2000,
+  "seed": 20261123,
+  "beta": 0.365,
+  "beta_source": "20261123-register-final/out/betas.csv 한국 성인 추론 끔"
+ },
+ "paid_calls": 0,
+ "include_test": false
+}
