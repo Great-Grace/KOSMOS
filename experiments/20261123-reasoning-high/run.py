@@ -256,7 +256,7 @@ logf.close()
 
 git = lambda *x: subprocess.run(["git", *x], cwd=ROOT, capture_output=True, text=True).stdout.strip()
 json.dump({"time": datetime.datetime.now().isoformat(timespec="seconds"), "git_commit": git("rev-parse", "--short", "HEAD"),
-           "git_dirty": bool(git("status", "--porcelain", "--untracked-files=no")) or bool(git("ls-files", "--others", "--exclude-standard", str(HERE.relative_to(ROOT)))),
+           "git_dirty": bool(git("status", "--porcelain", "--untracked-files=no", "--", ".", f":(exclude){HERE.relative_to(ROOT)}/out")) or bool(git("ls-files", "--others", "--exclude-standard", "--", str(HERE.relative_to(ROOT)), f":(exclude){HERE.relative_to(ROOT)}/out")),  # out/은 이 스크립트의 산출물이라 판정에서 뺀다
            "script_sha256_16": hashlib.sha256((HERE / "run.py").read_bytes()).hexdigest()[:16],
            "inputs": {k: {"path": str(RAW[k].relative_to(ROOT) if RAW[k].is_relative_to(ROOT) else RAW[k].name), "sha256_16": hashlib.sha256(RAW[k].read_bytes()).hexdigest()[:16]} for k in SET},
            "subset": {"path": str(SUBSET.relative_to(ROOT)), "sha256_16": hashlib.sha256(SUBSET.read_bytes()).hexdigest()[:16]},
