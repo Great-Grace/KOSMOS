@@ -1,0 +1,32 @@
+{
+ "time": "2026-11-23T14:21:02",
+ "git_commit": "853cefc",
+ "git_dirty": false,
+ "script_sha256_16": "e5ce1608356a0bb9",
+ "inputs": {
+  "끔": {
+   "path": "raw/v2/deepseek_eco_p1.jsonl",
+   "sha256_16": "d7fdd6591b7ad3ea"
+  },
+  "low": {
+   "path": "raw/v2/deepseek_eco_low_p1.jsonl",
+   "sha256_16": "1037909302c4c99c"
+  },
+  "high": {
+   "path": "raw/v2/deepseek_eco_high_high60_p1.jsonl",
+   "sha256_16": "0b29225ca88c21d5"
+  }
+ },
+ "subset": {
+  "path": "research/design_v2_20261112/subsets/high60.csv",
+  "sha256_16": "bffbfaefd943ba08"
+ },
+ "params": {
+  "k": 50,
+  "bootstrap": 2000,
+  "null_reps": 200,
+  "seed": 20261123
+ },
+ "paid_calls": 0,
+ "include_test": false
+}

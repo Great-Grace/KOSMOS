@@ -1,0 +1,420 @@
+2026-11-23T14:29:52 deepseek/deepseek-v4.1-flash-eco | 단계 1 | 설정 {"reasoning_effort": "high", "temperature": 1.0, "max_completion_tokens": 16000} | 전체 82200건 중 완료 0건, 이번 실행 82200건 | 동시 48
+2026-11-23T14:30:52 진행 331/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 55826 | 누적 비용 $0.008 | 5.5건/s | 남은 시간 약 248분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 0}
+2026-11-23T14:31:52 진행 712/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 120807 | 누적 비용 $0.018 | 5.9건/s | 남은 시간 약 229분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 0}
+2026-11-23T14:32:52 진행 1147/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 195547 | 누적 비용 $0.029 | 6.4건/s | 남은 시간 약 212분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 0}
+2026-11-23T14:33:45 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:33:52 진행 1648/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 287461 | 누적 비용 $0.043 | 6.9건/s | 남은 시간 약 196분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 1}
+2026-11-23T14:34:46 진행 2000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 346503 | 누적 비용 $0.052 | 6.8건/s | 남은 시간 약 196분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 1}
+2026-11-23T14:35:46 진행 2461/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 432640 | 누적 비용 $0.065 | 7.0건/s | 남은 시간 약 191분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 1}
+2026-11-23T14:36:46 진행 3193/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 575420 | 누적 비용 $0.085 | 7.7건/s | 남은 시간 약 171분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 1}
+2026-11-23T14:37:48 진행 3895/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 703181 | 누적 비용 $0.104 | 8.2건/s | 남은 시간 약 159분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 1}
+2026-11-23T14:38:13 진행 4000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 722190 | 누적 비용 $0.107 | 8.0건/s | 남은 시간 약 163분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 1}
+2026-11-23T14:39:14 진행 4380/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 785246 | 누적 비용 $0.117 | 7.8건/s | 남은 시간 약 166분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 1}
+2026-11-23T14:40:14 진행 5069/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 909184 | 누적 비용 $0.135 | 8.2건/s | 남은 시간 약 158분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 1}
+2026-11-23T14:50:14 대기 1s: 네트워크 ConnectionResetError: [Errno 54] Connection reset by peer
+2026-11-23T14:50:36 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:16 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:16 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:17 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:18 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:19 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:19 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:19 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:21 대기 4s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:21 대기 4s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:21 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:21 대기 4s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:21 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:24 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:24 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:24 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:24 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:24 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:25 대기 8s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:25 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:25 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:25 대기 8s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:25 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:25 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:25 대기 8s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:25 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:25 대기 4s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:25 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:26 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:26 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:26 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:27 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:27 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:27 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:27 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:27 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:27 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:27 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:27 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:28 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:28 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:28 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:28 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:28 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:28 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:28 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:28 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:28 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:59:36 대기 4s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 16s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 4s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 16s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T14:59:36 대기 2s: 네트워크 gaierror: [Errno 8] nodename nor servname provided, or not known
+2026-11-23T15:01:27 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:01:28 진행 5245/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 938959 | 누적 비용 $0.140 | 7.3건/s | 남은 시간 약 176분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 94}
+2026-11-23T15:01:30 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:01:31 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:01:31 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:02:28 진행 5525/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 990731 | 누적 비용 $0.147 | 7.1건/s | 남은 시간 약 180분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 97}
+2026-11-23T15:03:28 진행 5825/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1039842 | 누적 비용 $0.155 | 6.9건/s | 남은 시간 약 183분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 97}
+2026-11-23T15:04:10 진행 6000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1073975 | 누적 비용 $0.160 | 6.8건/s | 남은 시간 약 186분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 97}
+2026-11-23T15:05:10 진행 6237/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1116157 | 누적 비용 $0.166 | 6.6건/s | 남은 시간 약 191분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 97}
+2026-11-23T15:06:11 진행 6509/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1168918 | 누적 비용 $0.174 | 6.5건/s | 남은 시간 약 194분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 97}
+2026-11-23T15:07:11 진행 6903/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1236183 | 누적 비용 $0.184 | 6.5건/s | 남은 시간 약 193분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 97}
+2026-11-23T15:08:12 진행 7184/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1283895 | 누적 비용 $0.191 | 6.4건/s | 남은 시간 약 195분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 97}
+2026-11-23T15:09:12 진행 7398/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1317056 | 누적 비용 $0.196 | 6.3건/s | 남은 시간 약 199분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 97}
+2026-11-23T15:09:54 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:10:12 진행 7645/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1360992 | 누적 비용 $0.203 | 6.2건/s | 남은 시간 약 202분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 98}
+2026-11-23T15:11:05 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:11:12 진행 7884/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1401945 | 누적 비용 $0.209 | 6.1건/s | 남은 시간 약 205분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 99}
+2026-11-23T15:11:48 진행 8000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1423300 | 누적 비용 $0.212 | 6.0건/s | 남은 시간 약 207분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 99}
+2026-11-23T15:12:48 진행 8298/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1473286 | 누적 비용 $0.219 | 5.9건/s | 남은 시간 약 208분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 99}
+2026-11-23T15:13:26 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:13:37 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:13:48 진행 8713/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1546129 | 누적 비용 $0.230 | 6.0건/s | 남은 시간 약 205분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 101}
+2026-11-23T15:14:48 진행 8968/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1594407 | 누적 비용 $0.237 | 5.9건/s | 남은 시간 약 207분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 101}
+2026-11-23T15:15:13 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:15:48 진행 9251/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1645947 | 누적 비용 $0.245 | 5.9건/s | 남은 시간 약 207분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:16:48 진행 9552/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1697416 | 누적 비용 $0.253 | 5.8건/s | 남은 시간 약 208분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:17:48 진행 9874/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1760203 | 누적 비용 $0.262 | 5.8건/s | 남은 시간 약 207분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:18:11 진행 10000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1782676 | 누적 비용 $0.265 | 5.8건/s | 남은 시간 약 207분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:19:12 진행 10256/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1826425 | 누적 비용 $0.272 | 5.8건/s | 남은 시간 약 208분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:20:12 진행 10487/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1869109 | 누적 비용 $0.278 | 5.7건/s | 남은 시간 약 210분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:21:12 진행 10691/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1903078 | 누적 비용 $0.283 | 5.6건/s | 남은 시간 약 212분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:22:12 진행 10971/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 1954597 | 누적 비용 $0.291 | 5.6건/s | 남은 시간 약 212분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:23:13 진행 11248/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2004998 | 누적 비용 $0.298 | 5.6건/s | 남은 시간 약 213분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:24:13 진행 11581/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2065645 | 누적 비용 $0.307 | 5.6건/s | 남은 시간 약 212분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:25:14 진행 11929/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2124620 | 누적 비용 $0.316 | 5.6건/s | 남은 시간 약 211분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:25:23 진행 12000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2135409 | 누적 비용 $0.318 | 5.6건/s | 남은 시간 약 210분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:26:23 진행 12513/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2228918 | 누적 비용 $0.332 | 5.7건/s | 남은 시간 약 205분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:27:23 진행 12888/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2299529 | 누적 비용 $0.342 | 5.7건/s | 남은 시간 약 204분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:28:23 진행 13216/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2358741 | 누적 비용 $0.351 | 5.7건/s | 남은 시간 약 203분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:29:23 진행 13654/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2434644 | 누적 비용 $0.362 | 5.7건/s | 남은 시간 약 200분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:30:12 진행 14000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2491643 | 누적 비용 $0.371 | 5.7건/s | 남은 시간 약 198분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:31:12 진행 14363/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2561157 | 누적 비용 $0.381 | 5.7건/s | 남은 시간 약 197분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:32:12 진행 14683/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2620694 | 누적 비용 $0.390 | 5.7건/s | 남은 시간 약 196분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:33:12 진행 14931/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2667938 | 누적 비용 $0.397 | 5.7건/s | 남은 시간 약 197분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:34:12 진행 15191/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2710279 | 누적 비용 $0.403 | 5.7건/s | 남은 시간 약 197분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 102}
+2026-11-23T15:34:59 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:35:12 진행 15584/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2777458 | 누적 비용 $0.413 | 5.7건/s | 남은 시간 약 195분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 103}
+2026-11-23T15:36:13 진행 15895/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2839676 | 누적 비용 $0.422 | 5.7건/s | 남은 시간 약 195분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 103}
+2026-11-23T15:36:29 진행 16000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2858033 | 누적 비용 $0.425 | 5.7건/s | 남은 시간 약 194분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 103}
+2026-11-23T15:37:29 진행 16222/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2899847 | 누적 비용 $0.431 | 5.6건/s | 남은 시간 약 195분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 103}
+2026-11-23T15:38:29 진행 16540/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 2957514 | 누적 비용 $0.440 | 5.6건/s | 남은 시간 약 195분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 103}
+2026-11-23T15:39:02 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:39:29 진행 16865/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3021489 | 누적 비용 $0.449 | 5.6건/s | 남은 시간 약 194분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 104}
+2026-11-23T15:40:29 진행 17343/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3105570 | 누적 비용 $0.462 | 5.7건/s | 남은 시간 약 191분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 104}
+2026-11-23T15:41:30 진행 17757/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3179504 | 누적 비용 $0.473 | 5.7건/s | 남은 시간 약 189분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 104}
+2026-11-23T15:42:03 진행 18000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3227664 | 누적 비용 $0.480 | 5.7건/s | 남은 시간 약 187분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 104}
+2026-11-23T15:43:04 진행 18486/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3318144 | 누적 비용 $0.493 | 5.8건/s | 남은 시간 약 185분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 104}
+2026-11-23T15:44:04 진행 18737/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3361103 | 누적 비용 $0.500 | 5.7건/s | 남은 시간 약 185분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 104}
+2026-11-23T15:45:04 진행 19068/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3422515 | 누적 비용 $0.509 | 5.7건/s | 남은 시간 약 184분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 104}
+2026-11-23T15:46:04 진행 19431/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3484636 | 누적 비용 $0.518 | 5.7건/s | 남은 시간 약 183분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 104}
+2026-11-23T15:47:04 진행 19792/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3553289 | 누적 비용 $0.528 | 5.7건/s | 남은 시간 약 182분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 104}
+2026-11-23T15:47:26 진행 20000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3586336 | 누적 비용 $0.533 | 5.8건/s | 남은 시간 약 180분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 104}
+2026-11-23T15:48:26 진행 20274/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3636788 | 누적 비용 $0.541 | 5.7건/s | 남은 시간 약 180분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 104}
+2026-11-23T15:48:40 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:49:26 진행 20497/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3677183 | 누적 비용 $0.547 | 5.7건/s | 남은 시간 약 180분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 105}
+2026-11-23T15:50:26 진행 20731/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3715222 | 누적 비용 $0.552 | 5.7건/s | 남은 시간 약 181분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 105}
+2026-11-23T15:51:03 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:51:26 진행 20899/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3747778 | 누적 비용 $0.557 | 5.6건/s | 남은 시간 약 182분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 106}
+2026-11-23T15:52:26 진행 21065/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3780394 | 누적 비용 $0.562 | 5.6건/s | 남은 시간 약 183분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 106}
+2026-11-23T15:53:31 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:53:31 진행 21197/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3806625 | 누적 비용 $0.566 | 5.5건/s | 남은 시간 약 184분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 107}
+2026-11-23T15:53:41 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:53:48 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:53:53 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:00 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:03 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:05 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:11 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:33 진행 21285/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3823808 | 누적 비용 $0.568 | 5.5건/s | 남은 시간 약 186분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 114}
+2026-11-23T15:54:47 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:52 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:58 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:02 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:04 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:04 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:23 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:34 진행 21397/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3844236 | 누적 비용 $0.571 | 5.4건/s | 남은 시간 약 188분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 121}
+2026-11-23T15:55:42 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:56:01 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:56:01 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:56:01 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:56:02 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:56:05 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:56:05 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:56:09 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:56:11 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:56:35 진행 21507/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3863184 | 누적 비용 $0.574 | 5.3건/s | 남은 시간 약 189분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 130}
+2026-11-23T15:57:35 진행 21684/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3891275 | 누적 비용 $0.578 | 5.3건/s | 남은 시간 약 190분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 130}
+2026-11-23T15:58:35 진행 21867/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3922031 | 누적 비용 $0.583 | 5.3건/s | 남은 시간 약 191분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 130}
+2026-11-23T15:58:40 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:58:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T15:58:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T15:58:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T15:58:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T15:58:49 대기 1s: HTTP 500 retry-after=None '{"error":{"message":"An internal error occurred while processing your request.","type":"internal_server_error"}}'
+2026-11-23T15:58:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T15:58:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T15:58:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T15:59:13 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:59:22 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:59:24 진행 22000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3943811 | 누적 비용 $0.586 | 5.2건/s | 남은 시간 약 191분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 133}
+2026-11-23T15:59:26 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:59:27 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:59:29 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:00:24 진행 22173/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 3975624 | 누적 비용 $0.591 | 5.2건/s | 남은 시간 약 192분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 136}
+2026-11-23T16:01:25 진행 22328/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4003921 | 누적 비용 $0.595 | 5.2건/s | 남은 시간 약 193분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 136}
+2026-11-23T16:02:10 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:02:25 진행 22531/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4036935 | 누적 비용 $0.600 | 5.1건/s | 남은 시간 약 193분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 137}
+2026-11-23T16:02:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:03:09 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:03:12 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:03:26 진행 22709/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4073698 | 누적 비용 $0.606 | 5.1건/s | 남은 시간 약 194분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 140}
+2026-11-23T16:03:38 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:04:19 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:04:26 진행 22939/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4119025 | 누적 비용 $0.612 | 5.1건/s | 남은 시간 약 194분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:05:26 진행 23241/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4175042 | 누적 비용 $0.620 | 5.1건/s | 남은 시간 약 193분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:06:26 진행 23591/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4245085 | 누적 비용 $0.631 | 5.1건/s | 남은 시간 약 191분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:07:27 진행 23805/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4285960 | 누적 비용 $0.637 | 5.1건/s | 남은 시간 약 191분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:08:24 진행 24000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4325519 | 누적 비용 $0.642 | 5.1건/s | 남은 시간 약 191분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:09:24 진행 24264/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4369124 | 누적 비용 $0.649 | 5.1건/s | 남은 시간 약 191분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:10:24 진행 24515/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4418198 | 누적 비용 $0.656 | 5.0건/s | 남은 시간 약 190분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:11:24 진행 24809/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4469543 | 누적 비용 $0.664 | 5.0건/s | 남은 시간 약 190분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:12:24 진행 25132/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4523586 | 누적 비용 $0.672 | 5.1건/s | 남은 시간 약 188분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:13:25 진행 25462/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4577169 | 누적 비용 $0.680 | 5.1건/s | 남은 시간 약 187분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:14:25 진행 25795/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4642356 | 누적 비용 $0.690 | 5.1건/s | 남은 시간 약 186분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:15:22 진행 26000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4677985 | 누적 비용 $0.695 | 5.0건/s | 남은 시간 약 186분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:16:22 진행 26313/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4737469 | 누적 비용 $0.704 | 5.0건/s | 남은 시간 약 185분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:17:22 진행 26583/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4784323 | 누적 비용 $0.711 | 5.0건/s | 남은 시간 약 184분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:18:23 진행 26856/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4830942 | 누적 비용 $0.718 | 5.0건/s | 남은 시간 약 183분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:19:23 진행 27343/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 4911466 | 누적 비용 $0.730 | 5.1건/s | 남은 시간 약 180분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:19:57 진행 28000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 5027437 | 누적 비용 $0.747 | 5.2건/s | 남은 시간 약 175분 | 재시도 {'429': 0, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:19:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:19:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:19:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:20:57 진행 28891/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 5190345 | 누적 비용 $0.771 | 5.3건/s | 남은 시간 약 169분 | 재시도 {'429': 3, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:21:56 대기 4s: HTTP 429 retry-after=4 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:21:57 진행 29985/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 5379668 | 누적 비용 $0.800 | 5.4건/s | 남은 시간 약 161분 | 재시도 {'429': 4, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:22:00 진행 30000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 5385375 | 누적 비용 $0.801 | 5.4건/s | 남은 시간 약 161분 | 재시도 {'429': 4, '529': 0, '5xx': 8, 'net': 142}
+2026-11-23T16:22:18 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:23:00 진행 30764/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 5517126 | 누적 비용 $0.820 | 5.5건/s | 남은 시간 약 156분 | 재시도 {'429': 4, '529': 0, '5xx': 8, 'net': 143}
+2026-11-23T16:24:00 진행 31562/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 5658891 | 누적 비용 $0.841 | 5.6건/s | 남은 시간 약 152분 | 재시도 {'429': 4, '529': 0, '5xx': 8, 'net': 143}
+2026-11-23T16:24:24 진행 32000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 5730632 | 누적 비용 $0.852 | 5.6건/s | 남은 시간 약 149분 | 재시도 {'429': 4, '529': 0, '5xx': 8, 'net': 143}
+2026-11-23T16:24:46 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:24:57 대기 3s: HTTP 429 retry-after=3 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:24:57 대기 3s: HTTP 429 retry-after=3 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:24:57 대기 3s: HTTP 429 retry-after=3 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:25:24 진행 33116/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 5932890 | 누적 비용 $0.882 | 5.8건/s | 남은 시간 약 142분 | 재시도 {'429': 7, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:25:49 대기 11s: HTTP 429 retry-after=11 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:26:18 진행 34000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 6087320 | 누적 비용 $0.905 | 5.9건/s | 남은 시간 약 137분 | 재시도 {'429': 8, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:26:55 대기 5s: HTTP 429 retry-after=5 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:27:18 진행 35062/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 6281243 | 누적 비용 $0.934 | 6.0건/s | 남은 시간 약 132분 | 재시도 {'429': 9, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:27:48 대기 12s: HTTP 429 retry-after=12 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:28:18 진행 36000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 6456635 | 누적 비용 $0.960 | 6.1건/s | 남은 시간 약 127분 | 재시도 {'429': 10, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:28:48 대기 12s: HTTP 429 retry-after=12 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:28:48 대기 12s: HTTP 429 retry-after=12 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:28:48 대기 12s: HTTP 429 retry-after=12 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:29:18 진행 37051/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 6642912 | 누적 비용 $0.988 | 6.2건/s | 남은 시간 약 122분 | 재시도 {'429': 13, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:29:52 대기 8s: HTTP 429 retry-after=8 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:29:52 대기 8s: HTTP 429 retry-after=8 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:29:52 대기 8s: HTTP 429 retry-after=8 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:30:13 진행 38000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 6810819 | 누적 비용 $1.013 | 6.3건/s | 남은 시간 약 117분 | 재시도 {'429': 16, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:30:48 대기 12s: HTTP 429 retry-after=12 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:31:13 진행 38956/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 6976746 | 누적 비용 $1.038 | 6.4건/s | 남은 시간 약 113분 | 재시도 {'429': 17, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:31:51 대기 9s: HTTP 429 retry-after=9 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:32:09 진행 40000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 7163900 | 누적 비용 $1.065 | 6.5건/s | 남은 시간 약 108분 | 재시도 {'429': 18, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:32:43 대기 17s: HTTP 429 retry-after=17 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:32:43 대기 17s: HTTP 429 retry-after=17 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:32:43 대기 17s: HTTP 429 retry-after=17 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:33:09 진행 41011/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 7344251 | 누적 비용 $1.092 | 6.6건/s | 남은 시간 약 104분 | 재시도 {'429': 21, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:33:47 대기 13s: HTTP 429 retry-after=13 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:33:47 대기 13s: HTTP 429 retry-after=13 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:34:07 진행 42000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 7515931 | 누적 비용 $1.118 | 6.7건/s | 남은 시간 약 100분 | 재시도 {'429': 23, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:34:41 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:34:41 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:35:07 진행 43041/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 7692448 | 누적 비용 $1.144 | 6.8건/s | 남은 시간 약 96분 | 재시도 {'429': 25, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:35:40 대기 20s: HTTP 429 retry-after=20 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:36:04 진행 44000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 7857001 | 누적 비용 $1.169 | 6.9건/s | 남은 시간 약 93분 | 재시도 {'429': 26, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:36:36 대기 24s: HTTP 429 retry-after=24 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:36:36 대기 24s: HTTP 429 retry-after=24 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:37:04 진행 45039/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 8039133 | 누적 비용 $1.196 | 7.0건/s | 남은 시간 약 89분 | 재시도 {'429': 28, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:37:40 대기 20s: HTTP 429 retry-after=20 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:37:40 대기 20s: HTTP 429 retry-after=20 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:38:02 진행 46000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 8211128 | 누적 비용 $1.222 | 7.1건/s | 남은 시간 약 85분 | 재시도 {'429': 30, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:38:40 대기 20s: HTTP 429 retry-after=20 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:39:02 진행 47017/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 8393393 | 누적 비용 $1.249 | 7.2건/s | 남은 시간 약 82분 | 재시도 {'429': 31, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:39:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:39:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:39:41 진행 48000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 8561303 | 누적 비용 $1.274 | 7.3건/s | 남은 시간 약 79분 | 재시도 {'429': 33, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:40:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:40:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:40:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:40:41 진행 49021/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 8741638 | 누적 비용 $1.301 | 7.3건/s | 남은 시간 약 75분 | 재시도 {'429': 36, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:41:38 진행 50000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 8914604 | 누적 비용 $1.327 | 7.4건/s | 남은 시간 약 72분 | 재시도 {'429': 36, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:41:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:41:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:41:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:42:38 진행 50944/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 9085201 | 누적 비용 $1.352 | 7.5건/s | 남은 시간 약 69분 | 재시도 {'429': 39, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:42:42 대기 18s: HTTP 429 retry-after=18 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:43:37 진행 52000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 9267219 | 누적 비용 $1.379 | 7.6건/s | 남은 시간 약 66분 | 재시도 {'429': 40, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:43:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:43:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:43:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:44:37 진행 53071/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 9455477 | 누적 비용 $1.408 | 7.7건/s | 남은 시간 약 63분 | 재시도 {'429': 43, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:44:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:44:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:44:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:44:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:44:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:44:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:45:31 진행 54000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 9621634 | 누적 비용 $1.432 | 7.8건/s | 남은 시간 약 61분 | 재시도 {'429': 49, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:45:36 대기 25s: HTTP 429 retry-after=25 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:46:31 진행 54916/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 9786157 | 누적 비용 $1.457 | 7.8건/s | 남은 시간 약 58분 | 재시도 {'429': 50, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:46:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:46:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:47:30 진행 56000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 9983137 | 누적 비용 $1.486 | 7.9건/s | 남은 시간 약 55분 | 재시도 {'429': 52, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:47:36 대기 24s: HTTP 429 retry-after=24 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:47:36 대기 24s: HTTP 429 retry-after=24 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:47:36 대기 24s: HTTP 429 retry-after=24 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:48:30 진행 56978/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 10156238 | 누적 비용 $1.512 | 8.0건/s | 남은 시간 약 53분 | 재시도 {'429': 55, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:48:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:48:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:49:29 진행 58000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 10341100 | 누적 비용 $1.539 | 8.1건/s | 남은 시간 약 50분 | 재시도 {'429': 57, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:49:37 대기 23s: HTTP 429 retry-after=23 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:50:29 진행 59001/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 10520743 | 누적 비용 $1.566 | 8.1건/s | 남은 시간 약 48분 | 재시도 {'429': 58, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:50:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:50:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:50:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:50:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:50:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:51:28 진행 60000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 10703236 | 누적 비용 $1.593 | 8.2건/s | 남은 시간 약 45분 | 재시도 {'429': 100, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:51:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:51:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:51:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:52:28 진행 60998/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 10881904 | 누적 비용 $1.620 | 8.3건/s | 남은 시간 약 43분 | 재시도 {'429': 103, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:52:42 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:52:42 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:52:42 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:52:42 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:52:42 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:53:23 진행 62000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 11067231 | 누적 비용 $1.647 | 8.3건/s | 남은 시간 약 40분 | 재시도 {'429': 108, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:53:35 대기 25s: HTTP 429 retry-after=25 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:53:35 대기 25s: HTTP 429 retry-after=25 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:53:35 대기 25s: HTTP 429 retry-after=25 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:53:35 대기 25s: HTTP 429 retry-after=25 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:54:23 진행 63035/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 11245552 | 누적 비용 $1.674 | 8.4건/s | 남은 시간 약 38분 | 재시도 {'429': 112, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:54:35 대기 25s: HTTP 429 retry-after=25 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:54:35 대기 25s: HTTP 429 retry-after=25 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:54:35 대기 25s: HTTP 429 retry-after=25 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:55:21 진행 64000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 11412904 | 누적 비용 $1.699 | 8.5건/s | 남은 시간 약 36분 | 재시도 {'429': 115, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:55:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:55:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:55:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:56:21 진행 65021/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 11595463 | 누적 비용 $1.726 | 8.5건/s | 남은 시간 약 34분 | 재시도 {'429': 118, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:56:36 대기 24s: HTTP 429 retry-after=24 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:57:21 진행 65996/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 11775360 | 누적 비용 $1.752 | 8.6건/s | 남은 시간 약 31분 | 재시도 {'429': 119, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:57:21 진행 66000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 11776014 | 누적 비용 $1.753 | 8.6건/s | 남은 시간 약 31분 | 재시도 {'429': 119, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:57:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:57:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:58:21 진행 67052/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 11957833 | 누적 비용 $1.780 | 8.7건/s | 남은 시간 약 29분 | 재시도 {'429': 121, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:58:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:58:39 대기 21s: HTTP 429 retry-after=21 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T16:59:20 진행 68000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 12130749 | 누적 비용 $1.805 | 8.7건/s | 남은 시간 약 27분 | 재시도 {'429': 123, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T16:59:38 대기 22s: HTTP 429 retry-after=22 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:00:20 진행 68875/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 12286994 | 누적 비용 $1.829 | 8.8건/s | 남은 시간 약 25분 | 재시도 {'429': 147, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T17:00:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:00:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:01:18 진행 70000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 12481116 | 누적 비용 $1.858 | 8.9건/s | 남은 시간 약 23분 | 재시도 {'429': 149, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T17:01:43 대기 17s: HTTP 429 retry-after=17 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:01:43 대기 17s: HTTP 429 retry-after=17 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:02:18 진행 70946/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 12650212 | 누적 비용 $1.883 | 8.9건/s | 남은 시간 약 21분 | 재시도 {'429': 151, '529': 0, '5xx': 8, 'net': 144}
+2026-11-23T17:02:48 대기 12s: HTTP 429 retry-after=12 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:02:57 대기 1s: HTTP 500 retry-after=None '{"error":{"message":"An internal error occurred while processing your request.","type":"internal_server_error"}}'
+2026-11-23T17:02:57 대기 1s: HTTP 500 retry-after=None '{"error":{"message":"An internal error occurred while processing your request.","type":"internal_server_error"}}'
+2026-11-23T17:03:16 진행 72000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 12842695 | 누적 비용 $1.911 | 9.0건/s | 남은 시간 약 19분 | 재시도 {'429': 152, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:03:48 대기 12s: HTTP 429 retry-after=12 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:03:48 대기 12s: HTTP 429 retry-after=12 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:04:16 진행 73037/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 13031454 | 누적 비용 $1.939 | 9.0건/s | 남은 시간 약 17분 | 재시도 {'429': 154, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:04:49 대기 11s: HTTP 429 retry-after=11 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:05:15 진행 74000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 13205699 | 누적 비용 $1.965 | 9.1건/s | 남은 시간 약 15분 | 재시도 {'429': 155, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:05:40 대기 20s: HTTP 429 retry-after=20 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:05:40 대기 20s: HTTP 429 retry-after=20 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:05:40 대기 20s: HTTP 429 retry-after=20 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:06:15 진행 75045/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 13397971 | 누적 비용 $1.994 | 9.1건/s | 남은 시간 약 13분 | 재시도 {'429': 158, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:06:41 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:06:41 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:06:41 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:07:10 진행 76000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 13570011 | 누적 비용 $2.019 | 9.2건/s | 남은 시간 약 11분 | 재시도 {'429': 161, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:07:51 대기 9s: HTTP 429 retry-after=9 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:08:10 진행 76971/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 13738853 | 누적 비용 $2.045 | 9.3건/s | 남은 시간 약 9분 | 재시도 {'429': 162, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:08:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:08:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:09:10 진행 77987/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 13918989 | 누적 비용 $2.071 | 9.3건/s | 남은 시간 약 8분 | 재시도 {'429': 164, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:09:11 진행 78000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 13920746 | 누적 비용 $2.072 | 9.3건/s | 남은 시간 약 8분 | 재시도 {'429': 164, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:09:41 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:10:11 진행 79029/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 14108816 | 누적 비용 $2.099 | 9.4건/s | 남은 시간 약 6분 | 재시도 {'429': 165, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:10:46 대기 14s: HTTP 429 retry-after=14 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:11:08 진행 80000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 14282052 | 누적 비용 $2.125 | 9.4건/s | 남은 시간 약 4분 | 재시도 {'429': 166, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:11:41 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:11:41 대기 19s: HTTP 429 retry-after=19 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:12:08 진행 81046/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 14471929 | 누적 비용 $2.153 | 9.5건/s | 남은 시간 약 2분 | 재시도 {'429': 168, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:12:40 대기 20s: HTTP 429 retry-after=20 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:12:40 대기 20s: HTTP 429 retry-after=20 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:13:05 진행 82000/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 14642049 | 누적 비용 $2.179 | 9.5건/s | 남은 시간 약 0분 | 재시도 {'429': 170, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:13:28 진행 82200/82200 | 유효 100.0% | api_error 0 | 추론 토큰 합 14683557 | 누적 비용 $2.185 | 9.5건/s | 남은 시간 약 0분 | 재시도 {'429': 170, '529': 0, '5xx': 10, 'net': 144}
+2026-11-23T17:13:28 완료
