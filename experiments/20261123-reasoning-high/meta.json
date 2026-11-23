@@ -3,6 +3,6 @@
  "author": "태우",
  "date": "2026-11-23",
  "question": "추론을 high까지 올리면 셀끼리 차이와 사람 방향 정렬이 계속 커지는가, 멈추는가",
- "status": "진행",
- "conclusion": ""
+ "status": "완료",
+ "conclusion": "추론 low → high에서 셀 간 분산비(+0.23, Holm p 0.857)와 셀 편차 정렬(+0.032, Holm p 0.196) 모두 유의한 변화 없음. 끔 → low의 셀 차이 증가는 high에서 더 커지지 않고 멈춤"
 }
