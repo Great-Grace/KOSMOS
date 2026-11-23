@@ -1,0 +1,29 @@
+{
+ "time": "2026-11-23T18:08:04",
+ "git_commit": "78f78d6",
+ "git_dirty": false,
+ "script_sha256_16": "b88a51615fb40918",
+ "inputs": {
+  "원문": {
+   "path": "raw\\v2\\deepseek_eco_low_p1.jsonl",
+   "sha256_16": "1037909302c4c99c"
+  },
+  "이사람하십시오": {
+   "path": "raw\\v2\\deepseek_eco_low_register_p1.jsonl",
+   "sha256_16": "2066b1717669030a"
+  },
+  "decomp": {
+   "path": "raw\\v2\\deepseek_eco_low_decomp_p1.jsonl",
+   "sha256_16": "d4a2ce06d07f95f7"
+  }
+ },
+ "params": {
+  "k": 50,
+  "bootstrap": 2000,
+  "seed": 20261123,
+  "beta": 0.365,
+  "beta_source": "20261123-register-final/out/betas.csv 한국 성인 low"
+ },
+ "paid_calls": 0,
+ "include_test": false
+}

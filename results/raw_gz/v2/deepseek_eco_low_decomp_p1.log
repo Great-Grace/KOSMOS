@@ -1,0 +1,731 @@
+2026-11-23T13:38:34 deepseek/deepseek-v4.1-flash-eco | 단계 1 | 설정 {"reasoning_effort": "low", "temperature": 1.0, "max_completion_tokens": 4000} | 전체 98400건 중 완료 0건, 이번 실행 98400건 | 동시 48
+2026-11-23T13:38:57 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:38:58 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:38:58 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:39:34 진행 210/98400 | 유효 97.1% | api_error 0 | 추론 토큰 합 40657 | 누적 비용 $0.006 | 3.5건/s | 남은 시간 약 468분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 3}
+2026-11-23T13:39:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:39:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:39:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:39:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:39:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:39:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:39:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:39:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:39:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:39:36 대기 1s: 네트워크 TimeoutError: _ssl.c:1064: The handshake operation timed out
+2026-11-23T13:39:36 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:39:36 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:39:36 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:39:36 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:40:05 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:40:34 진행 486/98400 | 유효 98.4% | api_error 0 | 추론 토큰 합 83326 | 누적 비용 $0.012 | 4.0건/s | 남은 시간 약 404분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 18}
+2026-11-23T13:40:42 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:41:18 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:41:19 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:41:19 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:41:20 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:41:20 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:41:35 진행 958/98400 | 유효 98.9% | api_error 0 | 추론 토큰 합 171589 | 누적 비용 $0.026 | 5.3건/s | 남은 시간 약 306분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 24}
+2026-11-23T13:41:54 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:41:55 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:41:57 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:41:58 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:41:58 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:41:59 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:41:59 대기 1s: 네트워크 TimeoutError: _ssl.c:1064: The handshake operation timed out
+2026-11-23T13:42:21 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:42:21 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:42:21 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:42:35 진행 1180/98400 | 유효 99.0% | api_error 0 | 추론 토큰 합 213227 | 누적 비용 $0.032 | 4.9건/s | 남은 시간 약 331분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 34}
+2026-11-23T13:43:01 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:43:01 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:43:01 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:43:01 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:43:01 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:43:02 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:43:02 대기 1s: 네트워크 TimeoutError: _ssl.c:1064: The handshake operation timed out
+2026-11-23T13:43:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:43:28 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:43:39 진행 1425/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 250131 | 누적 비용 $0.037 | 4.7건/s | 남은 시간 약 346분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 43}
+2026-11-23T13:43:58 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:44:01 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:44:06 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:44:24 진행 2000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 352963 | 누적 비용 $0.053 | 5.7건/s | 남은 시간 약 281분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 46}
+2026-11-23T13:45:05 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:45:05 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:45:05 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:45:05 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:45:05 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:45:06 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:45:07 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:45:07 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:45:07 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:45:07 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:45:07 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:45:07 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:45:07 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:45:24 진행 2501/98400 | 유효 98.8% | api_error 0 | 추론 토큰 합 440317 | 누적 비용 $0.066 | 6.1건/s | 남은 시간 약 262분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 59}
+2026-11-23T13:45:40 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:45:43 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:45:45 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:46:25 진행 3229/98400 | 유효 98.9% | api_error 0 | 추론 토큰 합 568371 | 누적 비용 $0.085 | 6.9건/s | 남은 시간 약 231분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 62}
+2026-11-23T13:47:16 진행 4000/98400 | 유효 98.9% | api_error 0 | 추론 토큰 합 711039 | 누적 비용 $0.106 | 7.7건/s | 남은 시간 약 205분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 62}
+2026-11-23T13:48:16 진행 4594/98400 | 유효 98.9% | api_error 0 | 추론 토큰 합 819050 | 누적 비용 $0.122 | 7.9건/s | 남은 시간 약 198분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 62}
+2026-11-23T13:49:05 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:49:05 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:49:05 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:49:05 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T13:49:07 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:49:07 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T13:49:17 진행 4903/98400 | 유효 98.9% | api_error 0 | 추론 토큰 합 879924 | 누적 비용 $0.131 | 7.6건/s | 남은 시간 약 204분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 68}
+2026-11-23T13:49:39 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:49:44 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:49:44 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:49:44 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:49:45 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:49:45 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:50:17 진행 5362/98400 | 유효 98.9% | api_error 0 | 추론 토큰 합 952156 | 누적 비용 $0.142 | 7.6건/s | 남은 시간 약 203분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 74}
+2026-11-23T13:51:19 진행 5745/98400 | 유효 99.0% | api_error 0 | 추론 토큰 합 1030884 | 누적 비용 $0.154 | 7.5건/s | 남은 시간 약 206분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 74}
+2026-11-23T13:51:48 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T13:52:19 진행 5968/98400 | 유효 99.0% | api_error 0 | 추론 토큰 합 1073442 | 누적 비용 $0.160 | 7.2건/s | 남은 시간 약 213분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 75}
+2026-11-23T13:52:24 진행 6000/98400 | 유효 99.0% | api_error 0 | 추론 토큰 합 1079482 | 누적 비용 $0.161 | 7.2건/s | 남은 시간 약 213분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 75}
+2026-11-23T13:53:25 진행 6185/98400 | 유효 99.0% | api_error 0 | 추론 토큰 합 1113761 | 누적 비용 $0.166 | 6.9건/s | 남은 시간 약 221분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 75}
+2026-11-23T13:54:25 진행 6417/98400 | 유효 99.0% | api_error 0 | 추론 토큰 합 1148889 | 누적 비용 $0.171 | 6.7건/s | 남은 시간 약 227분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 75}
+2026-11-23T13:55:25 진행 6674/98400 | 유효 99.0% | api_error 0 | 추론 토큰 합 1195536 | 누적 비용 $0.178 | 6.6건/s | 남은 시간 약 232분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 75}
+2026-11-23T13:56:25 진행 6927/98400 | 유효 99.0% | api_error 0 | 추론 토큰 합 1247375 | 누적 비용 $0.186 | 6.5건/s | 남은 시간 약 236분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 75}
+2026-11-23T13:57:27 진행 7200/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1288606 | 누적 비용 $0.192 | 6.4건/s | 남은 시간 약 239분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 75}
+2026-11-23T13:58:27 진행 7414/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1329387 | 누적 비용 $0.198 | 6.2건/s | 남은 시간 약 244분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 75}
+2026-11-23T13:59:28 진행 7642/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1365455 | 누적 비용 $0.204 | 6.1건/s | 남은 시간 약 248분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 75}
+2026-11-23T14:00:28 진행 7839/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1406608 | 누적 비용 $0.209 | 6.0건/s | 남은 시간 약 253분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 75}
+2026-11-23T14:01:23 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:01:24 진행 8000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1442657 | 누적 비용 $0.215 | 5.8건/s | 남은 시간 약 258분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 76}
+2026-11-23T14:01:26 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:01:34 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:01:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:01:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:02:25 진행 8302/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1492451 | 누적 비용 $0.222 | 5.8건/s | 남은 시간 약 259분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 80}
+2026-11-23T14:03:25 진행 8595/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1544766 | 누적 비용 $0.230 | 5.8건/s | 남은 시간 약 260분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 80}
+2026-11-23T14:04:25 진행 8968/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1620489 | 누적 비용 $0.241 | 5.8건/s | 남은 시간 약 258분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 80}
+2026-11-23T14:05:25 진행 9209/98400 | 유효 99.0% | api_error 0 | 추론 토큰 합 1656318 | 누적 비용 $0.247 | 5.7건/s | 남은 시간 약 260분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 80}
+2026-11-23T14:05:27 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:05:29 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:05:29 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:05:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:05:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:05:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:06:26 진행 9490/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1706464 | 누적 비용 $0.254 | 5.7건/s | 남은 시간 약 261분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 86}
+2026-11-23T14:07:26 진행 9886/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1785255 | 누적 비용 $0.266 | 5.7건/s | 남은 시간 약 258분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 86}
+2026-11-23T14:07:40 진행 10000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1808588 | 누적 비용 $0.269 | 5.7건/s | 남은 시간 약 257분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 86}
+2026-11-23T14:08:40 진행 10370/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1864730 | 누적 비용 $0.278 | 5.7건/s | 남은 시간 약 255분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 86}
+2026-11-23T14:09:40 진행 10736/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1939525 | 누적 비용 $0.289 | 5.8건/s | 남은 시간 약 254분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 86}
+2026-11-23T14:10:40 진행 11023/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 1988103 | 누적 비용 $0.296 | 5.7건/s | 남은 시간 약 254분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 86}
+2026-11-23T14:11:40 진행 11321/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2035211 | 누적 비용 $0.303 | 5.7건/s | 남은 시간 약 255분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 86}
+2026-11-23T14:12:40 진행 11592/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2084218 | 누적 비용 $0.310 | 5.7건/s | 남은 시간 약 255분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 86}
+2026-11-23T14:13:41 진행 11952/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2157222 | 누적 비용 $0.321 | 5.7건/s | 남은 시간 약 254분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 86}
+2026-11-23T14:13:49 진행 12000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2166434 | 누적 비용 $0.322 | 5.7건/s | 남은 시간 약 254분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 86}
+2026-11-23T14:15:07 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:15:09 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T14:15:09 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T14:15:09 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T14:15:18 진행 12725/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2302737 | 누적 비용 $0.342 | 5.8건/s | 남은 시간 약 247분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 90}
+2026-11-23T14:15:35 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:15:37 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:15:47 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:15:47 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:15:48 대기 1s: 네트워크 TimeoutError: _ssl.c:1064: The handshake operation timed out
+2026-11-23T14:16:19 진행 12950/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2344227 | 누적 비용 $0.349 | 5.7건/s | 남은 시간 약 249분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 95}
+2026-11-23T14:17:20 진행 13260/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2391270 | 누적 비용 $0.356 | 5.7건/s | 남은 시간 약 249분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 95}
+2026-11-23T14:18:20 진행 13578/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2453525 | 누적 비용 $0.365 | 5.7건/s | 남은 시간 약 248분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 95}
+2026-11-23T14:19:12 진행 14000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2534833 | 누적 비용 $0.377 | 5.7건/s | 남은 시간 약 245분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 95}
+2026-11-23T14:20:12 진행 14725/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2664126 | 누적 비용 $0.396 | 5.9건/s | 남은 시간 약 237분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 95}
+2026-11-23T14:21:13 진행 15334/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2771117 | 누적 비용 $0.412 | 6.0건/s | 남은 시간 약 231분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 95}
+2026-11-23T14:22:12 진행 16000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2900511 | 누적 비용 $0.431 | 6.1건/s | 남은 시간 약 225분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 95}
+2026-11-23T14:22:33 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:22:33 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:22:33 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:22:33 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:22:33 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:22:35 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T14:22:35 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T14:22:35 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T14:22:35 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T14:22:35 대기 1s: 네트워크 TimeoutError: [WinError 10060] 연결된 구성원으로부터 응답이 없어 연결하지 못했거나, 호스트로부터 응답이 없어 연결이 끊어졌습니다
+2026-11-23T14:23:05 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:23:06 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:23:12 진행 16292/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 2947594 | 누적 비용 $0.438 | 6.1건/s | 남은 시간 약 225분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 107}
+2026-11-23T14:24:12 진행 16999/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3074616 | 누적 비용 $0.457 | 6.2건/s | 남은 시간 약 219분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 107}
+2026-11-23T14:25:12 진행 17415/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3146959 | 누적 비용 $0.468 | 6.2건/s | 남은 시간 약 217분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 107}
+2026-11-23T14:26:12 진행 17851/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3230391 | 누적 비용 $0.480 | 6.2건/s | 남은 시간 약 215분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 107}
+2026-11-23T14:26:31 진행 18000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3257006 | 누적 비용 $0.484 | 6.3건/s | 남은 시간 약 214분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 107}
+2026-11-23T14:27:31 진행 18445/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3334902 | 누적 비용 $0.496 | 6.3건/s | 남은 시간 약 212분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 107}
+2026-11-23T14:28:32 진행 18797/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3403587 | 누적 비용 $0.506 | 6.3건/s | 남은 시간 약 212분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 107}
+2026-11-23T14:29:32 진행 19080/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3447830 | 누적 비용 $0.513 | 6.2건/s | 남은 시간 약 212분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 107}
+2026-11-23T14:30:32 진행 19405/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3509374 | 누적 비용 $0.522 | 6.2건/s | 남은 시간 약 212분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 107}
+2026-11-23T14:30:42 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:31:33 진행 19671/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3561222 | 누적 비용 $0.529 | 6.2건/s | 남은 시간 약 212분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 108}
+2026-11-23T14:32:33 진행 19976/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3616838 | 누적 비용 $0.538 | 6.2건/s | 남은 시간 약 212분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 108}
+2026-11-23T14:32:35 진행 20000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3619895 | 누적 비용 $0.538 | 6.2건/s | 남은 시간 약 212분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 108}
+2026-11-23T14:33:35 진행 20447/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3697083 | 누적 비용 $0.550 | 6.2건/s | 남은 시간 약 210분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 108}
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:34:26 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:37 진행 20709/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3748509 | 누적 비용 $0.557 | 5.9건/s | 남은 시간 약 218분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 156}
+2026-11-23T14:36:51 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T14:36:54 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:54 대기 1s: 네트워크 OSError: [WinError 10065] 연결할 수 없는 호스트로 소켓 작업을 시도했습니다
+2026-11-23T14:36:54 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:54 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T14:36:54 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:54 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:54 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:54 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:54 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:54 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:54 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:54 대기 1s: 네트워크 ConnectionAbortedError: [WinError 10053] 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
+2026-11-23T14:36:54 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:55 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:55 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:55 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:55 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:55 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:55 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:55 대기 1s: 네트워크 ConnectionResetError: [Errno 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:55 대기 1s: 네트워크 ConnectionResetError: [Errno 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:56 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:56 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:36:58 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T14:36:58 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T14:36:58 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T14:36:58 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T14:36:58 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T14:37:09 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:37:09 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:37:37 진행 20919/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3779223 | 누적 비용 $0.562 | 5.9건/s | 남은 시간 약 219분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 187}
+2026-11-23T14:38:37 진행 21229/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3832241 | 누적 비용 $0.570 | 5.9건/s | 남은 시간 약 218분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 187}
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:01 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T14:39:10 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T14:39:25 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T14:39:47 진행 21347/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3855900 | 누적 비용 $0.574 | 5.8건/s | 남은 시간 약 221분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 235}
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:46 대기 2s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:40:50 진행 21391/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3861376 | 누적 비용 $0.574 | 5.7건/s | 남은 시간 약 224분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:41:50 진행 21750/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3937009 | 누적 비용 $0.585 | 5.7건/s | 남은 시간 약 223분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:42:45 진행 22000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 3977806 | 누적 비용 $0.591 | 5.7건/s | 남은 시간 약 223분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:43:45 진행 22430/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4056432 | 누적 비용 $0.603 | 5.7건/s | 남은 시간 약 221분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:44:46 진행 22884/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4135834 | 누적 비용 $0.615 | 5.8건/s | 남은 시간 약 218분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:45:46 진행 23207/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4193458 | 누적 비용 $0.624 | 5.8건/s | 남은 시간 약 218분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:46:46 진행 23539/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4262438 | 누적 비용 $0.634 | 5.8건/s | 남은 시간 약 217분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:47:47 진행 23905/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4330807 | 누적 비용 $0.644 | 5.8건/s | 남은 시간 약 216분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:47:57 진행 24000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4343247 | 누적 비용 $0.646 | 5.8건/s | 남은 시간 약 215분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:48:58 진행 24549/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4452920 | 누적 비용 $0.662 | 5.8건/s | 남은 시간 약 212분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:49:58 진행 24889/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4505676 | 누적 비용 $0.670 | 5.8건/s | 남은 시간 약 211분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:50:58 진행 25273/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4576578 | 누적 비용 $0.680 | 5.8건/s | 남은 시간 약 209분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:51:58 진행 25697/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4657198 | 누적 비용 $0.692 | 5.8건/s | 남은 시간 약 208분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:52:50 진행 26000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4707987 | 누적 비용 $0.700 | 5.8건/s | 남은 시간 약 207분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:53:50 진행 26396/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4786508 | 누적 비용 $0.711 | 5.8건/s | 남은 시간 약 205분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:54:50 진행 26676/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4831316 | 누적 비용 $0.718 | 5.8건/s | 남은 시간 약 205분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:55:50 진행 27010/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4884564 | 누적 비용 $0.726 | 5.8건/s | 남은 시간 약 204분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:56:50 진행 27234/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4926070 | 누적 비용 $0.732 | 5.8건/s | 남은 시간 약 205분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 278}
+2026-11-23T14:57:38 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:57:40 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:57:50 진행 27513/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 4976506 | 누적 비용 $0.740 | 5.8건/s | 남은 시간 약 204분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 280}
+2026-11-23T14:57:50 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:57:51 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T14:58:50 진행 27898/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5052879 | 누적 비용 $0.751 | 5.8건/s | 남은 시간 약 203분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 282}
+2026-11-23T14:59:11 진행 28000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5068994 | 누적 비용 $0.754 | 5.8건/s | 남은 시간 약 203분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 282}
+2026-11-23T15:00:12 진행 28336/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5139760 | 누적 비용 $0.764 | 5.8건/s | 남은 시간 약 202분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 282}
+2026-11-23T15:01:12 진행 28727/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5215209 | 누적 비용 $0.775 | 5.8건/s | 남은 시간 약 200분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 282}
+2026-11-23T15:02:12 진행 29019/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5260297 | 누적 비용 $0.782 | 5.8건/s | 남은 시간 약 200분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 282}
+2026-11-23T15:03:12 진행 29257/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5302106 | 누적 비용 $0.788 | 5.8건/s | 남은 시간 약 200분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 282}
+2026-11-23T15:04:12 진행 29551/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5360946 | 누적 비용 $0.797 | 5.8건/s | 남은 시간 약 200분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 282}
+2026-11-23T15:05:12 진행 29780/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5402193 | 누적 비용 $0.803 | 5.7건/s | 남은 시간 약 200분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 282}
+2026-11-23T15:05:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:06:04 진행 30000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5435726 | 누적 비용 $0.808 | 5.7건/s | 남은 시간 약 200분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 283}
+2026-11-23T15:07:04 진행 30331/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5499039 | 누적 비용 $0.817 | 5.7건/s | 남은 시간 약 199분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 283}
+2026-11-23T15:08:05 진행 30580/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5547053 | 누적 비용 $0.824 | 5.7건/s | 남은 시간 약 199분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 283}
+2026-11-23T15:09:05 진행 30772/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5574602 | 누적 비용 $0.829 | 5.7건/s | 남은 시간 약 199분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 283}
+2026-11-23T15:10:05 진행 30988/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5608802 | 누적 비용 $0.834 | 5.6건/s | 남은 시간 약 199분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 283}
+2026-11-23T15:11:05 진행 31228/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5656116 | 누적 비용 $0.841 | 5.6건/s | 남은 시간 약 199분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 283}
+2026-11-23T15:12:06 진행 31443/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5698104 | 누적 비용 $0.847 | 5.6건/s | 남은 시간 약 199분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 283}
+2026-11-23T15:13:06 진행 31732/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5751528 | 누적 비용 $0.855 | 5.6건/s | 남은 시간 약 199분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 283}
+2026-11-23T15:13:36 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:13:43 진행 32000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5792236 | 누적 비용 $0.861 | 5.6건/s | 남은 시간 약 197분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:14:43 진행 32236/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5840744 | 누적 비용 $0.868 | 5.6건/s | 남은 시간 약 197분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:15:43 진행 32506/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5893654 | 누적 비용 $0.876 | 5.6건/s | 남은 시간 약 197분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:16:43 진행 32840/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5942764 | 누적 비용 $0.884 | 5.6건/s | 남은 시간 약 196분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:17:44 진행 33156/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 5996537 | 누적 비용 $0.892 | 5.6건/s | 남은 시간 약 195분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:18:44 진행 33444/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6048320 | 누적 비용 $0.899 | 5.6건/s | 남은 시간 약 195분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:19:44 진행 33627/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6087827 | 누적 비용 $0.905 | 5.5건/s | 남은 시간 약 195분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:20:45 진행 33846/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6121343 | 누적 비용 $0.910 | 5.5건/s | 남은 시간 약 195분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:21:30 진행 34000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6147173 | 누적 비용 $0.914 | 5.5건/s | 남은 시간 약 195분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:22:30 진행 34272/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6200925 | 누적 비용 $0.922 | 5.5건/s | 남은 시간 약 194분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:23:30 진행 34561/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6250459 | 누적 비용 $0.930 | 5.5건/s | 남은 시간 약 194분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:24:32 진행 34817/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6286779 | 누적 비용 $0.935 | 5.5건/s | 남은 시간 약 194분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:25:32 진행 35129/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6343638 | 누적 비용 $0.944 | 5.5건/s | 남은 시간 약 193분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:26:32 진행 35522/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6421920 | 누적 비용 $0.955 | 5.5건/s | 남은 시간 약 191분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:27:33 진행 35856/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6476346 | 누적 비용 $0.963 | 5.5건/s | 남은 시간 약 190분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:27:56 진행 36000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6498349 | 누적 비용 $0.967 | 5.5건/s | 남은 시간 약 190분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:28:56 진행 36350/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6564315 | 누적 비용 $0.976 | 5.5건/s | 남은 시간 약 188분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:29:56 진행 36753/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6630279 | 누적 비용 $0.986 | 5.5건/s | 남은 시간 약 187분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:30:56 진행 37083/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6690507 | 누적 비용 $0.995 | 5.5건/s | 남은 시간 약 186분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:31:56 진행 37416/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6758749 | 누적 비용 $1.005 | 5.5건/s | 남은 시간 약 185분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:32:56 진행 37697/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6808685 | 누적 비용 $1.013 | 5.5건/s | 남은 시간 약 184분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:33:56 진행 37919/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6841932 | 누적 비용 $1.018 | 5.5건/s | 남은 시간 약 184분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:34:13 진행 38000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6856224 | 누적 비용 $1.020 | 5.5건/s | 남은 시간 약 184분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:35:13 진행 38372/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6924957 | 누적 비용 $1.030 | 5.5건/s | 남은 시간 약 182분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:36:13 진행 38698/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 6976796 | 누적 비용 $1.038 | 5.5건/s | 남은 시간 약 182분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:37:14 진행 38923/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7022758 | 누적 비용 $1.045 | 5.5건/s | 남은 시간 약 181분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:38:14 진행 39185/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7071843 | 누적 비용 $1.052 | 5.5건/s | 남은 시간 약 181분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:39:14 진행 39536/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7143073 | 누적 비용 $1.062 | 5.5건/s | 남은 시간 약 180분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:40:14 진행 39962/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7212881 | 누적 비용 $1.073 | 5.5건/s | 남은 시간 약 178분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:40:19 진행 40000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7220415 | 누적 비용 $1.074 | 5.5건/s | 남은 시간 약 178분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:41:19 진행 40391/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7297390 | 누적 비용 $1.085 | 5.5건/s | 남은 시간 약 176분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:42:19 진행 40823/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7366976 | 누적 비용 $1.096 | 5.5건/s | 남은 시간 약 175분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:43:19 진행 41230/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7446623 | 누적 비용 $1.108 | 5.5건/s | 남은 시간 약 173분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:44:19 진행 41485/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7499939 | 누적 비용 $1.115 | 5.5건/s | 남은 시간 약 173분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:45:19 진행 41847/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7556379 | 누적 비용 $1.124 | 5.5건/s | 남은 시간 약 171분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:45:42 진행 42000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7581384 | 누적 비용 $1.128 | 5.5건/s | 남은 시간 약 171분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:46:42 진행 42312/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7643886 | 누적 비용 $1.137 | 5.5건/s | 남은 시간 약 170분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:47:42 진행 42715/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7707130 | 누적 비용 $1.147 | 5.5건/s | 남은 시간 약 168분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:48:43 진행 43017/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7761982 | 누적 비용 $1.155 | 5.5건/s | 남은 시간 약 168분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:49:43 진행 43201/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7798099 | 누적 비용 $1.160 | 5.5건/s | 남은 시간 약 168분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:50:44 진행 43414/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7841649 | 누적 비용 $1.166 | 5.5건/s | 남은 시간 약 167분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:51:44 진행 43587/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7870939 | 누적 비용 $1.171 | 5.5건/s | 남은 시간 약 167분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:52:45 진행 43738/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7898148 | 누적 비용 $1.175 | 5.4건/s | 남은 시간 약 168분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 284}
+2026-11-23T15:53:30 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:53:34 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:53:45 진행 43870/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7921241 | 누적 비용 $1.178 | 5.4건/s | 남은 시간 약 168분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 286}
+2026-11-23T15:53:48 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:53:48 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:00 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:07 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:09 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:43 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:47 진행 43951/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7936297 | 누적 비용 $1.181 | 5.4건/s | 남은 시간 약 169분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 292}
+2026-11-23T15:54:50 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:54:51 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:01 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:01 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:15 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:15 진행 44000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7948416 | 누적 비용 $1.182 | 5.4건/s | 남은 시간 약 169분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 297}
+2026-11-23T15:55:15 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:17 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:28 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:32 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:37 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:48 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:52 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:55:53 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:56:09 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:56:15 진행 44101/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7970125 | 누적 비용 $1.185 | 5.3건/s | 남은 시간 약 170분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 306}
+2026-11-23T15:56:17 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:56:37 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:57:16 진행 44259/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 7995527 | 누적 비용 $1.189 | 5.3건/s | 남은 시간 약 170분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 308}
+2026-11-23T15:58:16 진행 44415/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8026854 | 누적 비용 $1.194 | 5.3건/s | 남은 시간 약 170분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 308}
+2026-11-23T15:59:06 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T15:59:16 진행 44590/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8051787 | 누적 비용 $1.198 | 5.3건/s | 남은 시간 약 170분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 309}
+2026-11-23T16:00:17 진행 44745/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8078801 | 누적 비용 $1.202 | 5.3건/s | 남은 시간 약 170분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 309}
+2026-11-23T16:01:17 진행 44900/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8109561 | 누적 비용 $1.206 | 5.2건/s | 남은 시간 약 170분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 309}
+2026-11-23T16:02:08 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:02:14 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:02:17 진행 45079/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8138716 | 누적 비용 $1.211 | 5.2건/s | 남은 시간 약 170분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 311}
+2026-11-23T16:02:34 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:03:03 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:03:16 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:03:18 진행 45278/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8180473 | 누적 비용 $1.217 | 5.2건/s | 남은 시간 약 170분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 314}
+2026-11-23T16:03:40 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:03:43 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:04:18 진행 45460/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8216598 | 누적 비용 $1.222 | 5.2건/s | 남은 시간 약 170분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 316}
+2026-11-23T16:04:37 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:04:53 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:04:57 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:04:58 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:04:58 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:05:00 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:05:05 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:05:19 진행 45747/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8261155 | 누적 비용 $1.229 | 5.2건/s | 남은 시간 약 169분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:06:07 진행 46000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8310130 | 누적 비용 $1.236 | 5.2건/s | 남은 시간 약 168분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:07:07 진행 46239/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8356218 | 누적 비용 $1.243 | 5.2건/s | 남은 시간 약 168분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:08:07 진행 46422/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8384908 | 누적 비용 $1.247 | 5.2건/s | 남은 시간 약 167분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:09:07 진행 46608/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8413341 | 누적 비용 $1.252 | 5.2건/s | 남은 시간 약 167분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:10:07 진행 46891/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8470973 | 누적 비용 $1.260 | 5.2건/s | 남은 시간 약 166분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:11:07 진행 47115/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8511686 | 누적 비용 $1.266 | 5.1건/s | 남은 시간 약 166분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:12:07 진행 47431/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8576786 | 누적 비용 $1.275 | 5.1건/s | 남은 시간 약 165분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:13:08 진행 47795/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8632930 | 누적 비용 $1.284 | 5.2건/s | 남은 시간 약 164분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:13:49 진행 48000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8673779 | 누적 비용 $1.290 | 5.2건/s | 남은 시간 약 163분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:14:50 진행 48241/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8715843 | 누적 비용 $1.296 | 5.1건/s | 남은 시간 약 162분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:15:50 진행 48494/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8754871 | 누적 비용 $1.302 | 5.1건/s | 남은 시간 약 162분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:16:50 진행 48779/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8806188 | 누적 비용 $1.310 | 5.1건/s | 남은 시간 약 161분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:17:51 진행 49019/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8850578 | 누적 비용 $1.317 | 5.1건/s | 남은 시간 약 160분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:18:51 진행 49258/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8896184 | 누적 비용 $1.323 | 5.1건/s | 남은 시간 약 160분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:19:51 진행 49810/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 8986759 | 누적 비용 $1.337 | 5.1건/s | 남은 시간 약 157분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:20:06 진행 50000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 9026308 | 누적 비용 $1.343 | 5.2건/s | 남은 시간 약 156분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:21:06 진행 50810/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 9168421 | 누적 비용 $1.364 | 5.2건/s | 남은 시간 약 152분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:22:06 진행 51576/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 9307887 | 누적 비용 $1.385 | 5.3건/s | 남은 시간 약 148분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:22:54 진행 52000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 9383827 | 누적 비용 $1.396 | 5.3건/s | 남은 시간 약 147분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:23:55 진행 52731/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 9512425 | 누적 비용 $1.415 | 5.3건/s | 남은 시간 약 143분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:24:55 진행 53502/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 9656023 | 누적 비용 $1.436 | 5.4건/s | 남은 시간 약 140분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:25:27 진행 54000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 9746637 | 누적 비용 $1.450 | 5.4건/s | 남은 시간 약 137분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:26:27 진행 54906/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 9895499 | 누적 비용 $1.472 | 5.5건/s | 남은 시간 약 133분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:27:27 진행 55798/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 10063010 | 누적 비용 $1.497 | 5.5건/s | 남은 시간 약 129분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:27:41 진행 56000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 10102747 | 누적 비용 $1.503 | 5.5건/s | 남은 시간 약 128분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:28:41 진행 56902/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 10253602 | 누적 비용 $1.526 | 5.6건/s | 남은 시간 약 124분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:29:41 진행 57728/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 10409846 | 누적 비용 $1.549 | 5.6건/s | 남은 시간 약 121분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:30:00 진행 58000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 10468857 | 누적 비용 $1.557 | 5.6건/s | 남은 시간 약 119분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:31:00 진행 58882/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 10618632 | 누적 비용 $1.580 | 5.7건/s | 남은 시간 약 116분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:32:00 진행 59710/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 10771469 | 누적 비용 $1.603 | 5.7건/s | 남은 시간 약 112분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:32:20 진행 60000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 10829310 | 누적 비용 $1.611 | 5.8건/s | 남은 시간 약 111분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:33:20 진행 60874/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 10975783 | 누적 비용 $1.633 | 5.8건/s | 남은 시간 약 108분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:34:20 진행 61794/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 11147878 | 누적 비용 $1.659 | 5.9건/s | 남은 시간 약 104분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:34:34 진행 62000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 11186047 | 누적 비용 $1.664 | 5.9건/s | 남은 시간 약 103분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:35:34 진행 62942/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 11356189 | 누적 비용 $1.689 | 5.9건/s | 남은 시간 약 100분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:36:34 진행 63955/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 11541885 | 누적 비용 $1.717 | 6.0건/s | 남은 시간 약 96분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:36:37 진행 64000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 11548847 | 누적 비용 $1.718 | 6.0건/s | 남은 시간 약 96분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:37:37 진행 64953/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 11716790 | 누적 비용 $1.743 | 6.0건/s | 남은 시간 약 92분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:38:37 진행 65836/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 11884727 | 누적 비용 $1.768 | 6.1건/s | 남은 시간 약 89분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:38:46 진행 66000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 11914383 | 누적 비용 $1.772 | 6.1건/s | 남은 시간 약 88분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:39:46 진행 66941/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 12081629 | 누적 비용 $1.797 | 6.2건/s | 남은 시간 약 85분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:40:46 진행 67876/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 12254328 | 누적 비용 $1.823 | 6.2건/s | 남은 시간 약 82분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:40:54 진행 68000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 12276527 | 누적 비용 $1.826 | 6.2건/s | 남은 시간 약 82분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:41:54 진행 68957/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 12453686 | 누적 비용 $1.852 | 6.3건/s | 남은 시간 약 78분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:42:54 진행 69861/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 12618556 | 누적 비용 $1.877 | 6.3건/s | 남은 시간 약 75분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:43:02 진행 70000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 12648006 | 누적 비용 $1.881 | 6.3건/s | 남은 시간 약 75분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:44:02 진행 70903/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 12804442 | 누적 비용 $1.905 | 6.4건/s | 남은 시간 약 72분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:45:02 진행 71813/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 12974087 | 누적 비용 $1.930 | 6.4건/s | 남은 시간 약 69분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:45:13 진행 72000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 13006501 | 누적 비용 $1.935 | 6.4건/s | 남은 시간 약 68분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 323}
+2026-11-23T16:45:38 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T16:46:13 진행 72868/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 13161890 | 누적 비용 $1.958 | 6.5건/s | 남은 시간 약 66분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 324}
+2026-11-23T16:46:50 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:47:13 진행 73825/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 13335606 | 누적 비용 $1.984 | 6.5건/s | 남은 시간 약 63분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 325}
+2026-11-23T16:47:23 진행 74000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 13366830 | 누적 비용 $1.988 | 6.5건/s | 남은 시간 약 62분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 325}
+2026-11-23T16:48:12 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T16:48:23 진행 74961/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 13539714 | 누적 비용 $2.014 | 6.6건/s | 남은 시간 약 59분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 326}
+2026-11-23T16:49:23 진행 76000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 13717034 | 누적 비용 $2.041 | 6.6건/s | 남은 시간 약 56분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 326}
+2026-11-23T16:49:48 대기 1s: 네트워크 TimeoutError: The read operation timed out
+2026-11-23T16:50:23 진행 76941/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 13885978 | 누적 비용 $2.066 | 6.7건/s | 남은 시간 약 53분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 327}
+2026-11-23T16:51:23 진행 77939/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 14062691 | 누적 비용 $2.092 | 6.7건/s | 남은 시간 약 51분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 327}
+2026-11-23T16:51:26 진행 78000/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 14070404 | 누적 비용 $2.093 | 6.7건/s | 남은 시간 약 50분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 327}
+2026-11-23T16:52:26 진행 78940/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 14245797 | 누적 비용 $2.119 | 6.8건/s | 남은 시간 약 48분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 327}
+2026-11-23T17:33:28 진행 79655/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 14376018 | 누적 비용 $2.139 | 5.7건/s | 남은 시간 약 55분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 327}
+2026-11-23T17:33:34 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:33:35 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:07 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T17:46:07 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T17:46:07 대기 1s: 네트워크 ConnectionResetError: [Errno 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T17:46:07 대기 1s: 네트워크 SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1082)
+2026-11-23T17:46:07 진행 79658/98400 | 유효 99.1% | api_error 0 | 추론 토큰 합 14376331 | 누적 비용 $2.139 | 5.4건/s | 남은 시간 약 58분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 333}
+2026-11-23T17:46:07 대기 1s: 네트워크 ConnectionResetError: [Errno 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T17:46:07 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:07 대기 1s: 네트워크 ConnectionResetError: [Errno 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T17:46:07 대기 1s: 네트워크 ConnectionAbortedError: [Errno 10053] 현재 연결은 사용자의 호스트 시스템의 소프트웨어의 의해 중단되었습니다
+2026-11-23T17:46:07 대기 1s: 네트워크 ConnectionResetError: [Errno 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T17:46:07 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T17:46:07 대기 1s: 네트워크 ConnectionResetError: [Errno 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T17:46:08 대기 1s: 네트워크 ConnectionResetError: [WinError 10054] 현재 연결은 원격 호스트에 의해 강제로 끊겼습니다
+2026-11-23T17:46:35 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:35 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:35 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:35 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:36 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:38 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:38 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:41 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:41 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:42 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:42 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:42 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:44 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:44 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:44 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:44 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:44 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:44 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:44 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:45 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:45 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:45 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:45 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:45 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:46 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:47 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:47 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:47 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:47 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:48 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:48 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:48 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:49 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:49 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:54 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:46:54 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:03 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:06 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:06 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:12 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:13 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:13 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:14 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:14 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:17 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:17 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:18 대기 2s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:18 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:18 대기 1s: 네트워크 gaierror: [Errno 11001] getaddrinfo failed
+2026-11-23T17:47:21 진행 79686/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 14381390 | 누적 비용 $2.139 | 5.3건/s | 남은 시간 약 58분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:47:36 진행 80000/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 14428307 | 누적 비용 $2.147 | 5.4건/s | 남은 시간 약 57분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:48:36 진행 81200/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 14647263 | 누적 비용 $2.179 | 5.4건/s | 남은 시간 약 53분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:48:53 대기 7s: HTTP 429 retry-after=7 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:49:27 진행 82000/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 14788761 | 누적 비용 $2.200 | 5.4건/s | 남은 시간 약 50분 | 재시도 {'429': 15, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:50:00 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:50:00 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:50:00 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:50:00 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:50:00 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:50:00 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:50:00 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:50:00 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:50:00 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:50:00 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:50:27 진행 83014/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 14971758 | 누적 비용 $2.227 | 5.5건/s | 남은 시간 약 47분 | 재시도 {'429': 25, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:51:25 진행 84000/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 15144410 | 누적 비용 $2.253 | 5.5건/s | 남은 시간 약 43분 | 재시도 {'429': 25, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:52:25 진행 84986/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 15330634 | 누적 비용 $2.281 | 5.6건/s | 남은 시간 약 40분 | 재시도 {'429': 25, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:52:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:52:59 대기 1s: HTTP 429 retry-after=1 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:53:25 진행 86000/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 15508214 | 누적 비용 $2.308 | 5.6건/s | 남은 시간 약 37분 | 재시도 {'429': 52, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:54:25 진행 86995/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 15691416 | 누적 비용 $2.335 | 5.7건/s | 남은 시간 약 34분 | 재시도 {'429': 52, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:54:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:54:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:54:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:54:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:54:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:54:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:54:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:54:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:54:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:54:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:54:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:54:58 대기 2s: HTTP 429 retry-after=2 '{"error":{"message":"You exceeded your requests per minute limit for this model","type":"rate_limit_error","code":"rate_'
+2026-11-23T17:55:24 진행 88000/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 15866874 | 누적 비용 $2.361 | 5.7건/s | 남은 시간 약 30분 | 재시도 {'429': 64, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:56:24 진행 88959/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 16043007 | 누적 비용 $2.387 | 5.8건/s | 남은 시간 약 27분 | 재시도 {'429': 64, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:57:24 진행 89865/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 16203919 | 누적 비용 $2.411 | 5.8건/s | 남은 시간 약 25분 | 재시도 {'429': 64, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:57:33 진행 90000/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 16225079 | 누적 비용 $2.414 | 5.8건/s | 남은 시간 약 24분 | 재시도 {'429': 64, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:58:33 진행 90929/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 16392921 | 누적 비용 $2.439 | 5.8건/s | 남은 시간 약 21분 | 재시도 {'429': 64, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:59:33 진행 91784/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 16539419 | 누적 비용 $2.461 | 5.9건/s | 남은 시간 약 19분 | 재시도 {'429': 64, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T17:59:46 진행 92000/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 16577135 | 누적 비용 $2.467 | 5.9건/s | 남은 시간 약 18분 | 재시도 {'429': 64, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T18:00:47 진행 92832/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 16737591 | 누적 비용 $2.490 | 5.9건/s | 남은 시간 약 16분 | 재시도 {'429': 64, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T18:01:47 진행 93784/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 16907776 | 누적 비용 $2.516 | 5.9건/s | 남은 시간 약 13분 | 재시도 {'429': 64, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T18:02:02 진행 94000/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 16941342 | 누적 비용 $2.521 | 5.9건/s | 남은 시간 약 12분 | 재시도 {'429': 64, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T18:03:02 진행 94965/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 17117210 | 누적 비용 $2.547 | 6.0건/s | 남은 시간 약 10분 | 재시도 {'429': 64, '529': 0, '5xx': 0, 'net': 390}
+2026-11-23T18:03:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:49 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 2s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 2s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 2s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 2s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 2s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 2s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 2s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 2s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:03:51 대기 1s: HTTP 503 retry-after=None '{"error":{"message":"The model is temporarily unavailable. Please try again later.","type":"server_error","code":"servic'
+2026-11-23T18:04:04 진행 95735/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 17257102 | 누적 비용 $2.568 | 6.0건/s | 남은 시간 약 7분 | 재시도 {'429': 64, '529': 0, '5xx': 32, 'net': 390}
+2026-11-23T18:04:25 진행 96000/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 17303833 | 누적 비용 $2.575 | 6.0건/s | 남은 시간 약 7분 | 재시도 {'429': 64, '529': 0, '5xx': 32, 'net': 390}
+2026-11-23T18:05:25 진행 96959/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 17474297 | 누적 비용 $2.600 | 6.1건/s | 남은 시간 약 4분 | 재시도 {'429': 64, '529': 0, '5xx': 32, 'net': 390}
+2026-11-23T18:06:25 진행 97990/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 17654079 | 누적 비용 $2.627 | 6.1건/s | 남은 시간 약 1분 | 재시도 {'429': 64, '529': 0, '5xx': 32, 'net': 390}
+2026-11-23T18:06:27 진행 98000/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 17656043 | 누적 비용 $2.627 | 6.1건/s | 남은 시간 약 1분 | 재시도 {'429': 64, '529': 0, '5xx': 32, 'net': 390}
+2026-11-23T18:06:51 진행 98400/98400 | 유효 99.1% | api_error 1 | 추론 토큰 합 17733428 | 누적 비용 $2.639 | 6.1건/s | 남은 시간 약 0분 | 재시도 {'429': 64, '529': 0, '5xx': 32, 'net': 390}
+2026-11-23T18:06:51 끝 (api_error 1건 — 같은 명령으로 다시 실행하면 재시도)
+2026-11-23T18:07:03 deepseek/deepseek-v4.1-flash-eco | 단계 1 | 설정 {"reasoning_effort": "low", "temperature": 1.0, "max_completion_tokens": 4000} | 전체 98400건 중 완료 98399건, 이번 실행 1건 | 동시 48
+2026-11-23T18:07:06 진행 98400/98400 | 유효 100.0% | api_error 0 | 추론 토큰 합 157 | 누적 비용 $0.000 | 0.3건/s | 남은 시간 약 0분 | 재시도 {'429': 0, '529': 0, '5xx': 0, 'net': 0}
+2026-11-23T18:07:06 완료

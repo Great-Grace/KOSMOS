@@ -38,6 +38,7 @@ for f in results/raw_gz/v2/*.jsonl.part01.gz; do b=$(basename "$f" .part01.gz); 
 | `raw_gz/v2/deepseek_eco_low_p1.jsonl.gz` | DeepSeek Eco, 추론 low, 원문 문체 | 147,600 | reasoning-effect, register-effect, beta-subgroup |
 | `raw_gz/v2/deepseek_eco_register_p1.jsonl.gz` | DeepSeek Eco, 추론 끔, 새 문체 3종 | 49,200 | register-effect |
 | `raw_gz/v2/deepseek_eco_low_register_p1.jsonl.gz` | DeepSeek Eco, 추론 low, 새 문체 3종 | 49,200 | register-effect |
+| `raw_gz/v2/deepseek_eco_low_decomp_p1.jsonl.gz` | DeepSeek Eco, 추론 low, 한국 성인, 인칭 요소 분해 신규 8조건(k=50, api_error 재시도 행 1줄 포함) | 98,401 | register-decomp-low |
 | `raw_gz/v2/haiku_register_p1.jsonl.gz` | Haiku 5.5, 추론 끔, 새 문체 3종 | 49,200 | register-effect |
 | `raw_gz/v2/haiku_register_p1_batches.json` | Haiku 배치 제출 원장 | | |
 | `raw_gz/v2/*_smoke.jsonl.gz` | 본 실행 전 소량 점검 호출 | | k-compromise 등 |
