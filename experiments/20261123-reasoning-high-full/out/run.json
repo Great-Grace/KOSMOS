@@ -1,6 +1,6 @@
 {
- "time": "2026-11-23T22:09:04",
- "git_commit": "7245b28",
+ "time": "2026-11-24T09:13:05",
+ "git_commit": "e867e2b",
  "git_dirty": false,
  "script_sha256_16": "62749d45b70fae14",
  "inputs": {
@@ -14,6 +14,12 @@
    {
     "path": "raw/v2/deepseek_eco_low_p1.jsonl",
     "sha256_16": "1037909302c4c99c"
+   }
+  ],
+  "medium": [
+   {
+    "path": "raw/v2/deepseek_eco_medium_p1.jsonl",
+    "sha256_16": "db77f6ff9a7df8d3"
    }
   ],
   "high": [
