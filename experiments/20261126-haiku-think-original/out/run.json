@@ -1,0 +1,59 @@
+{
+ "time": "2026-11-26T16:49:51",
+ "git_commit": "b1e8cb9",
+ "git_dirty": false,
+ "script_sha256_16": "0e0b31a56526b106",
+ "inputs": {
+  "Haiku/끔": [
+   {
+    "path": "raw/v2/haiku_p1.jsonl",
+    "sha256_16": "592507de3e7bcb35"
+   }
+  ],
+  "Haiku/medium": [
+   {
+    "path": "raw/v2/haiku_medium_think_197items_p1.jsonl",
+    "sha256_16": "698e1ea31c12d9a3"
+   }
+  ],
+  "Haiku/high": [
+   {
+    "path": "raw/v2/haiku_high_think_197items_p1.jsonl",
+    "sha256_16": "3959369a697df066"
+   }
+  ],
+  "DeepSeek/끔": [
+   {
+    "path": "raw/v2/deepseek_eco_p1.jsonl",
+    "sha256_16": "d7fdd6591b7ad3ea"
+   }
+  ],
+  "DeepSeek/medium": [
+   {
+    "path": "raw/v2/deepseek_eco_medium_p1.jsonl",
+    "sha256_16": "db77f6ff9a7df8d3"
+   }
+  ],
+  "DeepSeek/high": [
+   {
+    "path": "raw/v2/deepseek_eco_high_high60_p1.jsonl",
+    "sha256_16": "0b29225ca88c21d5"
+   },
+   {
+    "path": "raw/v2/deepseek_eco_high_high_rest137_p1.jsonl",
+    "sha256_16": "5f329b72eb75bdd8"
+   }
+  ]
+ },
+ "params": {
+  "k": 20,
+  "sample_start": 0,
+  "bootstrap": 2000,
+  "null_reps": 200,
+  "min_n": 10,
+  "n_match": 20,
+  "seed": 20261126
+ },
+ "paid_calls": 0,
+ "include_test": false
+}
