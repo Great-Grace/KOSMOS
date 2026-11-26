@@ -1,0 +1,13 @@
+{
+ "script": "smoke_haiku_cot.py",
+ "arm": "think",
+ "commit": "1c07b686dd742a80a82ff8a7aecc4d476585c9d1",
+ "n_probes": 300,
+ "new_rows": 300,
+ "input_tokens": 79531,
+ "output_tokens": 42510,
+ "cost_usd": 0.0292,
+ "system": "답하기 전에 응답자의 입장에서 어떤 보기를 고를지 충분히 생각하십시오. 생각을 마친 뒤 최종 출력에는 보기 번호 숫자 하나만 적고 다른 말은 하지 마십시오.",
+ "seed": "smoke_probes 기본(20261118)",
+ "finished": "2026-11-26T15:50:39"
+}

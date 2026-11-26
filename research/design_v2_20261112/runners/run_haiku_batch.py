@@ -28,6 +28,13 @@
   --thinking low|medium → thinking {"type": "adaptive"}, output_config.effort 해당 값, max_tokens 4000.
   원장·결과 파일은 haiku_low_p1_smoke_batches.json / haiku_low_p1_smoke.jsonl로 따로 쓴다.
   --smoke N은 DeepSeek 실행기와 같은 smoke_probes()로 같은 프롬프트 N개를 고른다.
+
+생각 지시 프롬프트 (2026-11-26 추가, 7차 세션 피드백 후속):
+  --sysprompt think  시스템 프롬프트를 SYS_THINK("답하기 전에 충분히 생각…최종 출력은 숫자 하나")로 바꾼다.
+                     user는 그대로. 스모크(smoke_haiku_cot.py --arm think)에서 thinking 발생 297/300(medium).
+  --items a.csv,b.csv  subsets/의 문항 목록(var 열)으로 프롬프트를 거른다. 197문항 = high60 + high_rest137.
+  --thinking high, --max-tokens N 추가.
+  $R --thinking medium --sysprompt think --items subsets/high60.csv,subsets/high_rest137.csv --max-tokens 1500 submit --samples 0:20 --budget 20
 """
 from __future__ import annotations
 # 인칭·화계 실험 (2026-11-19 추가): --prompts register
@@ -56,6 +63,8 @@ from run_deepseek_eco import parse_response, smoke_probes  # noqa: E402  (v2 공
 
 PROMPTS = DESIGN / "prompts_v2.csv"
 REGISTER_PROMPTS = DESIGN / "register_v1" / "out" / "prompts_register_v1.csv"
+SYS_THINK = ("답하기 전에 응답자의 입장에서 어떤 보기를 고를지 충분히 생각하십시오. "
+             "생각을 마친 뒤 최종 출력에는 보기 번호 숫자 하나만 적고 다른 말은 하지 마십시오.")
 REGISTER_SHA256 = "1d1530ca17ee84b15fc1728ede4317541fc90d5ba212223e849a0073f7d06636"
 
 
@@ -80,15 +89,22 @@ K = 100
 THINKING = "disabled"  # "disabled" | "low" | "medium"
 SMOKE = 0
 PROMPT_SET = "v2"
+SYSPROMPT = "v2"
+ITEMS = []
 
 
 def configure(a):
     """--thinking·--smoke에 따라 출력 경로와 설정을 바꾼다. 기본값이면 1단계 그대로."""
-    global LEDGER, OUT, MAX_TOKENS, THINKING, SMOKE, PROMPT_SET
-    THINKING, SMOKE, PROMPT_SET = a.thinking, a.smoke, a.prompts
+    global LEDGER, OUT, MAX_TOKENS, THINKING, SMOKE, PROMPT_SET, SYSPROMPT, ITEMS
+    THINKING, SMOKE, PROMPT_SET, SYSPROMPT = a.thinking, a.smoke, a.prompts, a.sysprompt
+    ITEMS = [DESIGN / f for f in a.items.split(",")] if a.items else []
     if THINKING != "disabled":
         MAX_TOKENS = 4000
-    tag = "haiku" + ("" if THINKING == "disabled" else f"_{THINKING}") + ("_register" if PROMPT_SET == "register" else "") + "_p1" + ("_smoke" if SMOKE else "")
+    if a.max_tokens:
+        MAX_TOKENS = a.max_tokens
+    n_items = len({r["var"] for f in ITEMS for r in csv.DictReader(f.open(encoding="utf-8-sig"))}) if ITEMS else 0
+    tag = ("haiku" + ("" if THINKING == "disabled" else f"_{THINKING}") + ("_think" if SYSPROMPT == "think" else "")
+           + ("_register" if PROMPT_SET == "register" else "") + (f"_{n_items}items" if ITEMS else "") + "_p1" + ("_smoke" if SMOKE else ""))
     LEDGER, OUT = OUT_DIR / f"{tag}_batches.json", OUT_DIR / f"{tag}.jsonl"
 
 try:
@@ -134,6 +150,11 @@ def http(method, url, key, body=None, timeout=300):
 
 def load_probes():
     probes = [r for r in read_prompts(PROMPT_SET) if r["phase"] == "1"]
+    if ITEMS:
+        keep = {r["var"] for f in ITEMS for r in csv.DictReader(f.open(encoding="utf-8-sig"))}
+        probes = [r for r in probes if r["var"] in keep]
+    if SYSPROMPT == "think":
+        probes = [dict(r, system=SYS_THINK) for r in probes]
     if SMOKE:
         probes = smoke_probes(probes, SMOKE)
     digest = hashlib.sha256("\n".join(p["probe_id"] + p["system"] + p["user"] for p in probes).encode()).hexdigest()[:16]
@@ -257,7 +278,7 @@ def collect(key, led, probes):
             tin += u.get("input_tokens", 0)
             tout += u.get("output_tokens", 0)
             rows.append({"model_id": model, "params": ({"thinking": "disabled", "max_tokens": MAX_TOKENS, "temperature": "default"} if THINKING == "disabled"
-                                    else {"thinking": "adaptive", "effort": THINKING, "max_tokens": MAX_TOKENS, "temperature": "default"}),
+                                    else {"thinking": "adaptive", "effort": THINKING, "max_tokens": MAX_TOKENS, "temperature": "default"}) | {"sysprompt": SYSPROMPT},
                          "run_date": run_date, "phase": 1, "probe_id": p["probe_id"], "level": p["level"],
                          "cell_id": p["cell_id"], "var": p["var"], "sample_idx": s, "raw_text": text,
                          "parsed": parsed, "valid": valid, "invalid_type": inv, "stop_reason": stop,
@@ -319,9 +340,12 @@ def cmd_estimate(a):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--thinking", choices=("disabled", "low", "medium"), default="disabled")
+    ap.add_argument("--thinking", choices=("disabled", "low", "medium", "high"), default="disabled")
     ap.add_argument("--prompts", choices=("v2", "register"), default="v2",
                     help="v2: 설계 v2 프롬프트, register: 인칭·화계 신규 조건 984개")
+    ap.add_argument("--sysprompt", choices=("v2", "think"), default="v2", help="think: 생각 지시 시스템 프롬프트")
+    ap.add_argument("--items", default="", help="설계 폴더 기준 문항 목록 csv(쉼표로 여러 개)")
+    ap.add_argument("--max-tokens", type=int, default=0)
     ap.add_argument("--smoke", type=int, default=0, help="프롬프트 n개만 (DeepSeek 스모크와 같은 추출)")
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("submit")

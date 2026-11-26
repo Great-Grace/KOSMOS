@@ -1,0 +1,13 @@
+{
+ "script": "smoke_haiku_cot.py",
+ "arm": "cot",
+ "commit": "1c07b686dd742a80a82ff8a7aecc4d476585c9d1",
+ "n_probes": 300,
+ "new_rows": 300,
+ "input_tokens": 89731,
+ "output_tokens": 70178,
+ "cost_usd": 0.0441,
+ "system": "설문 응답자로서 답하십시오. 먼저 응답자의 입장에서 어떤 보기를 고를지 2~4문장으로 생각을 적으십시오. 그다음 마지막 줄에 '답: 번호' 형식으로 보기 번호 하나를 적으십시오.",
+ "seed": "smoke_probes 기본(20261118)",
+ "finished": "2026-11-26T15:49:39"
+}
