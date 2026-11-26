@@ -1,0 +1,19 @@
+{
+ "script": "haiku_think_compare.py",
+ "B": 2000,
+ "reps": 20,
+ "k": 20,
+ "seed": 20261126,
+ "n_items": 188,
+ "raw": {
+  "끔": [
+   "haiku_p1.jsonl"
+  ],
+  "medium": [
+   "haiku_medium_think_197items_p1.jsonl"
+  ],
+  "high": [
+   "haiku_high_think_197items_p1.jsonl"
+  ]
+ }
+}
