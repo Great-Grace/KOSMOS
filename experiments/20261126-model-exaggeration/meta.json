@@ -1,0 +1,8 @@
+{
+ "id": "20261126-model-exaggeration",
+ "author": "태우",
+ "date": "2026-11-26",
+ "question": "집단 차이 과장(셀 간 분산비 > 1)이 DeepSeek만이 아니라 K-EXAONE·Haiku에도 있는가? (k=100 기존 데이터, 신규 수집 없음)",
+ "status": "진행",
+ "conclusion": ""
+}
