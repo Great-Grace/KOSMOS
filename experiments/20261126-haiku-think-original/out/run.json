@@ -1,0 +1,69 @@
+{
+ "params": {
+  "k": 20,
+  "bootstrap": 2000,
+  "reps": 20,
+  "seed": 20261126,
+  "n_items": 188,
+  "raw": {
+   "Haiku": {
+    "끔": [
+     [
+      "haiku_p1.jsonl"
+     ],
+     100
+    ],
+    "medium": [
+     [
+      "haiku_medium_think_197items_p1.jsonl"
+     ],
+     20
+    ],
+    "high": [
+     [
+      "haiku_high_think_197items_p1.jsonl"
+     ],
+     20
+    ]
+   },
+   "DeepSeek": {
+    "끔": [
+     [
+      "deepseek_eco_p1.jsonl"
+     ],
+     50
+    ],
+    "medium": [
+     [
+      "deepseek_eco_medium_p1.jsonl"
+     ],
+     50
+    ],
+    "high": [
+     [
+      "deepseek_eco_high_high60_p1.jsonl",
+      "deepseek_eco_high_high_rest137_p1.jsonl"
+     ],
+     50
+    ]
+   }
+  }
+ },
+ "tables": [
+  "comparisons",
+  "levels",
+  "quality",
+  "reps",
+  "sensitivity_k100"
+ ],
+ "notes": "",
+ "include_test": false,
+ "time": "2026-11-26T16:45:48",
+ "git_commit": "2eacc6b",
+ "git_dirty": false,
+ "data_sha256": "b1c212b6f721dcdc",
+ "data_built_at": "2026-11-15T22:29:13",
+ "python": "3.13.13",
+ "pandas": "2.3.1",
+ "numpy": "2.3.1"
+}
