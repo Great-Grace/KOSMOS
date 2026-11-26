@@ -1,0 +1,49 @@
+{
+ "time": "2026-11-26T12:02:19",
+ "git_commit": "f6c47d3",
+ "git_dirty": false,
+ "script_sha256_16": "5c750f0542697c37",
+ "inputs": {
+  "끔": [
+   {
+    "path": "raw/v2/deepseek_eco_p1.jsonl",
+    "sha256_16": "d7fdd6591b7ad3ea"
+   }
+  ],
+  "low": [
+   {
+    "path": "raw/v2/deepseek_eco_low_p1.jsonl",
+    "sha256_16": "1037909302c4c99c"
+   }
+  ],
+  "medium": [
+   {
+    "path": "raw/v2/deepseek_eco_medium_p1.jsonl",
+    "sha256_16": "db77f6ff9a7df8d3"
+   }
+  ],
+  "high": [
+   {
+    "path": "raw/v2/deepseek_eco_high_high60_p1.jsonl",
+    "sha256_16": "0b29225ca88c21d5"
+   },
+   {
+    "path": "raw/v2/deepseek_eco_high_high_rest137_p1.jsonl",
+    "sha256_16": "5f329b72eb75bdd8"
+   }
+  ]
+ },
+ "beta_source": {
+  "path": "experiments/20261123-reasoning-high-full/out/trend.csv",
+  "sha256_16": "b5225a0fb2011a32"
+ },
+ "params": {
+  "k": 50,
+  "bootstrap": 2000,
+  "null_reps": 200,
+  "n_match": 50,
+  "seed": 20261126
+ },
+ "paid_calls": 0,
+ "include_test": false
+}
