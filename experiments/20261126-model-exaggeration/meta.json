@@ -3,6 +3,6 @@
  "author": "태우",
  "date": "2026-11-26",
  "question": "집단 차이 과장(셀 간 분산비 > 1)이 DeepSeek만이 아니라 K-EXAONE·Haiku에도 있는가? (k=100 기존 데이터, 신규 수집 없음)",
- "status": "진행",
- "conclusion": ""
+ "status": "완료",
+ "conclusion": "집단 차이 과장은 세 모델 공통: 셀 간 분산비 K-EXAONE 2.70, DeepSeek 3.37, Haiku 6.70(모두 95% 하한 > 1). 정렬은 0.57 > 0.50 > 0.37"
 }

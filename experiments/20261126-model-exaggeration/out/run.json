@@ -1,0 +1,32 @@
+{
+ "time": "2026-11-26T10:15:52",
+ "git_commit": "90483b1",
+ "git_dirty": false,
+ "script_sha256_16": "24218245b1a76a75",
+ "inputs": [
+  {
+   "path": "research/design_v2_20261112/analysis/out_final_k100/counts_k100.npz",
+   "sha256_16": "18e3890f3c8e69d5"
+  },
+  {
+   "path": "research/design_v2_20261112/item_manifest_v2.csv",
+   "sha256_16": "9681d3da9db7bb21"
+  },
+  {
+   "path": "research/design_v2_20261112/cells.csv",
+   "sha256_16": "ffa63dbcd6c96a19"
+  }
+ ],
+ "params": {
+  "bootstrap": 2000,
+  "seed": 20261126,
+  "items": 188,
+  "models": [
+   "exaone",
+   "deepseek",
+   "haiku"
+  ]
+ },
+ "paid_calls": 0,
+ "include_test": false
+}
