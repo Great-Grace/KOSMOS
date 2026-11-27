@@ -1,0 +1,43 @@
+{
+ "time": "2026-11-27T14:49:49",
+ "git_commit": "368bafa",
+ "git_dirty": false,
+ "script_sha256_16": "9a04a0c110bf9fe1",
+ "inputs": {
+  "Haiku/끔": [
+   {
+    "path": "raw/v2/haiku_p1.jsonl",
+    "sha256_16": "592507de3e7bcb35"
+   }
+  ],
+  "Haiku/끔(생각 지시)": [
+   {
+    "path": "raw/v2/haiku_think_197items_p1.jsonl",
+    "sha256_16": "5e479469bd21156c"
+   }
+  ],
+  "Haiku/medium": [
+   {
+    "path": "raw/v2/haiku_medium_think_197items_p1.jsonl",
+    "sha256_16": "698e1ea31c12d9a3"
+   }
+  ],
+  "Haiku/high": [
+   {
+    "path": "raw/v2/haiku_high_think_197items_p1.jsonl",
+    "sha256_16": "3959369a697df066"
+   }
+  ]
+ },
+ "params": {
+  "k": 20,
+  "sample_start": 0,
+  "bootstrap": 2000,
+  "null_reps": 200,
+  "min_n": 10,
+  "n_match": 20,
+  "seed": 20261127
+ },
+ "paid_calls": "이 실험의 신규 수집은 haiku_think_197items_p1(47,280건, 비용은 quality.csv); run.py 자체는 호출 없음",
+ "include_test": false
+}
