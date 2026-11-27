@@ -56,7 +56,7 @@ check("비용", f"${float(q['medium']['비용USD']) + float(q['high']['비용USD
 tc = rows(FL + "tvd_calibrated.csv")
 for r in tc:
     if r["모델"] == "Haiku" and r["비교"] == "high − 끔" and r["페르소나"] == "페르소나 없음":
-        check("Haiku c0 high-off 보정 후", f"{sgn(r['값'])}, [{sgn(r['하한'])}, {sgn(r['상한'])}]".replace("+", "") if False else f"{sgn(r['값'])}")
+        check("Haiku 페르소나 없음 high − 끔 보정 후", f"{sgn(r['값'])}, [{sgn(r['하한'])}, {sgn(r['상한'])}]")
 
 # 4) 세 모델 최종 비교 (REPORT.md 표의 숫자)
 rep = open(ROOT / "research/design_v2_20261112/analysis/out_final_k100/REPORT.md", encoding="utf-8").read()
@@ -64,6 +64,7 @@ for s in ["0.254", "0.235", "0.288", "0.200", "0.228", "0.271", "0.222", "0.257"
     if s.replace("-", "−") not in rep.replace("-", "−"):
         fail += 1; print("REPORT.md에 없음:", s)
     else: ok += 1
+    check("본문 " + s, s.replace("-", "−").replace("−0.035 ", ""))   # 본문은 "−0.035, 95% 구간 [−0.070, −0.003]"로 쓴다
 
 # 5) 소형 모델 재계산
 for r in rows("research/design_v2_20261112/analysis/out_calib/legacy_vs_v2_summary.csv"):
