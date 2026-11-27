@@ -1,0 +1,61 @@
+{
+ "input": "/Users/taewoo/Developer/KOSMOS/research/summary_register_reasoning_20261126/four_levels/out/shift.csv",
+ "sha256": "c61215a636548043756ed107a368ccab63f97178bffb76e808460185f4c8739e",
+ "values": [
+  {
+   "model": "DeepSeek",
+   "step": "끔 → low",
+   "shift_tvd": 0.2400120158937206,
+   "noise_tvd": 0.09169943660628384,
+   "human_tvd_change": [
+    -0.02220474856203278,
+    -0.04190941350196416,
+    -0.004885975931740101
+   ]
+  },
+  {
+   "model": "DeepSeek",
+   "step": "low → medium",
+   "shift_tvd": 0.11630405515131513,
+   "noise_tvd": 0.07401453816186734,
+   "human_tvd_change": [
+    0.002265917330664167,
+    -0.005333525818226756,
+    0.010488627050108045
+   ]
+  },
+  {
+   "model": "DeepSeek",
+   "step": "medium → high",
+   "shift_tvd": 0.0707160032059845,
+   "noise_tvd": 0.06825571065989851,
+   "human_tvd_change": [
+    0.0006173968451484549,
+    -0.0027760820535624505,
+    0.0040154301827266346
+   ]
+  },
+  {
+   "model": "Haiku",
+   "step": "끔 → medium",
+   "shift_tvd": 0.32862480926452625,
+   "noise_tvd": 0.0658218490016165,
+   "human_tvd_change": [
+    -0.004132055191176965,
+    -0.025100844835575075,
+    0.0172445950211956
+   ]
+  },
+  {
+   "model": "Haiku",
+   "step": "medium → high",
+   "shift_tvd": 0.050703884724252156,
+   "noise_tvd": 0.03746303601144797,
+   "human_tvd_change": [
+    -0.004581810416384141,
+    -0.00829205955136903,
+    -0.0009374368014016239
+   ]
+  }
+ ]
+}
