@@ -30,7 +30,7 @@ for r in rows(git="exp/20261126-model-exaggeration:experiments/20261126-model-ex
 for r in rows("experiments/20261123-register-final/out/effects.csv"):
     s = f"{sgn(r['차이'])} [{sgn(r['하한'])}, {sgn(r['상한'])}]"
     check("register " + r["효과"] + r["설정"], s)
-    if r["p_Holm"] and float(r["p_Holm"]) < 0.999 and float(r["p"]) < 0.1:
+    if r["p_Holm"]:
         check("Holm " + r["효과"] + r["설정"], f"Holm p {float(r['p_Holm']):.2f}")
 
 # 3) 추론 4단계 (four_levels)
@@ -84,6 +84,19 @@ for r in rows("experiments/20261127-haiku-think-control/out/tvd_calibrated.csv")
 for r in rows("experiments/20261127-haiku-think-control/out/concentration_compare.csv"):
     if r["비교"] == "끔(생각 지시) − 끔" and r["지표"] == "최빈 보기 비율" and r["페르소나"] == "한국 성인":
         check("대조 쏠림 한국 성인", sgn(r["차이"]))
+
+# 7) 사람 쪽 기준선 (표 4-1 아래 행, baselines_human.py)
+B = {(r["기준선"], r["페르소나"]): float(r["값"]) for r in rows("research/capstone_report_20261128/baselines_human.csv")}
+check("기준선 소표본", f"{B[('사람 20명 소표본', '한국 성인')]:.3f} / {B[('사람 100명 소표본', '한국 성인')]:.3f}")
+check("기준선 20명 본문", f"TVD는 {B[('사람 20명 소표본', '한국 성인')]:.3f}이고 100명이면 {B[('사람 100명 소표본', '한국 성인')]:.3f}")
+check("기준선 전체 분포", f"TVD가 {B[('전체 분포를 모든 셀에 적용', '성별×연령')]:.3f}인데")
+check("기준선 셀 잡음", f"다시 뽑기만 해도 {B[('표집 잡음(유효 표본 수)', '성별×연령')]:.3f}")
+
+# 8) 서열 거리 W1 (표 4-1, 한국 성인, 시험용, β*)
+W = {r["model"]: float(r["mean"]) for r in rows("research/design_v2_20261112/analysis/out_final_k100/metrics_by_setting.csv")
+     if r["split"] == "test" and r["metric"] == "w1" and r["level"] == "L0" and (r["setting"] == "β*" or r["model"] == "uniform")}
+for k, fmt in (("exaone", "**{:.3f}**"), ("deepseek", "{:.3f}"), ("haiku", "{:.3f}"), ("uniform", "균등 {:.3f}")):
+    check("W1 " + k, fmt.format(W[k]))
 
 print(f"대조 통과 {ok}개, 실패 {fail}개")
 sys.exit(1 if fail else 0)

@@ -9,13 +9,16 @@
 | `content.py` | 원고 전체(요약, 본문, 표, 참고문헌) |
 | `build_report.py` | 양식에 원고를 끼워 넣는다 |
 | `preview.py`, `pages.py` | 미리보기 렌더링, 목차 쪽 번호 계산(`toc_pages.json`) |
-| `verify_numbers.py` | 본문 수치 120개를 원본 결과 파일과 대조(2026-11-27 통과) |
+| `verify_numbers.py` | 본문 수치 133개를 원본 결과 파일과 대조(2026-11-27 통과). 그 밖의 수치 약 110개는 같은 날 따로 원본과 대조해 고쳤다 |
 | `make_fig_reasoning.py` | 그림 4-2. 입력 해시와 값은 `fig_reasoning_shift.json` |
-| `fig_beta.png` | 그림 4-1. `Woostudy/Silicon Sampling/report/figures/make_figures.py` 산출물 복사 |
+| `make_fig_beta.py` | 그림 4-1. `counts_k100.npz`에서 다시 그린다. 값은 `fig_beta.json` |
+| `baselines_human.py` | 표 4-1의 사람 쪽 기준선(소표본, 표집 잡음, 전체 분포 적용). 사람 자료만 쓴다. 결과 `baselines_human.csv`, 기록 `baselines_human.run.json`·`.run.log` |
 
 ## 다시 만들기
 
 ```bash
+python3 baselines_human.py
+python3 make_fig_beta.py   # matplotlib 필요
 python3 verify_numbers.py
 python3 build_report.py template.docx "DAT 8회 캡스톤 프로젝트 보고서_KOSMOS팀.docx" toc_pages.json
 ```
@@ -35,5 +38,9 @@ python3 build_report.py template.docx "DAT 8회 캡스톤 프로젝트 보고서
 | DeepSeek 분산비·정렬 추세(high − low) | `experiments/20261123-reasoning-high-full/` |
 | 표 4-6, 4장 3절 4항 | `experiments/20261127-haiku-think-control/out/` (대조군, 커밋 `499c1d7`) |
 | 표 4-7 | `experiments/20261123-register-final/out/effects.csv` |
+| 표 4-1 W1 행 | `research/design_v2_20261112/analysis/out_final_k100/metrics_by_setting.csv` (test, w1, L0, β*) |
+| 표 4-1 기준선 행, 4장 1절 소표본 비교 | `baselines_human.csv` |
+| 부록 표 A-1·A-2 | `research/design_v2_20261112/build_prompts.py`, `runners/run_haiku_batch.py`, `register_v1/build_register_prompts.py` |
+| 부록 표 A-3 | `research/design_v2_20261112/DESIGN.md` 4절, 수집 로그 시각 |
 | 문구 민감도, 표 4-8, 거부 민감도, 요소 분해 | `research/summary_register_reasoning_20261126/README.md` 2·3절 (원 출처 `20261119-register-effect`, `20261123-register-decomp-*`) |
 | β 보정만의 효과 0.443 → 0.285 등 | 같은 README 5절 (`20261115-baseline-calibration`) |
