@@ -288,6 +288,13 @@ files["[Content_Types].xml"] = ct.encode("utf-8")
 # 문서 속성 제목
 core = files["docProps/core.xml"].decode("utf-8")
 core = re.sub(r"<dc:title>.*?</dc:title>|<dc:title/>", f"<dc:title>{escape(C.TITLE1 + ' ' + C.TITLE2)}</dc:title>", core)
+# 양식에서 딸려 온 작성자·날짜를 팀 이름과 제출일로 바꾼다(재빌드해도 같은 값이 나오게 날짜는 고정)
+AUTHOR, STAMP = "KOSMOS팀", "2026-11-28T00:00:00Z"
+core = re.sub(r"<dc:creator>.*?</dc:creator>|<dc:creator/>", f"<dc:creator>{AUTHOR}</dc:creator>", core)
+core = re.sub(r"<cp:lastModifiedBy>.*?</cp:lastModifiedBy>|<cp:lastModifiedBy/>", f"<cp:lastModifiedBy>{AUTHOR}</cp:lastModifiedBy>", core)
+core = re.sub(r"<cp:lastPrinted>.*?</cp:lastPrinted>", "", core)
+core = re.sub(r"<cp:revision>.*?</cp:revision>", "<cp:revision>1</cp:revision>", core)
+core = re.sub(r'(<dcterms:(created|modified) xsi:type="dcterms:W3CDTF">).*?(</dcterms:\2>)', rf"\g<1>{STAMP}\3", core)
 files["docProps/core.xml"] = core.encode("utf-8")
 
 with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as zo:
